@@ -15,10 +15,19 @@ run/main_scene="uid://cvokjqq1tu7o3"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://General/Assets/icon.svg"
 
+[autoload]
+
+InputManager="*uid://en4wmu4xahsy"
+PhantomCameraManager="*uid://duq6jhf6unyis"
+
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
 [input]
 
