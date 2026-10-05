@@ -16,9 +16,7 @@ func _ready() -> void:
 	Input.joy_connection_changed.connect(_on_joy_connection_changed)
 	input_dict[-1]=InputData.new()
 	prev_input_dict[-1]=InputData.new()
-	input_dict[0]=InputData.new()
-	prev_input_dict[0]=InputData.new()
-	
+
 func _process(_delta: float) -> void:
 	_collect_inputs()
 	_send_inputs()

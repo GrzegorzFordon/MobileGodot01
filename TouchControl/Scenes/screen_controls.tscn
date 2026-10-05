@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://pw5kfta11s6u"]
+
+[ext_resource type="Texture2D" uid="uid://dbk8xw4wvf5tn" path="res://TouchControl/Assets/MobileControlsSprites/Style A/joystick_circle_pad_d.png" id="1_56p4e"]
+[ext_resource type="Texture2D" uid="uid://crnmydydnacg6" path="res://TouchControl/Assets/MobileControlsSprites/Style G/joystick_circle_nub_b.png" id="2_5pvdg"]
+[ext_resource type="PackedScene" uid="uid://v3ex5tmqel71" path="res://TouchControl/Scenes/touch_button.tscn" id="2_56p4e"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jn837"]
+texture = ExtResource("1_56p4e")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7clil"]
+texture = ExtResource("2_5pvdg")
+
+[node name="ScreenControls" type="Control" unique_id=1833001595]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1572951616]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VirtualJoystick" type="VirtualJoystick" parent="HBoxContainer" unique_id=321463947]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal_joystick = SubResource("StyleBoxTexture_jn837")
+theme_override_styles/normal_tip = SubResource("StyleBoxTexture_7clil")
+theme_override_styles/pressed_joystick = SubResource("StyleBoxTexture_jn837")
+theme_override_styles/pressed_tip = SubResource("StyleBoxTexture_7clil")
+joystick_mode = 1
+joystick_size = 200.0
+tip_size = 120.0
+action_left = &"LEFT"
+action_right = &"RIGHT"
+action_up = &"UP"
+action_down = &"DOWN"
+visibility_mode = 1
+
+[node name="VirtualJoystick2" type="VirtualJoystick" parent="HBoxContainer" unique_id=255122944]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal_joystick = SubResource("StyleBoxTexture_jn837")
+theme_override_styles/normal_tip = SubResource("StyleBoxTexture_7clil")
+theme_override_styles/pressed_joystick = SubResource("StyleBoxTexture_jn837")
+theme_override_styles/pressed_tip = SubResource("StyleBoxTexture_7clil")
+joystick_mode = 1
+joystick_size = 200.0
+tip_size = 120.0
+action_left = &"LEFT"
+action_right = &"RIGHT"
+action_up = &"UP"
+action_down = &"DOWN"
+visibility_mode = 1
+
+[node name="RightSide" type="Control" parent="." unique_id=2061200945]
+anchors_preset = 0
+offset_left = 770.0
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="RightSide" unique_id=1564336496]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="TouchButton" parent="RightSide/MarginContainer" unique_id=137072565 instance=ExtResource("2_56p4e")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 1
+stretch_mode = 0

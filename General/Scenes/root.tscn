@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cvokjqq1tu7o3"]
 
 [ext_resource type="PackedScene" uid="uid://b04kmu03201in" path="res://General/Scenes/player.tscn" id="1_guc3m"]
+[ext_resource type="PackedScene" uid="uid://pw5kfta11s6u" path="res://TouchControl/Scenes/screen_controls.tscn" id="1_n0mc7"]
 [ext_resource type="Texture2D" uid="uid://dwuu8cyvvbtfo" path="res://General/Assets/KenneyPrototype/texture_08.png" id="2_m2hdu"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_pjob4"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="4_n0mc7"]
@@ -42,33 +43,13 @@ shadow_blur = 1.819
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1736467449]
 environment = SubResource("Environment_hb3fk")
 
-[node name="Control" type="Control" parent="." unique_id=102113846]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VirtualJoystick" type="VirtualJoystick" parent="Control" unique_id=1487987384]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-joystick_mode = 1
-action_left = &"LEFT"
-action_right = &"RIGHT"
-action_up = &"UP"
-action_down = &"DOWN"
-visibility_mode = 1
+[node name="ScreenControls" parent="." unique_id=1833001595 instance=ExtResource("1_n0mc7")]
 
 [node name="Player" parent="." unique_id=1794475074 instance=ExtResource("1_guc3m")]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1761978396]
 physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 0.50000006, 0.8660253, 0, -0.8660253, 0.50000006, 0, 4.330127, 2.5)
+transform = Transform3D(1, 0, 0, 0, 0.50000006, 0.8660253, 0, -0.8660253, 0.50000006, 0, 8.660254, 5)
 top_level = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=1111628867]
@@ -85,15 +66,15 @@ shape = SubResource("WorldBoundaryShape3D_g7b7a")
 mesh = SubResource("PlaneMesh_g7b7a")
 
 [node name="PhantomCamera3D" type="Node3D" parent="." unique_id=906430786 node_paths=PackedStringArray("follow_target")]
-transform = Transform3D(1, 0, 0, 0, 0.50000006, 0.8660253, 0, -0.8660253, 0.50000006, 0, 4.330127, 2.5)
+transform = Transform3D(1, 0, 0, 0, 0.50000006, 0.8660253, 0, -0.8660253, 0.50000006, 0, 8.660254, 5)
 script = ExtResource("4_n0mc7")
 follow_mode = 6
 follow_target = NodePath("../Player")
 tween_resource = SubResource("Resource_ewics")
 follow_damping = true
-follow_distance = 5.0
+follow_distance = 10.0
 vertical_rotation_offset = 1.0471975511965976
-spring_length = 5.0
+spring_length = 10.0
 align_transform_with_view = Callable()
 align_position_with_view = Callable()
 align_rotation_with_view = Callable()

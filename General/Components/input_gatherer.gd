@@ -3,9 +3,9 @@ extends Node
 
 signal input_updated(data:InputData)
 
+var inputs :Array[StringName]
 var data := InputData.new()
 var prev_data_held_actions:=[]
-var inputs :Array[StringName]
 
 func _ready() -> void:
 	inputs = InputMap.get_actions() as Array[StringName]

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://v3ex5tmqel71"]
+
+[ext_resource type="Script" uid="uid://cvtol6srhr24h" path="res://TouchControl/Scripts/touch_button.gd" id="1_hjo46"]
+[ext_resource type="Texture2D" uid="uid://dx1deqhn7ccct" path="res://TouchControl/Assets/MobileControlsSprites/Style A/button_circle.png" id="1_i3y6h"]
+[ext_resource type="Texture2D" uid="uid://blcvhxvpx847x" path="res://TouchControl/Assets/MobileControlsSprites/Icons/icon_sword.png" id="3_gy14o"]
+
+[node name="TouchButton" type="TextureButton" unique_id=446381991]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("1_i3y6h")
+script = ExtResource("1_hjo46")
+input_action_name = "TEST"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1837106731]
+self_modulate = Color(0.55480003, 0.73, 0.7154, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_gy14o")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
