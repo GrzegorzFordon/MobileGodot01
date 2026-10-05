@@ -16,7 +16,9 @@ func _ready() -> void:
 	Input.joy_connection_changed.connect(_on_joy_connection_changed)
 	input_dict[-1]=InputData.new()
 	prev_input_dict[-1]=InputData.new()
-
+	input_dict[0]=InputData.new()
+	prev_input_dict[0]=InputData.new()
+	
 func _process(_delta: float) -> void:
 	_collect_inputs()
 	_send_inputs()
@@ -24,7 +26,7 @@ func _process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	var id = event.device
-
+	#print(id)
 	#If Keyboard or Mouse
 	if id == 16 or id == 32: id = -1
 
@@ -37,7 +39,7 @@ func _input(event: InputEvent) -> void:
 
 	var all_relevant_events = InputMap.action_get_events(inputs[relevant_event_id])
 
-	if relevant_event_id != -1 or relevant_joypad_axis:
+	if relevant_event_id != -1 or relevant_joypad_axis or true:
 		most_recent_device_id = id
 	if input_dict.has(id) and relevant_event_id != -1:
 		if event.is_pressed():

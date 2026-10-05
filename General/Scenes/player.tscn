@@ -1,6 +1,13 @@
 [gd_scene format=3 uid="uid://b04kmu03201in"]
 
 [ext_resource type="PackedScene" uid="uid://bv4o06lm7x6a7" path="res://General/Assets/KayKit_Character_Animations_1.1/Mannequin Character/characters/Mannequin_Medium.glb" id="1_twu2s"]
+[ext_resource type="Script" uid="uid://cdrwvxu7nbp04" path="res://General/Scripts/player.gd" id="1_txpxy"]
+[ext_resource type="AnimationNodeBlendTree" uid="uid://b4toco251ftir" path="res://General/Misc/animation_node_blend_tree.tres" id="3_mvbtx"]
+[ext_resource type="Script" uid="uid://dw2uy35g3kska" path="res://General/Scripts/State/state_machine.gd" id="4_pklov"]
+[ext_resource type="Script" uid="uid://ddpy3oonyqva0" path="res://General/Scripts/State/PlayerStates/player_state_idle.gd" id="5_pklov"]
+[ext_resource type="Script" uid="uid://bcf0qwhuaw5v6" path="res://General/Scripts/State/PlayerStates/player_state_run.gd" id="6_3q025"]
+[ext_resource type="Script" uid="uid://cpkmcomjus048" path="res://General/Components/movement.gd" id="6_tl7w1"]
+[ext_resource type="Script" uid="uid://cihu0omjbpha0" path="res://General/Components/input_gatherer.gd" id="8_waf1l"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g7b7a"]
 
@@ -1989,10 +1996,11 @@ _data = {
 &"Walking_C": SubResource("Animation_td8pu")
 }
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_txpxy"]
-nodes/output/position = Vector2(506.66666, 133.33333)
-
-[node name="Player" type="CharacterBody3D" unique_id=1794475074]
+[node name="Player" type="CharacterBody3D" unique_id=1794475074 node_paths=PackedStringArray("state_machine", "movement", "input_gatherer")]
+script = ExtResource("1_txpxy")
+state_machine = NodePath("StateMachine")
+movement = NodePath("Components/Movement")
+input_gatherer = NodePath("Components/InputGatherer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=815508739]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -2002,10 +2010,46 @@ shape = SubResource("CapsuleShape3D_g7b7a")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1097251833]
 root_node = NodePath("../Visuals")
-libraries/Rig_Medium_MovementBasic = SubResource("AnimationLibrary_iy5cm")
-autoplay = &"Rig_Medium_MovementBasic/Running_A"
+libraries/MovementBasic = SubResource("AnimationLibrary_iy5cm")
+autoplay = &"MovementBasic/Running_A"
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1575961637]
 root_node = NodePath("../Visuals")
-tree_root = SubResource("AnimationNodeBlendTree_txpxy")
+tree_root = ExtResource("3_mvbtx")
 anim_player = NodePath("../AnimationPlayer")
+parameters/idle_walk_run_blend/blend_position = 0.0
+parameters/filtered_blend/blend_amount = 0.0
+parameters/full_blend/blend_amount = 0.0
+parameters/filtered_one_shot/active = false
+parameters/filtered_one_shot/internal_active = false
+parameters/filtered_one_shot/request = 0
+parameters/full_one_shot/active = false
+parameters/full_one_shot/internal_active = false
+parameters/full_one_shot/request = 0
+parameters/TimeScale/scale = 1.0
+parameters/filtered_blend_time_seek/seek_request = -1.0
+parameters/full_blend_time_seek/seek_request = -1.0
+
+[node name="StateMachine" type="Node" parent="." unique_id=107120013 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_pklov")
+initial_state = NodePath("PlayerStateIdle")
+metadata/_custom_type_script = "uid://dw2uy35g3kska"
+
+[node name="PlayerStateIdle" type="Node" parent="StateMachine" unique_id=356672471]
+script = ExtResource("5_pklov")
+metadata/_custom_type_script = "uid://ddpy3oonyqva0"
+
+[node name="PlayerStateRun" type="Node" parent="StateMachine" unique_id=192582499]
+script = ExtResource("6_3q025")
+metadata/_custom_type_script = "uid://bcf0qwhuaw5v6"
+
+[node name="Components" type="Node" parent="." unique_id=1106710355]
+
+[node name="Movement" type="Node" parent="Components" unique_id=679347886 node_paths=PackedStringArray("character")]
+script = ExtResource("6_tl7w1")
+character = NodePath("../..")
+metadata/_custom_type_script = "uid://cpkmcomjus048"
+
+[node name="InputGatherer" type="Node" parent="Components" unique_id=434808174]
+script = ExtResource("8_waf1l")
+metadata/_custom_type_script = "uid://cihu0omjbpha0"

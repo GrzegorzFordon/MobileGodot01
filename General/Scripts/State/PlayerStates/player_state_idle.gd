@@ -17,8 +17,6 @@ func process_inputs(input_data:InputData)->void:
 func _check_transitions(input_data:InputData)->void:
 	if player.velocity.y < 0:
 		transition.emit(STATE_STRINGS.INAIR)
-	if player.grappling.active_grappling_targets.size():
-		transition.emit(STATE_STRINGS.GRAPPLING)
 	if input_data.just_pressed_actions.has("JUMP"):
 		transition.emit(STATE_STRINGS.JUMP)
 	if input_data.just_pressed_actions.has("CROUCH"):

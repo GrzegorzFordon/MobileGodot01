@@ -8,6 +8,7 @@ enum MOVE_TYPE { RUN , SPRINT , CROUCH, NONE }
 @export var character: CharacterBody3D
 
 @export var max_speed := 100
+@export var accel_speed:=75
 @export var break_speed:=45
 
 @export var jump_peak_time := 0.5
@@ -34,18 +35,15 @@ func _ready() -> void:
 	_set_jump_parameters()
 
 func _physics_process(_delta: float) -> void:
-	if character.velocity.length()>debug_fastest_speed:
-		debug_fastest_speed = character.velocity.length()
-		#print(debug_fastest_speed)
 	check_coyote_time()
 	if not input_buffer_timer: return
 	if character.is_on_floor() and input_buffer_timer.time_left > 0.0:
 			jump()
 
 func move(direction:Vector3,move_type:MOVE_TYPE=MOVE_TYPE.RUN) -> void:
-	var delta = get_process_delta_time()
 	if not character: return
-
+	
+	var delta = get_process_delta_time()
 	var speed = move_speed_dict[move_type]
 
 	if direction.length() > 1.0:
@@ -53,8 +51,8 @@ func move(direction:Vector3,move_type:MOVE_TYPE=MOVE_TYPE.RUN) -> void:
 
 	if character.is_on_floor():
 		if direction:
-			character.velocity.x = direction.x * speed
-			character.velocity.z = direction.z * speed
+			character.velocity.x = move_toward(character.velocity.x, direction.z * speed, accel_speed*delta)
+			character.velocity.z = move_toward(character.velocity.z, direction.z * speed, accel_speed*delta)
 		else:
 			character.velocity.x = move_toward(character.velocity.x, 0, break_speed*delta)
 			character.velocity.z = move_toward(character.velocity.z, 0, break_speed*delta)
@@ -68,15 +66,11 @@ func move(direction:Vector3,move_type:MOVE_TYPE=MOVE_TYPE.RUN) -> void:
 	character.move_and_slide()
 
 func handle_gravity():
-	var delta = get_process_delta_time()
 	if not character: return
+	var delta = get_process_delta_time()
 	if not character.is_on_floor():
 		var current_gravity = jump_gravity if character.velocity.y >0 else fall_gravity
 		character.velocity.y -= current_gravity * delta
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("CROUCH"):
-		character.global_position.y -= 10 * get_process_delta_time()
 
 func jump(power_mult:float=1.0):
 	if not character.is_on_floor(): input_buffer_timer.start()
@@ -98,8 +92,6 @@ func _set_jump_parameters():
 	move_speed_dict[MOVE_TYPE.SPRINT] = sprint_jump_distance/(jump_peak_time+jump_fall_time)
 	move_speed_dict[MOVE_TYPE.CROUCH] = crouch_jump_distance/(jump_peak_time+jump_fall_time)
 	move_speed_dict[MOVE_TYPE.NONE] = 0
-
-
 
 func check_coyote_time():
 	if not coyote_timer:return
