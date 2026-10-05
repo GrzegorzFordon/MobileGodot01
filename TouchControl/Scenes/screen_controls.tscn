@@ -36,10 +36,10 @@ theme_override_styles/pressed_tip = SubResource("StyleBoxTexture_7clil")
 joystick_mode = 1
 joystick_size = 200.0
 tip_size = 120.0
-action_left = &"LEFT"
-action_right = &"RIGHT"
-action_up = &"UP"
-action_down = &"DOWN"
+action_left = &"MOVE_LEFT"
+action_right = &"MOVE_RIGHT"
+action_up = &"MOVE_UP"
+action_down = &"MOVE_DOWN"
 visibility_mode = 1
 
 [node name="VirtualJoystick2" type="VirtualJoystick" parent="HBoxContainer" unique_id=255122944]
@@ -52,10 +52,10 @@ theme_override_styles/pressed_tip = SubResource("StyleBoxTexture_7clil")
 joystick_mode = 1
 joystick_size = 200.0
 tip_size = 120.0
-action_left = &"LEFT"
-action_right = &"RIGHT"
-action_up = &"UP"
-action_down = &"DOWN"
+action_left = &"LOOK_LEFT"
+action_right = &"LOOK_RIGHT"
+action_up = &"LOOK_UP"
+action_down = &"LOOK_DOWN"
 visibility_mode = 1
 
 [node name="RightSide" type="Control" parent="." unique_id=2061200945]

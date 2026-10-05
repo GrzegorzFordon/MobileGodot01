@@ -7,9 +7,9 @@ func enter(_data=null)->void:
 func exit()->void:
 	super()
 
-func tick(_delta)->void:
-	_move_player(Movement.MOVE_TYPE.NONE)
-	super(_delta)
+func physics_tick(delta)->void:
+	_move_player(cached_input_data,Movement.MOVE_TYPE.NONE)
+	super(delta)
 
 func process_inputs(input_data:InputData)->void:
 	super(input_data)

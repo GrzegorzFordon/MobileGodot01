@@ -17,7 +17,7 @@ config/icon="res://General/Assets/icon.svg"
 
 [autoload]
 
-InputManager="*uid://en4wmu4xahsy"
+InputManager="uid://en4wmu4xahsy"
 PhantomCameraManager="*uid://duq6jhf6unyis"
 
 [display]
@@ -31,25 +31,41 @@ enabled=PackedStringArray("res://addons/GDQuest_GDScript_formatter/plugin.cfg", 
 
 [input]
 
-UP={
+MOVE_UP={
 "deadzone": 0.2,
 "events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":1,"axis_value":-1.0,"script":null)
 ]
 }
-DOWN={
+MOVE_DOWN={
 "deadzone": 0.2,
 "events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":1,"axis_value":1.0,"script":null)
 ]
 }
-LEFT={
+MOVE_LEFT={
 "deadzone": 0.2,
 "events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":-1.0,"script":null)
 ]
 }
-RIGHT={
+MOVE_RIGHT={
 "deadzone": 0.2,
 "events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":1.0,"script":null)
 ]
+}
+LOOK_UP={
+"deadzone": 0.2,
+"events": []
+}
+LOOK_DOWN={
+"deadzone": 0.2,
+"events": []
+}
+LOOK_LEFT={
+"deadzone": 0.2,
+"events": []
+}
+LOOK_RIGHT={
+"deadzone": 0.2,
+"events": []
 }
 
 [input_devices]

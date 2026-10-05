@@ -9,9 +9,9 @@ func exit()->void:
 	super()
 	pass
 
-func tick(delta)->void:
-	var movement_type = Movement.MOVE_TYPE.RUN
-	_move_player(movement_type)
+func physics_tick(delta)->void:
+	print(cached_input_data.direction)
+	_move_player(cached_input_data,Movement.MOVE_TYPE.RUN)
 	super(delta)
 
 func _check_transitions(input_data:InputData)->void:

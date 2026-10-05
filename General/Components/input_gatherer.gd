@@ -12,28 +12,29 @@ func _ready() -> void:
 	inputs = inputs.filter(func(val:String):return not val.begins_with("ui"))
 
 func _process(delta: float) -> void:
-	data.direction = _get_direction()
+	data.direction = _get_direction()[0]
+	data.direction_alt = _get_direction()[1]
 	data.just_released_actions = _get_just_released()
 	input_updated.emit(data)
 	_reset_data()
 
 func _input(event: InputEvent) -> void:
 	var relevant_event_id = inputs.find_custom(func(val):return InputMap.event_is_action(event,val))
-	var all_relevant_events = InputMap.action_get_events(inputs[relevant_event_id])
-	print(all_relevant_events)
-	if not all_relevant_events: return
+	if relevant_event_id == -1: return
+	var relevant_input_name = inputs[relevant_event_id]
 	if event.is_pressed():
-		if not data.held_actions.has(inputs[relevant_event_id]):
-			data.held_actions.append(inputs[relevant_event_id])
-			data.just_pressed_actions.append(inputs[relevant_event_id])
+		if not data.held_actions.has(relevant_input_name):
+			data.held_actions.append(relevant_input_name)
+			data.just_pressed_actions.append(relevant_input_name)
 		else:
-			data.just_pressed_actions.erase(inputs[relevant_event_id])
+			data.just_pressed_actions.erase(relevant_input_name)
 	else:
-		data.held_actions.erase(inputs[relevant_event_id])
+		data.held_actions.erase(relevant_input_name)
 
 func _get_direction():
-	var input_vec2 = Input.get_vector("LEFT","RIGHT","UP","DOWN")
-	return input_vec2
+	var input_vec2_move = Input.get_vector("MOVE_LEFT","MOVE_RIGHT","MOVE_UP","MOVE_DOWN")
+	var input_vec2_look = Input.get_vector("LOOK_LEFT","LOOK_RIGHT","LOOK_UP","LOOK_DOWN")
+	return [input_vec2_move,input_vec2_look]
 
 func _get_just_released():
 	var just_released :Array[String] = []

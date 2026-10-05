@@ -7,14 +7,11 @@ extends CharacterBody3D
 
 func _ready() -> void:
 	input_gatherer.input_updated.connect(_on_inputs_received)
-	#InputManager.inputs_gathered.connect(_on_inputs_received)
 
 func _physics_process(delta: float) -> void:
 	state_machine.physics_tick(delta)
 
 func _on_inputs_received(data:InputData):
-	print(data)
+	state_machine.process_inputs(data)
 	#var direction := transform.basis * Vector3(data.direction.x, 0, data.direction.y).normalized()
 	#step_handler.handle_step_climbing(direction)
-	#camera_rotation.rotate(data.direction_alt.x,data.direction_alt.y,is_controller)
-	state_machine.process_inputs(data)

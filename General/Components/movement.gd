@@ -42,7 +42,7 @@ func _physics_process(_delta: float) -> void:
 
 func move(direction:Vector3,move_type:MOVE_TYPE=MOVE_TYPE.RUN) -> void:
 	if not character: return
-	
+	#print("movement.move: ",direction)
 	var delta = get_process_delta_time()
 	var speed = move_speed_dict[move_type]
 
@@ -51,7 +51,7 @@ func move(direction:Vector3,move_type:MOVE_TYPE=MOVE_TYPE.RUN) -> void:
 
 	if character.is_on_floor():
 		if direction:
-			character.velocity.x = move_toward(character.velocity.x, direction.z * speed, accel_speed*delta)
+			character.velocity.x = move_toward(character.velocity.x, direction.x * speed, accel_speed*delta)
 			character.velocity.z = move_toward(character.velocity.z, direction.z * speed, accel_speed*delta)
 		else:
 			character.velocity.x = move_toward(character.velocity.x, 0, break_speed*delta)
@@ -97,3 +97,7 @@ func check_coyote_time():
 	if not coyote_timer:return
 	if character.is_on_floor():
 		coyote_timer.start()
+
+func rotate(direction:Vector3):
+	var angle = atan2(direction.x,direction.z)
+	character.rotation.y = lerp_angle(character.rotation.y,angle,10*get_physics_process_delta_time())
