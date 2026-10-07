@@ -1,10 +1,14 @@
 class_name PlayerState
 extends State
 
-@export var enable_head_bob := false
-@export var can_interact:=false
+@export var animation_name:String
+@export var animation_is_one_shot:bool
+@export var animation_is_top_only:bool
+
+#@export var enable_head_bob := false
+#@export var can_interact:=false
+#var current_look_dir:=Vector2.ZERO
 var player:Player
-var current_look_dir:=Vector2.ZERO
 var time_since_enter:=0.0
 var cached_vel_y
 
@@ -27,10 +31,12 @@ func _ready() -> void:
 
 func enter(_data=null)->void:
 	time_since_enter = 0.0
+	#player.animation_tree.set_animation(animation_name,animation_is_top_only,animation_is_one_shot)
 	print(name)
 	super(_data)
 
 func exit()->void:
+	#player.animation_tree.reset_animations()
 	super()
 
 func tick(delta)->void:
@@ -57,4 +63,5 @@ func _move_player(input_data:InputData,move_type:Movement.MOVE_TYPE):
 	var direction_look := Vector3(input_data.direction_alt.x, 0, input_data.direction_alt.y).normalized()
 	player.movement.move(direction,move_type)
 	if direction_look: player.movement.rotate(direction_look)
+	elif direction: player.movement.rotate(direction)
 	player.movement.handle_gravity()
