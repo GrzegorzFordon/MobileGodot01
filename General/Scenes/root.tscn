@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_pjob4"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="4_n0mc7"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_hb3fk"]
+[ext_resource type="PackedScene" uid="uid://cmt6m17k8ifb" path="res://General/Scenes/enemy.tscn" id="7_hb3fk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pjob4"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -28,6 +29,40 @@ fog_height_density = 1.4216
 fog_depth_curve = 2.639017
 fog_depth_begin = -10.0
 fog_depth_end = 51.0
+
+[sub_resource type="Gradient" id="Gradient_hb3fk"]
+colors = PackedColorArray(0.25, 0.1275, 0.17854165, 1, 0.26, 0.156, 0.19933331, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wfum3"]
+gradient = SubResource("Gradient_hb3fk")
+width = 256
+height = 32
+
+[sub_resource type="Gradient" id="Gradient_ewics"]
+colors = PackedColorArray(0.68, 0.10880002, 0.28016013, 1, 1, 0.16000003, 0.41200018, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hpqt8"]
+gradient = SubResource("Gradient_ewics")
+width = 256
+height = 32
+
+[sub_resource type="Gradient" id="Gradient_5um4n"]
+offsets = PackedFloat32Array(0.0024589163, 1)
+colors = PackedColorArray(0.050731108, 0.107709594, 0.33448628, 1, 0.2757289, 0.33742312, 0.64437395, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b358n"]
+gradient = SubResource("Gradient_5um4n")
+width = 256
+height = 32
+
+[sub_resource type="Gradient" id="Gradient_klq34"]
+offsets = PackedFloat32Array(0, 0.9983606)
+colors = PackedColorArray(0.45573068, 0.47279042, 0.9690017, 1, 0.45573068, 0.47279042, 0.9690017, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gbggw"]
+gradient = SubResource("Gradient_klq34")
+width = 256
+height = 32
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ulwie"]
 size = Vector3(100, 0.2, 100)
@@ -68,7 +103,59 @@ shadow_blur = 4.375
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1736467449]
 environment = SubResource("Environment_hb3fk")
 
-[node name="ScreenControls" parent="." unique_id=1833001595 instance=ExtResource("1_n0mc7")]
+[node name="HUDCanvasLayer" type="CanvasLayer" parent="." unique_id=501888629]
+
+[node name="Control" type="Control" parent="HUDCanvasLayer" unique_id=1630220589]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUDCanvasLayer/Control" unique_id=166411873]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUDCanvasLayer/Control/MarginContainer" unique_id=1276294403]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = -13
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HUDCanvasLayer/Control/MarginContainer/VBoxContainer" unique_id=395143815]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+value = 95.0
+texture_under = SubResource("GradientTexture2D_wfum3")
+texture_progress = SubResource("GradientTexture2D_hpqt8")
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="HUDCanvasLayer/Control/MarginContainer/VBoxContainer" unique_id=1510612121]
+z_index = -1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(14.222, 0)
+offset_transform_scale = Vector2(0.95, 0.95)
+value = 95.0
+texture_under = SubResource("GradientTexture2D_b358n")
+texture_progress = SubResource("GradientTexture2D_gbggw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=488799461]
+layer = 2
+
+[node name="ScreenControls" parent="CanvasLayer" unique_id=1833001595 instance=ExtResource("1_n0mc7")]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1761978396]
 physics_interpolation_mode = 1
@@ -108,6 +195,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025442839, 0)
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="." unique_id=1308694879]
 multimesh = SubResource("MultiMesh_n0mc7")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MultiMeshInstance3D" unique_id=913247140]
-visible = false
-mesh = SubResource("BoxMesh_wfum3")
+[node name="Enemy" parent="." unique_id=986434962 instance=ExtResource("7_hb3fk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.86055, 1.9073486e-06, 2.0884056)
+
+[node name="Enemy2" parent="." unique_id=957426625 instance=ExtResource("7_hb3fk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.13945, 1.9073486e-06, -7.9115944)

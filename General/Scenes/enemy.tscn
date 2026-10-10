@@ -1,6 +1,102 @@
 [gd_scene format=3 uid="uid://cmt6m17k8ifb"]
 
 [ext_resource type="Script" uid="uid://b7p6r8xdurcne" path="res://General/Scripts/enemy.gd" id="1_qu1aw"]
+[ext_resource type="PackedScene" uid="uid://bv4o06lm7x6a7" path="res://General/Assets/KayKit_Character_Animations_1.1/Mannequin Character/characters/Mannequin_Medium.glb" id="2_8rayq"]
+[ext_resource type="Shader" uid="uid://c553et8b4w6c0" path="res://General/Shaders/health_bar_shader.tres" id="3_chwux"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wfum3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8rayq"]
+shading_mode = 0
+albedo_color = Color(0.5178862, 0.1654234, 0.35763338, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2ykq"]
+render_priority = 0
+shader = ExtResource("3_chwux")
+shader_parameter/ColorParameter = Color(0.50964504, 0.17047477, 0.24679884, 1)
+shader_parameter/ColorParameter2 = Color(0.2088944, 0.047701456, 0.08519412, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_wfum3"]
+material = SubResource("ShaderMaterial_h2ykq")
+size = Vector2(1, 0.2)
 
 [node name="Enemy" type="CharacterBody3D" unique_id=986434962]
 script = ExtResource("1_qu1aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=460434472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_wfum3")
+
+[node name="Visuals" parent="." unique_id=455381118 instance=ExtResource("2_8rayq")]
+
+[node name="Skeleton3D" parent="Visuals/Rig_Medium" parent_id_path=PackedInt32Array(455381118, 1614256276) index="0" unique_id=541762314]
+bones/0/rotation = Quaternion(-3.370489e-11, -0.0009793104, -5.837855e-11, 0.9999995)
+bones/1/position = Vector3(2.718563e-18, 0.38816655, -2.0834632e-18)
+bones/1/rotation = Quaternion(0.0028263878, 0.042957265, 0.0002521941, 0.9990729)
+bones/1/scale = Vector3(0.99999994, 1, 0.99999994)
+bones/2/position = Vector3(0.17094508, 0.1135872, -0.00028856157)
+bones/2/rotation = Quaternion(0.9910995, 0.057418402, 0.07065791, 0.09712133)
+bones/2/scale = Vector3(0.9999999, 0.9999997, 1.0000008)
+bones/3/rotation = Quaternion(0.29812792, 6.4985e-08, -2.0426413e-07, 0.954526)
+bones/3/scale = Vector3(1.0000004, 0.99999994, 1.0000001)
+bones/4/rotation = Quaternion(-0.54944366, -0.112677775, 0.044990536, 0.8266748)
+bones/4/scale = Vector3(1.0000004, 1.0000007, 0.9999993)
+bones/5/rotation = Quaternion(-1.0240938e-07, 0.92017883, -0.39149824, 8.2383764e-08)
+bones/5/scale = Vector3(1.0000001, 0.9999975, 1.0000027)
+bones/6/rotation = Quaternion(0.0065236674, 0.00044829893, 0.00041979438, 0.99997854)
+bones/6/scale = Vector3(1.0000001, 1, 1.0000001)
+bones/7/rotation = Quaternion(-0.00041740807, 0.00030175166, -0.00013433065, 0.9999999)
+bones/7/scale = Vector3(1, 0.9999999, 1)
+bones/8/position = Vector3(-0.21194996, 0.1340562, -0.00022785153)
+bones/8/rotation = Quaternion(-0.5648573, 0.040443182, 0.7310533, 0.38060713)
+bones/8/scale = Vector3(0.9999992, 0.9999988, 0.9999998)
+bones/9/rotation = Quaternion(1.5639253e-08, 4.8658436e-08, 0.38537613, 0.9227597)
+bones/9/scale = Vector3(1.0000004, 0.99999976, 1.0000001)
+bones/10/rotation = Quaternion(2.2411331e-10, 6.7923605e-09, -0.026658092, 0.99964464)
+bones/10/scale = Vector3(0.99999994, 0.99999994, 1)
+bones/11/rotation = Quaternion(-0.21174203, 0.38176513, -0.13416551, 0.8896181)
+bones/11/scale = Vector3(0.9999995, 0.99999994, 1.0000005)
+bones/12/rotation = Quaternion(-0.015040134, -0.031396326, -0.0009063408, 0.99939346)
+bones/12/scale = Vector3(0.99999994, 1, 1)
+bones/13/position = Vector3(0.21193767, 0.13404992, -0.00022452853)
+bones/13/rotation = Quaternion(-0.5369175, -0.11103305, -0.7670553, 0.33319286)
+bones/13/scale = Vector3(0.9999993, 0.99999905, 0.9999998)
+bones/14/rotation = Quaternion(1.5194207e-08, -6.636935e-08, -0.36932707, 0.9292996)
+bones/14/scale = Vector3(1.0000004, 0.9999998, 1)
+bones/15/rotation = Quaternion(1.5070803e-08, -7.3234667e-09, 0.0266581, 0.99964464)
+bones/15/scale = Vector3(1.0000001, 1, 1)
+bones/16/rotation = Quaternion(-0.22129418, -0.34465814, 0.1799016, 0.8943574)
+bones/16/scale = Vector3(0.99999976, 1.0000001, 1.0000004)
+bones/17/position = Vector3(-0.17094508, 0.11358732, 0.00028859323)
+bones/17/rotation = Quaternion(0.996056, -0.03010032, 0.031143872, 0.077436395)
+bones/17/scale = Vector3(0.9999999, 0.99999976, 1.0000008)
+bones/18/rotation = Quaternion(0.31104815, -6.068251e-08, 2.1590627e-07, 0.95039415)
+bones/18/scale = Vector3(0.99999994, 0.99999976, 0.99999994)
+bones/19/rotation = Quaternion(-0.5777428, 0.11368454, -0.011544648, 0.8081805)
+bones/19/scale = Vector3(0.99999976, 1.0000006, 0.9999992)
+bones/20/rotation = Quaternion(-8.900788e-05, 0.9202216, -0.39139757, 2.0211679e-05)
+bones/20/scale = Vector3(1.0000002, 0.9999979, 1.0000024)
+
+[node name="Mannequin_Medium_ArmLeft" parent="Visuals/Rig_Medium/Skeleton3D" index="0" unique_id=510349988]
+material_override = SubResource("StandardMaterial3D_8rayq")
+
+[node name="Mannequin_Medium_ArmRight" parent="Visuals/Rig_Medium/Skeleton3D" index="1" unique_id=1765249753]
+material_override = SubResource("StandardMaterial3D_8rayq")
+
+[node name="Mannequin_Medium_Body" parent="Visuals/Rig_Medium/Skeleton3D" index="2" unique_id=1188538605]
+material_override = SubResource("StandardMaterial3D_8rayq")
+
+[node name="Mannequin_Medium_Head" parent="Visuals/Rig_Medium/Skeleton3D" index="3" unique_id=1840245398]
+material_override = SubResource("StandardMaterial3D_8rayq")
+
+[node name="Mannequin_Medium_LegLeft" parent="Visuals/Rig_Medium/Skeleton3D" index="4" unique_id=1253519232]
+material_override = SubResource("StandardMaterial3D_8rayq")
+
+[node name="Mannequin_Medium_LegRight" parent="Visuals/Rig_Medium/Skeleton3D" index="5" unique_id=305193392]
+material_override = SubResource("StandardMaterial3D_8rayq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2012706229]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
+mesh = SubResource("QuadMesh_wfum3")
+
+[editable path="Visuals"]

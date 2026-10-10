@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dx1deqhn7ccct" path="res://TouchControl/Assets/MobileControlsSprites/Style A/button_circle.png" id="1_i3y6h"]
 [ext_resource type="Texture2D" uid="uid://blcdsrnsp7mf2" path="res://TouchControl/Assets/MobileControlsSprites/Style H/button_circle.png" id="2_23auj"]
 [ext_resource type="Texture2D" uid="uid://btml611frmm1r" path="res://General/Assets/SpellIcons/healing_spell.png" id="4_23auj"]
+[ext_resource type="Texture2D" uid="uid://bnw3tfc4g4wdw" path="res://TouchControl/Assets/MobileControlsSprites/Style C/joystick_polygon_nub_a.png" id="5_ms3al"]
 
 [sub_resource type="Gradient" id="Gradient_ms3al"]
 interpolation_mode = 1
@@ -14,6 +15,13 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 gradient = SubResource("Gradient_ms3al")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_23auj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ms3al"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_23auj"]
+texture = ExtResource("5_ms3al")
 
 [node name="TouchButton" type="TextureButton" unique_id=446381991 node_paths=PackedStringArray("texture_rect")]
 self_modulate = Color(1, 1, 1, 0.5019608)
@@ -33,6 +41,7 @@ scale = Vector2(0.75, 0.75)
 pivot_offset = Vector2(64, 64)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+keep_pressed_outside = true
 texture_normal = ExtResource("1_i3y6h")
 texture_pressed = ExtResource("2_23auj")
 script = ExtResource("1_hjo46")
@@ -61,6 +70,21 @@ grow_vertical = 2
 offset_transform_enabled = true
 texture = ExtResource("4_23auj")
 stretch_mode = 4
+
+[node name="VirtualJoystick" type="VirtualJoystick" parent="." unique_id=1142103302]
+modulate = Color(0.8841401, 0.8841401, 0.88414013, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/normal_joystick = SubResource("StyleBoxEmpty_23auj")
+theme_override_styles/pressed_joystick = SubResource("StyleBoxEmpty_ms3al")
+theme_override_styles/pressed_tip = SubResource("StyleBoxTexture_23auj")
+tip_size = 100.0
+visibility_mode = 1
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_up"]
