@@ -1,8 +1,7 @@
 class_name Player
-extends CharacterBody3D
+extends Entity
 
 @export var state_machine: StateMachine
-@export var movement: Movement
 @export var input_gatherer: InputGatherer
 @export var animation_tree: AnimationTree
 

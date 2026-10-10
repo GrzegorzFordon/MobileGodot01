@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="SpellData" format=3 uid="uid://8ecxc72sccgt"]
+
+[ext_resource type="Script" uid="uid://cch3ytnb8hf4t" path="res://Spellcasting/_Resources/spell_effect.gd" id="1_118p8"]
+[ext_resource type="Script" uid="uid://bkktrbp3eyyef" path="res://Spellcasting/Effects/deal_damage_effect.gd" id="2_f06wl"]
+[ext_resource type="Texture2D" uid="uid://byaluqjp36tcb" path="res://General/Assets/icon.svg" id="2_ols0i"]
+[ext_resource type="Script" uid="uid://dufxqb81t0rt" path="res://Spellcasting/_Resources/spell_requirement.gd" id="3_f06wl"]
+[ext_resource type="Script" uid="uid://dnumj8bnq8xde" path="res://Spellcasting/_Resources/spell_data.gd" id="4_43wax"]
+[ext_resource type="Script" uid="uid://crchioj1xfgji" path="res://Spellcasting/Targets/single_target.gd" id="6_f06wl"]
+
+[sub_resource type="Resource" id="Resource_u8col"]
+script = ExtResource("2_f06wl")
+metadata/_custom_type_script = "uid://bkktrbp3eyyef"
+
+[sub_resource type="Resource" id="Resource_yeyj2"]
+script = ExtResource("6_f06wl")
+type = 1
+metadata/_custom_type_script = "uid://crchioj1xfgji"
+
+[resource]
+script = ExtResource("4_43wax")
+name = "Basic Spell"
+description = "This is a basic spell"
+icon = ExtResource("2_ols0i")
+effects = Array[ExtResource("1_118p8")]([SubResource("Resource_u8col")])
+target_type = SubResource("Resource_yeyj2")

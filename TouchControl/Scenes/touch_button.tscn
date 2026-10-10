@@ -2,9 +2,21 @@
 
 [ext_resource type="Script" uid="uid://cvtol6srhr24h" path="res://TouchControl/Scripts/touch_button.gd" id="1_hjo46"]
 [ext_resource type="Texture2D" uid="uid://dx1deqhn7ccct" path="res://TouchControl/Assets/MobileControlsSprites/Style A/button_circle.png" id="1_i3y6h"]
-[ext_resource type="Texture2D" uid="uid://blcvhxvpx847x" path="res://TouchControl/Assets/MobileControlsSprites/Icons/icon_sword.png" id="3_gy14o"]
+[ext_resource type="Texture2D" uid="uid://blcdsrnsp7mf2" path="res://TouchControl/Assets/MobileControlsSprites/Style H/button_circle.png" id="2_23auj"]
+[ext_resource type="Texture2D" uid="uid://btml611frmm1r" path="res://General/Assets/SpellIcons/healing_spell.png" id="4_23auj"]
 
-[node name="TouchButton" type="TextureButton" unique_id=446381991]
+[sub_resource type="Gradient" id="Gradient_ms3al"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.53493327)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wfum3"]
+gradient = SubResource("Gradient_ms3al")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="TouchButton" type="TextureButton" unique_id=446381991 node_paths=PackedStringArray("texture_rect")]
+self_modulate = Color(1, 1, 1, 0.5019608)
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -17,24 +29,38 @@ offset_right = 64.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(64, 64)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("1_i3y6h")
+texture_pressed = ExtResource("2_23auj")
 script = ExtResource("1_hjo46")
 input_action_name = "TEST"
+texture_rect = NodePath("TextureRect2/TextureRect")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1837106731]
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=59481687]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_wfum3")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect2" unique_id=1837106731]
 self_modulate = Color(0.55480003, 0.73, 0.7154, 1)
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
-offset_transform_scale = Vector2(0.6, 0.6)
-texture = ExtResource("3_gy14o")
+texture = ExtResource("4_23auj")
+stretch_mode = 4
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_up"]

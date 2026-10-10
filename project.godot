@@ -73,6 +73,22 @@ LOOK_RIGHT={
 "events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":2,"axis_value":1.0,"script":null)
 ]
 }
+ACTION_A={
+"deadzone": 0.2,
+"events": []
+}
+ACTION_B={
+"deadzone": 0.2,
+"events": []
+}
+ACTION_C={
+"deadzone": 0.2,
+"events": []
+}
+ACTION_D={
+"deadzone": 0.2,
+"events": []
+}
 
 [input_devices]
 

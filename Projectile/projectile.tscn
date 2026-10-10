@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bw1wne73cs4i3"]
+
+[ext_resource type="Script" uid="uid://b0tl454i5b4qt" path="res://Projectile/projectile.gd" id="1_08sw2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wfum3"]
+
+[node name="Projectile" type="Node3D" unique_id=521092792]
+script = ExtResource("1_08sw2")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1982999826]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1826617248]
+shape = SubResource("SphereShape3D_wfum3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1054139460]

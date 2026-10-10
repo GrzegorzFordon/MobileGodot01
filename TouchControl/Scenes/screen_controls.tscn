@@ -3,6 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://dbk8xw4wvf5tn" path="res://TouchControl/Assets/MobileControlsSprites/Style A/joystick_circle_pad_d.png" id="1_56p4e"]
 [ext_resource type="Texture2D" uid="uid://crnmydydnacg6" path="res://TouchControl/Assets/MobileControlsSprites/Style G/joystick_circle_nub_b.png" id="2_5pvdg"]
 [ext_resource type="PackedScene" uid="uid://v3ex5tmqel71" path="res://TouchControl/Scenes/touch_button.tscn" id="2_56p4e"]
+[ext_resource type="Script" uid="uid://rtaofnp4niw3" path="res://TouchControl/Scripts/screen_buttons.gd" id="3_5pvdg"]
+[ext_resource type="Texture2D" uid="uid://dkyih2g8yy8xk" path="res://General/Assets/SpellIcons/blinding_light_spell.png" id="5_p4tbk"]
+[ext_resource type="Texture2D" uid="uid://rvfmddoboady" path="res://General/Assets/SpellIcons/fire_spell.png" id="6_hiwep"]
+[ext_resource type="Texture2D" uid="uid://dx5jkwch4njk3" path="res://General/Assets/SpellIcons/fortify_spell.png" id="7_343kg"]
+[ext_resource type="Texture2D" uid="uid://digc57bblqn0d" path="res://General/Assets/SpellIcons/lightning_spell.png" id="8_1juxa"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jn837"]
 texture = ExtResource("1_56p4e")
@@ -43,22 +48,9 @@ action_up = &"MOVE_UP"
 action_down = &"MOVE_DOWN"
 visibility_mode = 1
 
-[node name="VirtualJoystick2" type="VirtualJoystick" parent="HBoxContainer" unique_id=255122944]
-modulate = Color(1, 1, 1, 0.5019608)
+[node name="Control - Spacer" type="Control" parent="HBoxContainer" unique_id=552574766]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/normal_joystick = SubResource("StyleBoxTexture_jn837")
-theme_override_styles/normal_tip = SubResource("StyleBoxTexture_7clil")
-theme_override_styles/pressed_joystick = SubResource("StyleBoxTexture_jn837")
-theme_override_styles/pressed_tip = SubResource("StyleBoxTexture_7clil")
-joystick_mode = 1
-joystick_size = 200.0
-tip_size = 120.0
-action_left = &"LOOK_LEFT"
-action_right = &"LOOK_RIGHT"
-action_up = &"LOOK_UP"
-action_down = &"LOOK_DOWN"
-visibility_mode = 1
 
 [node name="RightSide" type="Control" parent="." unique_id=2061200945]
 layout_mode = 1
@@ -83,9 +75,88 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="TouchButton" parent="RightSide/MarginContainer" unique_id=137072565 instance=ExtResource("2_56p4e")]
+[node name="VirtualJoystick2" type="VirtualJoystick" parent="RightSide/MarginContainer" unique_id=255122944]
+self_modulate = Color(1, 1, 1, 0.5019608)
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+theme_override_styles/normal_joystick = SubResource("StyleBoxTexture_jn837")
+theme_override_styles/normal_tip = SubResource("StyleBoxTexture_7clil")
+theme_override_styles/pressed_joystick = SubResource("StyleBoxTexture_jn837")
+theme_override_styles/pressed_tip = SubResource("StyleBoxTexture_7clil")
+joystick_size = 150.0
+tip_size = 120.0
+action_left = &"LOOK_LEFT"
+action_right = &"LOOK_RIGHT"
+action_up = &"LOOK_UP"
+action_down = &"LOOK_DOWN"
+
+[node name="ScreenButtons" type="Control" parent="RightSide/MarginContainer/VirtualJoystick2" unique_id=1340993722 node_paths=PackedStringArray("buttons")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+script = ExtResource("3_5pvdg")
+buttons = [NodePath("TouchButton"), NodePath("TouchButton2"), NodePath("TouchButton3"), NodePath("TouchButton4")]
+start_angle = 160.0
+step = 45.0
+distance = 150
+
+[node name="TouchButton" parent="RightSide/MarginContainer/VirtualJoystick2/ScreenButtons" unique_id=137072565 instance=ExtResource("2_56p4e")]
+layout_mode = 1
+offset_left = -12.696976
+offset_top = -204.95389
+offset_right = 115.303024
+offset_bottom = -76.95389
 size_flags_horizontal = 8
 size_flags_vertical = 8
 mouse_filter = 1
 stretch_mode = 0
+input_action_name = "ACTION_A"
+debug_texture = ExtResource("5_p4tbk")
+
+[node name="TouchButton2" parent="RightSide/MarginContainer/VirtualJoystick2/ScreenButtons" unique_id=446381991 instance=ExtResource("2_56p4e")]
+layout_mode = 1
+offset_left = -127.392746
+offset_top = -199.94617
+offset_right = 0.607254
+offset_bottom = -71.94617
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 1
+stretch_mode = 0
+input_action_name = "ACTION_B"
+debug_texture = ExtResource("6_hiwep")
+
+[node name="TouchButton3" parent="RightSide/MarginContainer/VirtualJoystick2/ScreenButtons" unique_id=1810014995 instance=ExtResource("2_56p4e")]
+layout_mode = 1
+offset_left = -204.95389
+offset_top = -115.303024
+offset_right = -76.95389
+offset_bottom = 12.696976
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 1
+stretch_mode = 0
+input_action_name = "ACTION_C"
+debug_texture = ExtResource("7_343kg")
+
+[node name="TouchButton4" parent="RightSide/MarginContainer/VirtualJoystick2/ScreenButtons" unique_id=2017947889 instance=ExtResource("2_56p4e")]
+layout_mode = 1
+offset_left = -199.94617
+offset_top = -0.60725784
+offset_right = -71.94617
+offset_bottom = 127.392746
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 1
+stretch_mode = 0
+input_action_name = "ACTION_D"
+debug_texture = ExtResource("8_1juxa")

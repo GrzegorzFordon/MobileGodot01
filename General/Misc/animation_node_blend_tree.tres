@@ -1,25 +1,5 @@
 [gd_resource type="AnimationNodeBlendTree" format=3 uid="uid://b4toco251ftir"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lu2xh"]
-animation = &"MovementAdvanced/Running_Strafe_Left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vdn8l"]
-animation = &"MovementAdvanced/Running_Strafe_Right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xjkcc"]
-animation = &"General/Idle_A"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_xjkcc"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_lu2xh")
-blend_point_0/pos = -1.0
-blend_point_0/name = &"MovementAdvanced_Running_Strafe_Left"
-blend_point_1/node = SubResource("AnimationNodeAnimation_vdn8l")
-blend_point_1/pos = 1.0
-blend_point_1/name = &"MovementAdvanced_Running_Strafe_Right"
-blend_point_2/node = SubResource("AnimationNodeAnimation_xjkcc")
-blend_point_2/pos = 0.0
-blend_point_2/name = &"General_Idle_A"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h2363"]
 animation = &"MovementBasic/Running_A"
 
@@ -79,44 +59,12 @@ animation = &"Special/T-Pose"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4ycey"]
 animation = &"Special/T-Pose"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ria0w"]
-animation = &"General/Idle_A"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lyhyx"]
-animation = &"MovementBasic/Walking_A"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xeyyg"]
-animation = &"MovementBasic/Running_A"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_8cim4"]
-min_space = 0.0
-blend_point_0/node = SubResource("AnimationNodeAnimation_ria0w")
-blend_point_0/pos = 0.0
-blend_point_0/name = &"Idle"
-blend_point_1/node = SubResource("AnimationNodeAnimation_lyhyx")
-blend_point_1/pos = 0.5
-blend_point_1/name = &"Walk"
-blend_point_2/node = SubResource("AnimationNodeAnimation_xeyyg")
-blend_point_2/pos = 1.0
-blend_point_2/name = &"Jog_Fwd"
-
-[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_h2363"]
-xfade_time = 0.2
-input_0/name = "walk"
-input_0/auto_advance = false
-input_0/break_loop_at_end = false
-input_0/reset = true
-input_1/name = "strafe"
-input_1/auto_advance = false
-input_1/break_loop_at_end = false
-input_1/reset = true
-
 [resource]
 resource_local_to_scene = true
-graph_offset = Vector2(-1299.4648, -141.3932)
+graph_offset = Vector2(-938.39496, -28.395472)
 nodes/output/position = Vector2(22.222223, 0)
-nodes/idle_walk_run_blend/node = SubResource("AnimationNodeBlendSpace1D_8cim4")
-nodes/idle_walk_run_blend/position = Vector2(-1688.8889, 66.66667)
+nodes/MoveBlendSpace/node = SubResource("AnimationNodeBlendSpace2D_h2363")
+nodes/MoveBlendSpace/position = Vector2(-1222.2223, 111.111115)
 nodes/filtered_blend/node = SubResource("AnimationNodeBlend2_vt4ob")
 nodes/filtered_blend/position = Vector2(-911.11115, 88.88889)
 nodes/full_blend/node = SubResource("AnimationNodeBlend2_5xdhn")
@@ -139,10 +87,4 @@ nodes/filtered_one_shot_animation/node = SubResource("AnimationNodeAnimation_dhk
 nodes/filtered_one_shot_animation/position = Vector2(-622.2222, 533.3334)
 nodes/full_one_shot_animation/node = SubResource("AnimationNodeAnimation_4ycey")
 nodes/full_one_shot_animation/position = Vector2(-355.55557, 533.3334)
-nodes/MoveBlendSpace/node = SubResource("AnimationNodeBlendSpace2D_h2363")
-nodes/MoveBlendSpace/position = Vector2(-1222.2223, 111.111115)
-nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_xjkcc")
-nodes/BlendSpace1D/position = Vector2(-1688.8889, 266.6667)
-nodes/state/node = SubResource("AnimationNodeTransition_h2363")
-nodes/state/position = Vector2(-1422.2223, 200)
-node_connections = [&"output", 0, &"TimeScale", &"filtered_blend", 0, &"MoveBlendSpace", &"filtered_blend", 1, &"filtered_blend_time_seek", &"full_blend", 0, &"filtered_blend", &"full_blend", 1, &"full_blend_time_seek", &"filtered_one_shot", 0, &"full_blend", &"filtered_one_shot", 1, &"filtered_one_shot_animation", &"full_one_shot", 0, &"filtered_one_shot", &"full_one_shot", 1, &"full_one_shot_animation", &"TimeScale", 0, &"full_one_shot", &"filtered_blend_time_seek", 0, &"filtered_blend_animation", &"full_blend_time_seek", 0, &"full_blend_animation", &"state", 0, &"idle_walk_run_blend", &"state", 1, &"BlendSpace1D"]
+node_connections = [&"output", 0, &"TimeScale", &"filtered_blend", 0, &"MoveBlendSpace", &"filtered_blend", 1, &"filtered_blend_time_seek", &"full_blend", 0, &"filtered_blend", &"full_blend", 1, &"full_blend_time_seek", &"filtered_one_shot", 0, &"full_blend", &"filtered_one_shot", 1, &"filtered_one_shot_animation", &"full_one_shot", 0, &"filtered_one_shot", &"full_one_shot", 1, &"full_one_shot_animation", &"TimeScale", 0, &"full_one_shot", &"filtered_blend_time_seek", 0, &"filtered_blend_animation", &"full_blend_time_seek", 0, &"full_blend_animation"]

@@ -8,9 +8,18 @@
 [ext_resource type="Script" uid="uid://bcf0qwhuaw5v6" path="res://General/Scripts/State/PlayerStates/player_state_run.gd" id="6_3q025"]
 [ext_resource type="Script" uid="uid://cpkmcomjus048" path="res://General/Components/movement.gd" id="6_tl7w1"]
 [ext_resource type="Script" uid="uid://cihu0omjbpha0" path="res://General/Components/input_gatherer.gd" id="8_waf1l"]
-[ext_resource type="Script" uid="uid://bc4i6y2qflu60" path="res://General/Scripts/step_manager.gd" id="9_ulwie"]
+[ext_resource type="Script" uid="uid://bn7kp1plyetdh" path="res://Spellcasting/spellcaster.gd" id="9_u8col"]
+[ext_resource type="Resource" uid="uid://8ecxc72sccgt" path="res://Spellcasting/Spells/basic_spell.tres" id="10_yeyj2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g7b7a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulwie"]
+shading_mode = 0
+albedo_color = Color(0.15443939, 0.3606176, 0.32831153, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8col"]
+shading_mode = 0
+albedo_color = Color(0.15443939, 0.3606176, 0.32831153, 1)
 
 [sub_resource type="Animation" id="Animation_iy5cm"]
 resource_name = "Melee_1H_Attack_Chop"
@@ -30529,37 +30538,13 @@ _data = {
 &"Working_C": SubResource("Animation_fp4ld")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulwie"]
-no_depth_test = true
-albedo_color = Color(0.73574585, 0.92053664, 0.97966796, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_u8col"]
-material = SubResource("StandardMaterial3D_ulwie")
-radius = 0.05
-height = 0.1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yeyj2"]
-transparency = 1
-no_depth_test = true
-albedo_color = Color(0.97, 0.8536, 0.88076, 0.8745098)
-stencil_flags = 2
-
-[sub_resource type="SphereMesh" id="SphereMesh_wfum3"]
-material = SubResource("StandardMaterial3D_yeyj2")
-radius = 0.05
-height = 0.1
-
-[sub_resource type="TorusMesh" id="TorusMesh_wfum3"]
-inner_radius = 0.955
-
-[node name="Player" type="CharacterBody3D" unique_id=1794475074 node_paths=PackedStringArray("state_machine", "movement", "input_gatherer", "animation_tree")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08262217)
+[node name="Player" type="CharacterBody3D" unique_id=1794475074 node_paths=PackedStringArray("state_machine", "input_gatherer", "animation_tree", "movement")]
 collision_layer = 0
 script = ExtResource("1_txpxy")
 state_machine = NodePath("StateMachine")
-movement = NodePath("Components/Movement")
 input_gatherer = NodePath("Components/InputGatherer")
 animation_tree = NodePath("AnimationTree")
+movement = NodePath("Components/Movement")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=815508739]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -30569,118 +30554,69 @@ shape = SubResource("CapsuleShape3D_g7b7a")
 
 [node name="Skeleton3D" parent="Visuals/Rig_Medium" parent_id_path=PackedInt32Array(1840453105, 1614256276) index="0" unique_id=541762314]
 bones/0/rotation = Quaternion(-3.370489e-11, -0.0009793104, -5.837855e-11, 0.9999995)
-bones/1/position = Vector3(3.9907342e-19, 0.38756108, 2.514977e-18)
-bones/1/rotation = Quaternion(0.003125233, 0.042956788, 0.00026515973, 0.999072)
+bones/1/position = Vector3(-3.3957634e-25, 0.3848486, 1.4242866e-18)
+bones/1/rotation = Quaternion(0.004628252, 0.04295636, 0.0003300831, 0.9990662)
 bones/1/scale = Vector3(0.99999994, 1, 0.99999994)
-bones/2/position = Vector3(0.17094508, 0.1135872, 0.00036084905)
-bones/2/rotation = Quaternion(0.9905011, 0.057597324, 0.070562765, 0.1030111)
+bones/2/position = Vector3(0.17094508, 0.1135872, 0.00034673174)
+bones/2/rotation = Quaternion(0.98933965, 0.057350356, 0.070926405, 0.1135229)
 bones/2/scale = Vector3(0.9999999, 0.9999997, 1.0000008)
-bones/3/rotation = Quaternion(0.3056458, 6.563e-08, -2.1220048e-07, 0.95214534)
+bones/3/rotation = Quaternion(0.329404, 6.650638e-08, -2.2208508e-07, 0.94418913)
 bones/3/scale = Vector3(1.0000004, 0.99999994, 1.0000001)
-bones/4/rotation = Quaternion(-0.5531633, -0.112450935, 0.045642495, 0.8241856)
+bones/4/rotation = Quaternion(-0.56678486, -0.11171881, 0.048049472, 0.8148406)
 bones/4/scale = Vector3(1.0000004, 1.0000007, 0.9999993)
-bones/5/rotation = Quaternion(-1.1788477e-06, 0.92023045, -0.39137706, 3.0595768e-07)
+bones/5/rotation = Quaternion(-2.4072633e-06, 0.92022717, -0.39138475, 1.3878283e-06)
 bones/5/scale = Vector3(1.0000001, 0.9999975, 1.0000027)
-bones/6/rotation = Quaternion(0.007640478, 0.00042077166, 0.0005300692, 0.9999706)
+bones/6/rotation = Quaternion(0.011838867, 8.2054925e-05, 0.0009136004, 0.9999295)
 bones/6/scale = Vector3(1.0000001, 1, 1.0000001)
-bones/7/rotation = Quaternion(-0.001303187, 0.00029894552, -0.00023176339, 0.9999991)
+bones/7/rotation = Quaternion(-0.0050795283, 0.00029358896, -0.0005836438, 0.99998695)
 bones/7/scale = Vector3(1, 0.9999999, 1)
-bones/8/position = Vector3(-0.21189739, 0.1340299, -0.00021365419)
-bones/8/rotation = Quaternion(-0.56461066, 0.039992135, 0.7308814, 0.38135013)
+bones/8/position = Vector3(-0.21193159, 0.134047, -0.000222891)
+bones/8/rotation = Quaternion(-0.5663051, 0.03442433, 0.72743493, 0.38594294)
 bones/8/scale = Vector3(0.9999992, 0.9999988, 0.9999998)
-bones/9/rotation = Quaternion(1.6095799e-09, 5.7355557e-08, 0.3867213, 0.9221966)
+bones/9/rotation = Quaternion(-2.8980058e-09, 4.7373486e-08, 0.39229798, 0.91983825)
 bones/9/scale = Vector3(1.0000004, 0.99999976, 1.0000001)
 bones/10/rotation = Quaternion(2.2411331e-10, 6.7923605e-09, -0.026658092, 0.99964464)
 bones/10/scale = Vector3(0.99999994, 0.99999994, 1)
-bones/11/rotation = Quaternion(-0.21070997, 0.38165906, -0.13468525, 0.8898301)
+bones/11/rotation = Quaternion(-0.21002948, 0.38014567, -0.1316275, 0.8910955)
 bones/11/scale = Vector3(0.9999995, 0.99999994, 1.0000005)
-bones/12/rotation = Quaternion(-0.016229639, -0.03128328, -0.0009596015, 0.99937844)
+bones/12/rotation = Quaternion(-0.012887183, -0.031012898, -0.0007889488, 0.9994356)
 bones/12/scale = Vector3(0.99999994, 1, 1)
-bones/13/position = Vector3(0.2119902, 0.13407624, -0.00023872605)
-bones/13/rotation = Quaternion(-0.53794885, -0.10867293, -0.7658025, 0.33518305)
+bones/13/position = Vector3(0.21195601, 0.13405912, -0.00022948887)
+bones/13/rotation = Quaternion(-0.54059595, -0.10308528, -0.76209116, 0.34109598)
 bones/13/scale = Vector3(0.9999993, 0.99999905, 0.9999998)
-bones/14/rotation = Quaternion(1.9774644e-08, -5.7846712e-08, -0.3708909, 0.9286765)
+bones/14/rotation = Quaternion(2.0286384e-08, -6.0016724e-08, -0.3787844, 0.925485)
 bones/14/scale = Vector3(1.0000004, 0.9999998, 1)
 bones/15/rotation = Quaternion(1.5070803e-08, -7.3234667e-09, 0.0266581, 0.99964464)
 bones/15/scale = Vector3(1.0000001, 1, 1)
-bones/16/rotation = Quaternion(-0.22179782, -0.34389696, 0.17823102, 0.89485997)
+bones/16/rotation = Quaternion(-0.22120138, -0.34299883, 0.1760703, 0.89577967)
 bones/16/scale = Vector3(0.99999976, 1.0000001, 1.0000004)
-bones/17/position = Vector3(-0.17094508, 0.11358732, -0.0003608174)
-bones/17/rotation = Quaternion(0.99616057, -0.030397348, 0.031002168, 0.076021)
+bones/17/position = Vector3(-0.17094508, 0.11358732, -0.00034670022)
+bones/17/rotation = Quaternion(0.9952065, -0.030978875, 0.030853694, 0.087478794)
 bones/17/scale = Vector3(0.9999999, 0.99999976, 1.0000008)
-bones/18/rotation = Quaternion(0.3160649, -6.1156626e-08, 2.1941585e-07, 0.9487376)
+bones/18/rotation = Quaternion(0.34287357, -6.7014504e-08, 2.3813068e-07, 0.93938166)
 bones/18/scale = Vector3(0.99999994, 0.99999976, 0.99999994)
-bones/19/rotation = Quaternion(-0.58160657, 0.11364164, -0.012146229, 0.8054017)
+bones/19/rotation = Quaternion(-0.5954206, 0.11344162, -0.014394166, 0.7952348)
 bones/19/scale = Vector3(0.99999976, 1.0000006, 0.9999992)
-bones/20/rotation = Quaternion(-8.904152e-05, 0.92022115, -0.39139903, 2.0220064e-05)
+bones/20/rotation = Quaternion(-8.90244e-05, 0.9202223, -0.39139634, 2.0215672e-05)
 bones/20/scale = Vector3(1.0000002, 0.9999979, 1.0000024)
 
-[node name="LeftFootIK" type="TwoBoneIK3D" parent="Visuals/Rig_Medium/Skeleton3D" index="6" unique_id=848266367]
-active = false
-mutable_bone_axes = false
-setting_count = 1
-settings/0/target_node = NodePath("../../../../StepManager/IKMarkers/MarkerLeftFoot")
-settings/0/pole_node = NodePath("../../../../StepManager/IKMarkers/MarkerLeftFoot/MarkerLeftPole")
-settings/0/root_bone_name = "upperleg.l"
-settings/0/root_bone = 2
-settings/0/middle_bone_name = "lowerleg.l"
-settings/0/middle_bone = 3
-settings/0/pole_direction = 0
-settings/0/end_bone_name = "toes.l"
-settings/0/end_bone = 5
-settings/0/use_virtual_end = false
-settings/0/extend_end_bone = false
+[node name="Mannequin_Medium_ArmLeft" parent="Visuals/Rig_Medium/Skeleton3D" index="0" unique_id=510349988]
+material_override = SubResource("StandardMaterial3D_ulwie")
 
-[node name="LeftFootIK2" type="TwoBoneIK3D" parent="Visuals/Rig_Medium/Skeleton3D" index="7" unique_id=1608820499]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30924022, -0.10198355)
-active = false
-mutable_bone_axes = false
-setting_count = 1
-settings/0/target_node = NodePath("../../../../StepManager/IKMarkers/MarkerRightFoot")
-settings/0/pole_node = NodePath("../../../../StepManager/IKMarkers/MarkerRightFoot/MarkerRightPole")
-settings/0/root_bone_name = "upperleg.r"
-settings/0/root_bone = 17
-settings/0/middle_bone_name = "lowerleg.r"
-settings/0/middle_bone = 18
-settings/0/pole_direction = 0
-settings/0/end_bone_name = "toes.r"
-settings/0/end_bone = 20
-settings/0/use_virtual_end = false
-settings/0/extend_end_bone = false
+[node name="Mannequin_Medium_ArmRight" parent="Visuals/Rig_Medium/Skeleton3D" index="1" unique_id=1765249753]
+material_override = SubResource("StandardMaterial3D_ulwie")
 
-[node name="CCDIK3D" type="CCDIK3D" parent="Visuals/Rig_Medium/Skeleton3D" index="8" unique_id=69715779]
-active = false
-setting_count = 1
-settings/0/target_node = NodePath("../../../../StepManager/IKMarkers/MarkerLeftFoot")
-settings/0/root_bone_name = "upperleg.l"
-settings/0/root_bone = 2
-settings/0/end_bone_name = "foot.l"
-settings/0/end_bone = 4
-settings/0/extend_end_bone = false
-settings/0/joint_count = 3
-settings/0/joints/0/rotation_axis = 3
-settings/0/joints/0/limitation = null
-settings/0/joints/1/rotation_axis = 3
-settings/0/joints/1/limitation = null
-settings/0/joints/2/rotation_axis = 3
-settings/0/joints/2/limitation = null
+[node name="Mannequin_Medium_Body" parent="Visuals/Rig_Medium/Skeleton3D" index="2" unique_id=1188538605]
+material_override = SubResource("StandardMaterial3D_ulwie")
 
-[node name="CCDIK3D2" type="CCDIK3D" parent="Visuals/Rig_Medium/Skeleton3D" index="9" unique_id=1371964865]
-active = false
-setting_count = 1
-settings/0/target_node = NodePath("../../../../StepManager/IKMarkers/MarkerRightFoot")
-settings/0/root_bone_name = "upperleg.r"
-settings/0/root_bone = 17
-settings/0/end_bone_name = "foot.r"
-settings/0/end_bone = 19
-settings/0/extend_end_bone = false
-settings/0/joint_count = 3
-settings/0/joints/0/rotation_axis = 3
-settings/0/joints/0/limitation = null
-settings/0/joints/1/rotation_axis = 3
-settings/0/joints/1/limitation = null
-settings/0/joints/2/rotation_axis = 3
-settings/0/joints/2/limitation = null
+[node name="Mannequin_Medium_Head" parent="Visuals/Rig_Medium/Skeleton3D" index="3" unique_id=1840245398]
+material_override = SubResource("StandardMaterial3D_u8col")
+
+[node name="Mannequin_Medium_LegLeft" parent="Visuals/Rig_Medium/Skeleton3D" index="4" unique_id=1253519232]
+material_override = SubResource("StandardMaterial3D_ulwie")
+
+[node name="Mannequin_Medium_LegRight" parent="Visuals/Rig_Medium/Skeleton3D" index="5" unique_id=305193392]
+material_override = SubResource("StandardMaterial3D_ulwie")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1097251833]
 root_node = NodePath("../Visuals")
@@ -30699,7 +30635,7 @@ playback_default_blend_time = 0.2
 root_node = NodePath("../Visuals")
 tree_root = ExtResource("3_mvbtx")
 anim_player = NodePath("../AnimationPlayer")
-parameters/idle_walk_run_blend/blend_position = 1.318
+parameters/MoveBlendSpace/blend_position = Vector2(-0.0018705726, 0.003089428)
 parameters/filtered_blend/blend_amount = 0.0
 parameters/full_blend/blend_amount = 0.0
 parameters/filtered_one_shot/active = false
@@ -30711,11 +30647,6 @@ parameters/full_one_shot/request = 0
 parameters/TimeScale/scale = 1.0
 parameters/filtered_blend_time_seek/seek_request = -1.0
 parameters/full_blend_time_seek/seek_request = -1.0
-parameters/MoveBlendSpace/blend_position = Vector2(-0.0018705726, 0.003089428)
-parameters/BlendSpace1D/blend_position = -0.916
-parameters/state/current_state = "walk"
-parameters/state/transition_request = ""
-parameters/state/current_index = 0
 
 [node name="StateMachine" type="Node" parent="." unique_id=107120013 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_pklov")
@@ -30735,6 +30666,7 @@ metadata/_custom_type_script = "uid://bcf0qwhuaw5v6"
 [node name="Movement" type="Node" parent="Components" unique_id=679347886 node_paths=PackedStringArray("character")]
 script = ExtResource("6_tl7w1")
 character = NodePath("../..")
+rotation_speed = 5
 jump_height = 1.0
 jump_distance = 5.0
 metadata/_custom_type_script = "uid://cpkmcomjus048"
@@ -30743,65 +30675,8 @@ metadata/_custom_type_script = "uid://cpkmcomjus048"
 script = ExtResource("8_waf1l")
 metadata/_custom_type_script = "uid://cihu0omjbpha0"
 
-[node name="StepManager" type="Node3D" parent="." unique_id=1004423456 node_paths=PackedStringArray("player", "marker_left_foot_ik", "marker_right_foot_ik", "marker_left_foot_step", "marker_right_foot_step", "raycast_left_foot", "raycast_right_foot")]
-visible = false
-script = ExtResource("9_ulwie")
-player = NodePath("..")
-marker_left_foot_ik = NodePath("IKMarkers/MarkerLeftFoot")
-marker_right_foot_ik = NodePath("IKMarkers/MarkerRightFoot")
-marker_left_foot_step = NodePath("StepTargetMarkers/MarkerLeftFoot")
-marker_right_foot_step = NodePath("StepTargetMarkers/MarkerRightFoot")
-raycast_left_foot = NodePath("StepTargetMarkers/MarkerLeftFoot/RaycastLeftFoot")
-raycast_right_foot = NodePath("StepTargetMarkers/MarkerRightFoot/RaycastRightFoot")
-step_distance = 0.065
-step_duration = 0.144
-offset = 1.05
-
-[node name="IKMarkers" type="Node3D" parent="StepManager" unique_id=1451002616]
-
-[node name="MarkerLeftFoot" type="Marker3D" parent="StepManager/IKMarkers" unique_id=885143931]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.225, 0, -0.08262217)
-top_level = true
-
-[node name="MarkerLeftPole" type="Marker3D" parent="StepManager/IKMarkers/MarkerLeftFoot" unique_id=2127572667]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13588321, 0.275)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StepManager/IKMarkers/MarkerLeftFoot" unique_id=804761592]
-mesh = SubResource("SphereMesh_u8col")
-
-[node name="MarkerRightFoot" type="Marker3D" parent="StepManager/IKMarkers" unique_id=1194539755]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.225, 0, -0.08262217)
-top_level = true
-
-[node name="MarkerRightPole" type="Marker3D" parent="StepManager/IKMarkers/MarkerRightFoot" unique_id=729860393]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0.33745426)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StepManager/IKMarkers/MarkerRightFoot" unique_id=1378853473]
-mesh = SubResource("SphereMesh_u8col")
-
-[node name="StepTargetMarkers" type="Node3D" parent="StepManager" unique_id=162307824]
-
-[node name="MarkerLeftFoot" type="Marker3D" parent="StepManager/StepTargetMarkers" unique_id=1460957130]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.225, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StepManager/StepTargetMarkers/MarkerLeftFoot" unique_id=221029367]
-mesh = SubResource("SphereMesh_wfum3")
-
-[node name="RaycastLeftFoot" type="RayCast3D" parent="StepManager/StepTargetMarkers/MarkerLeftFoot" unique_id=659453818]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-target_position = Vector3(0, -0.5, 0)
-
-[node name="MarkerRightFoot" type="Marker3D" parent="StepManager/StepTargetMarkers" unique_id=18550380]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.225, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StepManager/StepTargetMarkers/MarkerRightFoot" unique_id=1680039396]
-mesh = SubResource("SphereMesh_wfum3")
-
-[node name="RaycastRightFoot" type="RayCast3D" parent="StepManager/StepTargetMarkers/MarkerRightFoot" unique_id=413366322]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-target_position = Vector3(0, -0.5, 0)
-
-[node name="TorusMeshInstance" type="MeshInstance3D" parent="StepManager" unique_id=1808264863]
-mesh = SubResource("TorusMesh_wfum3")
+[node name="Spellcaster" type="Node" parent="Components" unique_id=318472051]
+script = ExtResource("9_u8col")
+active_spell = ExtResource("10_yeyj2")
 
 [editable path="Visuals"]

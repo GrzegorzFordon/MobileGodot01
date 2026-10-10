@@ -10,6 +10,7 @@ enum MOVE_TYPE { RUN , SPRINT , CROUCH, NONE }
 @export var max_speed := 100
 @export var accel_speed:=75
 @export var break_speed:=45
+@export var rotation_speed:=45
 
 @export var jump_peak_time := 0.5
 @export var jump_fall_time := 0.5
@@ -100,4 +101,4 @@ func check_coyote_time():
 
 func rotate(direction:Vector3):
 	var angle = atan2(direction.x,direction.z)
-	character.rotation.y = lerp_angle(character.rotation.y,angle,10*get_physics_process_delta_time())
+	character.rotation.y = lerp_angle(character.rotation.y,angle,rotation_speed*get_physics_process_delta_time())

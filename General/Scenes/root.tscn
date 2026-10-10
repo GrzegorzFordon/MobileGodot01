@@ -18,6 +18,16 @@ sky_material = SubResource("ProceduralSkyMaterial_pjob4")
 background_mode = 2
 sky = SubResource("Sky_n0mc7")
 glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.3535713, 0.43447673, 0.18369865, 1)
+fog_density = 0.0
+fog_aerial_perspective = 0.244
+fog_sky_affect = 0.0
+fog_height = 0.8
+fog_height_density = 1.4216
+fog_depth_curve = 2.639017
+fog_depth_begin = -10.0
+fog_depth_end = 51.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ulwie"]
 size = Vector3(100, 0.2, 100)
@@ -34,6 +44,7 @@ size = Vector2(200, 200)
 script = ExtResource("5_hb3fk")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ex30"]
+shading_mode = 0
 albedo_color = Color(1, 0.62133336, 0.29000002, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_wfum3"]
@@ -49,9 +60,10 @@ buffer = PackedFloat32Array(-1.211233, -0.5237929, 0.34604764, -2.1381226, -0.62
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1670961129]
 transform = Transform3D(-0.64710045, -0.24798007, 0.7209487, 0.54243356, 0.51475024, 0.66392624, -0.535749, 0.8206937, -0.19858238, 0, 0, 0)
+light_bake_mode = 1
 shadow_enabled = true
-shadow_opacity = 0.48
-shadow_blur = 1.819
+shadow_opacity = 0.67
+shadow_blur = 4.375
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1736467449]
 environment = SubResource("Environment_hb3fk")
@@ -60,7 +72,7 @@ environment = SubResource("Environment_hb3fk")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1761978396]
 physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 0.50000006, 0.8660253, 0, -0.8660253, 0.50000006, 0, 8.63481, 5)
+transform = Transform3D(1, 0, 0, 0, 0.4226182, 0.9063078, 0, -0.9063078, 0.4226182, 0, 9.037635, 4.226182)
 top_level = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=1111628867]
@@ -77,14 +89,14 @@ shape = SubResource("BoxShape3D_ulwie")
 mesh = SubResource("PlaneMesh_g7b7a")
 
 [node name="PhantomCamera3D" type="Node3D" parent="." unique_id=906430786 node_paths=PackedStringArray("follow_target")]
-transform = Transform3D(1, 0, 0, 0, 0.50000006, 0.8660253, 0, -0.8660253, 0.50000006, 0, 8.63481, 5)
+transform = Transform3D(1, 0, 0, 0, 0.4226182, 0.9063078, 0, -0.9063078, 0.4226182, 0, 9.037635, 4.226182)
 script = ExtResource("4_n0mc7")
 follow_mode = 6
 follow_target = NodePath("../Player")
 tween_resource = SubResource("Resource_ewics")
 follow_damping = true
 follow_distance = 10.0
-vertical_rotation_offset = 1.0471975511965976
+vertical_rotation_offset = 1.1344640137963142
 spring_length = 10.0
 align_transform_with_view = Callable()
 align_position_with_view = Callable()
