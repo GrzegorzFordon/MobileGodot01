@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="SpellData" format=3 uid="uid://cvjxerijh6y8l"]
+
+[ext_resource type="Script" uid="uid://ceg5xqncriqrs" path="res://Spellcasting/Casts/channel_cast.gd" id="1_cdq4x"]
+[ext_resource type="Script" uid="uid://ccdda8nr74lsc" path="res://Spellcasting/_Resources/spell_cost.gd" id="2_cdq4x"]
+[ext_resource type="Script" uid="uid://cch3ytnb8hf4t" path="res://Spellcasting/_Resources/spell_effect.gd" id="3_0fm6s"]
+[ext_resource type="Script" uid="uid://cqka5e0spbcpc" path="res://Spellcasting/Costs/resource_cost.gd" id="3_sf7tg"]
+[ext_resource type="Script" uid="uid://bkktrbp3eyyef" path="res://Spellcasting/Effects/deal_damage_effect.gd" id="4_sf7tg"]
+[ext_resource type="Script" uid="uid://dufxqb81t0rt" path="res://Spellcasting/_Resources/spell_requirement.gd" id="6_1n5q4"]
+[ext_resource type="Texture2D" uid="uid://bsr0i8tcs1vxy" path="res://General/Assets/SpellIcons/water_spell.png" id="6_vm05t"]
+[ext_resource type="Script" uid="uid://cbls2xlsl0gdv" path="res://Spellcasting/Requirements/has_weapon_type_equipped_requirement.gd" id="7_ys617"]
+[ext_resource type="Script" uid="uid://dnumj8bnq8xde" path="res://Spellcasting/_Resources/spell_data.gd" id="8_8kc6i"]
+[ext_resource type="Script" uid="uid://crchioj1xfgji" path="res://Spellcasting/Targets/single_target.gd" id="9_m878k"]
+
+[sub_resource type="Resource" id="Resource_mgnk0"]
+script = ExtResource("1_cdq4x")
+repeat_delta = 0.2
+metadata/_custom_type_script = "uid://ceg5xqncriqrs"
+
+[sub_resource type="Resource" id="Resource_rvgsb"]
+script = ExtResource("3_sf7tg")
+metadata/_custom_type_script = "uid://cqka5e0spbcpc"
+
+[sub_resource type="Resource" id="Resource_u8col"]
+script = ExtResource("4_sf7tg")
+metadata/_custom_type_script = "uid://bkktrbp3eyyef"
+
+[sub_resource type="Resource" id="Resource_kr7yr"]
+script = ExtResource("7_ys617")
+weapon_type = 2
+metadata/_custom_type_script = "uid://cbls2xlsl0gdv"
+
+[sub_resource type="Resource" id="Resource_kd4oi"]
+script = ExtResource("9_m878k")
+type = 1
+metadata/_custom_type_script = "uid://crchioj1xfgji"
+
+[resource]
+script = ExtResource("8_8kc6i")
+name = "Basic Spell"
+description = "This is a basic spell"
+icon = ExtResource("6_vm05t")
+cooldown = 5.0
+is_aimed = true
+cast_data = SubResource("Resource_mgnk0")
+targets = SubResource("Resource_kd4oi")
+costs = Array[ExtResource("2_cdq4x")]([SubResource("Resource_rvgsb")])
+requirements = Array[ExtResource("6_1n5q4")]([SubResource("Resource_kr7yr")])
+effects = Array[ExtResource("3_0fm6s")]([SubResource("Resource_u8col"), null])

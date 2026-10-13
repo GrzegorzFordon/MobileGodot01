@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="SpellData" format=3 uid="uid://ccdcv6h8jteeu"]
+
+[ext_resource type="Script" uid="uid://cch3ytnb8hf4t" path="res://Spellcasting/_Resources/spell_effect.gd" id="1_cs7o5"]
+[ext_resource type="Script" uid="uid://dqslsjug1j5ls" path="res://Spellcasting/Casts/simple_cast.gd" id="1_v2w4a"]
+[ext_resource type="Script" uid="uid://dufxqb81t0rt" path="res://Spellcasting/_Resources/spell_requirement.gd" id="2_1s43v"]
+[ext_resource type="Script" uid="uid://umpxsk78lmeq" path="res://Spellcasting/Effects/heal_effect.gd" id="2_ib3ao"]
+[ext_resource type="Script" uid="uid://dnumj8bnq8xde" path="res://Spellcasting/_Resources/spell_data.gd" id="3_cdckc"]
+[ext_resource type="Texture2D" uid="uid://btml611frmm1r" path="res://General/Assets/SpellIcons/healing_spell.png" id="3_qcfq0"]
+[ext_resource type="Script" uid="uid://dwqgnqnpetsr8" path="res://Spellcasting/Requirements/has_resource_requirement.gd" id="5_v2w4a"]
+[ext_resource type="Script" uid="uid://crchioj1xfgji" path="res://Spellcasting/Targets/single_target.gd" id="6_v2w4a"]
+
+[sub_resource type="Resource" id="Resource_wkayq"]
+script = ExtResource("1_v2w4a")
+metadata/_custom_type_script = "uid://dqslsjug1j5ls"
+
+[sub_resource type="Resource" id="Resource_qcfq0"]
+script = ExtResource("2_ib3ao")
+amount = 20
+metadata/_custom_type_script = "uid://umpxsk78lmeq"
+
+[sub_resource type="Resource" id="Resource_k01xu"]
+script = ExtResource("5_v2w4a")
+metadata/_custom_type_script = "uid://dwqgnqnpetsr8"
+
+[sub_resource type="Resource" id="Resource_ib3ao"]
+script = ExtResource("6_v2w4a")
+metadata/_custom_type_script = "uid://crchioj1xfgji"
+
+[resource]
+script = ExtResource("3_cdckc")
+name = "Self Heal"
+icon = ExtResource("3_qcfq0")
+cooldown = 2.0
+cast_data = SubResource("Resource_wkayq")
+target_type = SubResource("Resource_ib3ao")
+requirements = Array[ExtResource("2_1s43v")]([SubResource("Resource_k01xu")])
+effects = Array[ExtResource("1_cs7o5")]([SubResource("Resource_qcfq0")])
+metadata/_custom_type_script = "uid://dnumj8bnq8xde"

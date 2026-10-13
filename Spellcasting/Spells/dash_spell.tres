@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="SpellData" format=3 uid="uid://blk6w02e3yqct"]
+
+[ext_resource type="Script" uid="uid://dqslsjug1j5ls" path="res://Spellcasting/Casts/simple_cast.gd" id="1_wpiwm"]
+[ext_resource type="Script" uid="uid://ccdda8nr74lsc" path="res://Spellcasting/_Resources/spell_cost.gd" id="2_locly"]
+[ext_resource type="Script" uid="uid://cqka5e0spbcpc" path="res://Spellcasting/Costs/resource_cost.gd" id="3_p4vj0"]
+[ext_resource type="Script" uid="uid://cch3ytnb8hf4t" path="res://Spellcasting/_Resources/spell_effect.gd" id="4_uuqmq"]
+[ext_resource type="Script" uid="uid://ci2kwqpi6pif7" path="res://Spellcasting/Effects/teleport_effect.gd" id="5_jclag"]
+[ext_resource type="Texture2D" uid="uid://b6rrf856tlj7h" path="res://General/Assets/SpellIcons/teleportation_spell.png" id="6_dcsb1"]
+[ext_resource type="Script" uid="uid://dufxqb81t0rt" path="res://Spellcasting/_Resources/spell_requirement.gd" id="7_rr0r1"]
+[ext_resource type="Script" uid="uid://dnumj8bnq8xde" path="res://Spellcasting/_Resources/spell_data.gd" id="11_v8k71"]
+[ext_resource type="Script" uid="uid://covkgkqtrr55t" path="res://Spellcasting/Targets/nearest_target.gd" id="12_lxgds"]
+
+[sub_resource type="Resource" id="Resource_5rsm3"]
+script = ExtResource("1_wpiwm")
+metadata/_custom_type_script = "uid://dqslsjug1j5ls"
+
+[sub_resource type="Resource" id="Resource_hq10v"]
+script = ExtResource("3_p4vj0")
+metadata/_custom_type_script = "uid://cqka5e0spbcpc"
+
+[sub_resource type="Resource" id="Resource_0assi"]
+script = ExtResource("5_jclag")
+is_instant = true
+metadata/_custom_type_script = "uid://ci2kwqpi6pif7"
+
+[sub_resource type="Resource" id="Resource_ni48f"]
+script = ExtResource("12_lxgds")
+max_range = 5.0
+max_amount = 5
+metadata/_custom_type_script = "uid://covkgkqtrr55t"
+
+[resource]
+script = ExtResource("11_v8k71")
+name = "Basic Spell"
+description = "This is a basic spell"
+icon = ExtResource("6_dcsb1")
+cooldown = 5.0
+is_aimed = true
+cast_data = SubResource("Resource_5rsm3")
+targets = SubResource("Resource_ni48f")
+costs = Array[ExtResource("2_locly")]([SubResource("Resource_hq10v")])
+effects = Array[ExtResource("4_uuqmq")]([SubResource("Resource_0assi")])

@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://cmt6m17k8ifb"]
 
-[ext_resource type="Script" uid="uid://b7p6r8xdurcne" path="res://General/Scripts/enemy.gd" id="1_qu1aw"]
+[ext_resource type="Script" uid="uid://b7p6r8xdurcne" path="res://Entity/Scripts/enemy.gd" id="1_qu1aw"]
 [ext_resource type="PackedScene" uid="uid://bv4o06lm7x6a7" path="res://General/Assets/KayKit_Character_Animations_1.1/Mannequin Character/characters/Mannequin_Medium.glb" id="2_8rayq"]
 [ext_resource type="Shader" uid="uid://c553et8b4w6c0" path="res://General/Shaders/health_bar_shader.tres" id="3_chwux"]
+[ext_resource type="Script" uid="uid://cpkmcomjus048" path="res://General/Components/movement.gd" id="4_d8ms6"]
+[ext_resource type="Script" uid="uid://pg8asuy4ybls" path="res://General/Components/meter.gd" id="5_yu5d3"]
+[ext_resource type="Script" uid="uid://ceesb7iek5mb8" path="res://General/Components/hurt_box.gd" id="6_yu5d3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wfum3"]
 
@@ -20,8 +23,13 @@ shader_parameter/ColorParameter2 = Color(0.2088944, 0.047701456, 0.08519412, 1)
 material = SubResource("ShaderMaterial_h2ykq")
 size = Vector2(1, 0.2)
 
-[node name="Enemy" type="CharacterBody3D" unique_id=986434962]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_53ki4"]
+
+[node name="Enemy" type="CharacterBody3D" unique_id=986434962 node_paths=PackedStringArray("movement", "health", "hurt_box")]
 script = ExtResource("1_qu1aw")
+movement = NodePath("Components/Movement")
+health = NodePath("Components/HealthMeter")
+hurt_box = NodePath("HurtBox")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=460434472]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -98,5 +106,23 @@ material_override = SubResource("StandardMaterial3D_8rayq")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2012706229]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
 mesh = SubResource("QuadMesh_wfum3")
+
+[node name="Components" type="Node" parent="." unique_id=178512917]
+
+[node name="Movement" type="Node" parent="Components" unique_id=1361448935]
+script = ExtResource("4_d8ms6")
+metadata/_custom_type_script = "uid://cpkmcomjus048"
+
+[node name="HealthMeter" type="Node" parent="Components" unique_id=1374080708]
+script = ExtResource("5_yu5d3")
+metadata/_custom_type_script = "uid://pg8asuy4ybls"
+
+[node name="HurtBox" type="Area3D" parent="." unique_id=1562945605]
+script = ExtResource("6_yu5d3")
+metadata/_custom_type_script = "uid://ceesb7iek5mb8"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" unique_id=1712180047]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_53ki4")
 
 [editable path="Visuals"]

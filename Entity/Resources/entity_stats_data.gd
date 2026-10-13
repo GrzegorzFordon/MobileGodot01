@@ -1,0 +1,2 @@
+class_name EntityStatsData
+extends Resource

@@ -5,6 +5,8 @@ extends Entity
 @export var input_gatherer: InputGatherer
 @export var animation_tree: AnimationTree
 
+@export var spellcaster: Spellcaster
+
 func _ready() -> void:
 	input_gatherer.input_updated.connect(_on_inputs_received)
 

@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 
 func try_use(amount:float)->bool:
 	time_since_last_use = 0.0
-	var has_enough = cur_value >= amount
+	var has_enough = can_use(amount)
 	if has_enough or use_all_if_not_enough:
 		cur_value -= amount
 		cur_value = max(cur_value,0)
@@ -43,3 +43,6 @@ func _refill(delta):
 
 func is_empty()->bool:
 	return cur_value==0.0
+
+func can_use(amount)->bool:
+	return cur_value >= amount

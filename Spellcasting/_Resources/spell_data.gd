@@ -1,16 +1,18 @@
 class_name SpellData
 extends Resource
 
-@export var name := "BaseSpell"
-@export var description := "Base Description"
+@export var name : String
+@export var description : String
 @export var icon : Texture2D
 
-@export var cooldown:=1.0
+@export var cooldown : float
+@export var is_aimed : bool
 
+@export var cast_data : Array[SpellCastData]
+@export var targets : SpellTarget
+@export var costs : Array[SpellCost]
 @export var requirements : Array[SpellRequirement]
 @export var effects : Array[SpellEffect]
-
-@export var target_type : SpellTarget
 
 func can_cast(ctx:SpellContext)->bool:
 	for req in requirements:
@@ -18,5 +20,7 @@ func can_cast(ctx:SpellContext)->bool:
 	return true
 
 func cast(ctx:SpellContext):
-	for effect in effects:
-		effect.execute(ctx)
+	for target in targets.get_targets(ctx):
+		#ctx.target = target
+		for effect in effects:
+			effect.execute(ctx)
