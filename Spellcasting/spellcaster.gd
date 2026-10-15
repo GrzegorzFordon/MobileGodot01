@@ -15,6 +15,9 @@ func _ready() -> void:
 		var spell = spells[i]
 		equip_spell(spell,i)
 
+func _process(delta: float) -> void:
+	reduce_cooldowns(delta)
+
 func _input(event: InputEvent) -> void:
 	#TODO - needs aim data (bind)
 	if event.is_action_pressed("ACTION_A"): cast_spell(0)
@@ -54,8 +57,9 @@ func get_context(aim_dir : Vector2)->SpellContext:
 	return ctx
 
 func reduce_cooldowns(delta):
-	for cooldown in cooldowns:
-		cooldown -= delta
+	for key in cooldowns.keys():
+		cooldowns[key] -= delta
+		cooldowns[key] = max(cooldowns[key],0.0)
 		#TODO - when hits 0
 
 func is_off_cooldown(spell:SpellData):

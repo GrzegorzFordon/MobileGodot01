@@ -6,6 +6,7 @@ extends SpellEffect
 func apply(ctx:SpellContext):
 	for target in ctx.target:
 		target.health.try_use(amount)
+		print("dealing ",amount," to ", target)
 	pass
 
 func undo(ctx:SpellContext):
