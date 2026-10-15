@@ -2,4 +2,7 @@
 class_name SpellEffect
 extends Resource
 
-@abstract func execute(ctx:SpellContext)
+signal finished()
+
+@abstract func apply(ctx:SpellContext)
+@abstract func undo(ctx:SpellContext)

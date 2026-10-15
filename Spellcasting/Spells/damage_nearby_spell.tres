@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SpellData" format=3 uid="uid://8ecxc72sccgt"]
+
+[ext_resource type="Script" uid="uid://ccdda8nr74lsc" path="res://Spellcasting/_Resources/spell_cost.gd" id="2_j7vam"]
+[ext_resource type="Script" uid="uid://d0qavb8ybtt1u" path="res://Spellcasting/_Resources/spell_execution.gd" id="3_kj0bp"]
+[ext_resource type="Script" uid="uid://dufxqb81t0rt" path="res://Spellcasting/_Resources/spell_requirement.gd" id="7_dgxjr"]
+[ext_resource type="Texture2D" uid="uid://brn8l4s66my64" path="res://General/Assets/SpellIcons/fire_spell_2.png" id="10_ay1sl"]
+[ext_resource type="Script" uid="uid://dnumj8bnq8xde" path="res://Spellcasting/_Resources/spell_data.gd" id="11_wa1at"]
+
+[resource]
+script = ExtResource("11_wa1at")
+name = "Basic Spell"
+description = "This is a basic spell"
+icon = ExtResource("10_ay1sl")
+cooldown = 5.0

@@ -4,6 +4,14 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wfum3"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ex30"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_wfum3"]
+material = SubResource("StandardMaterial3D_5ex30")
+radius = 0.2
+height = 0.4
+
 [node name="Projectile" type="Node3D" unique_id=521092792]
 script = ExtResource("1_08sw2")
 
@@ -13,3 +21,4 @@ script = ExtResource("1_08sw2")
 shape = SubResource("SphereShape3D_wfum3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1054139460]
+mesh = SubResource("SphereMesh_wfum3")

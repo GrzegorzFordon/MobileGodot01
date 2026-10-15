@@ -2,7 +2,7 @@
 class_name ScreenButtons
 extends Control
 
-@export var buttons : Array[Control]
+@export var buttons : Array[TouchButton]
 
 @export var start_angle := 0.0
 @export var step := 1.0
@@ -25,3 +25,9 @@ func set_button_positions():
 		btn.texture_rect.texture = btn.debug_texture
 		print(pos)
 	pass
+
+func set_button_spell(spell:SpellData,index:int):
+	buttons[index].set_spell(spell)
+
+func set_button_cooldown(cooldown:float,index:int):
+	buttons[index].set_cooldown(cooldown)

@@ -1,2 +1,2 @@
 class_name SpellVisuals
-extends Node
+extends Resource

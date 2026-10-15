@@ -3,7 +3,7 @@ extends SpellTarget
 
 @export var range := 10.0
 
-func get_targets(ctx:SpellContext) -> Array[Node]:
+func get_targets(ctx:SpellContext) -> Array[Entity]:
 	var origin = ctx.source.global_position
 	#TODO rest
 	return []

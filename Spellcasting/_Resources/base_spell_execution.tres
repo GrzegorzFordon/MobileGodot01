@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SpellExecution" format=3 uid="uid://q2v2pvdrgipo"]
+
+[ext_resource type="Script" uid="uid://d0qavb8ybtt1u" path="res://Spellcasting/_Resources/spell_execution.gd" id="2_c4402"]
+[ext_resource type="Resource" uid="uid://ccdcv6h8jteeu" path="res://Spellcasting/Spells/self_heal_spell.tres" id="4_d0fyj"]
+[ext_resource type="Script" uid="uid://coabv3tpfgwfi" path="res://Spellcasting/Targets/in_range_target.gd" id="5_nu3ae"]
+
+[sub_resource type="Resource" id="Resource_eg6j7"]
+script = ExtResource("5_nu3ae")
+metadata/_custom_type_script = "uid://coabv3tpfgwfi"
+
+[resource]
+script = ExtResource("2_c4402")
+targets = SubResource("Resource_eg6j7")
+spell = ExtResource("4_d0fyj")
+metadata/_custom_type_script = "uid://d0qavb8ybtt1u"

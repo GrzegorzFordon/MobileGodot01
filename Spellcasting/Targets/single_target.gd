@@ -4,7 +4,7 @@ extends SpellTarget
 enum SINGLE_TARGET_TYPE { SOURCE, TARGET}
 @export var type:SINGLE_TARGET_TYPE
 
-func get_targets(ctx:SpellContext) -> Array[Node]:
+func get_targets(ctx:SpellContext) -> Array[Entity]:
 	if type == SINGLE_TARGET_TYPE.SOURCE: return [ctx.source]
-	if type == SINGLE_TARGET_TYPE.TARGET: return [ctx.target]
+	if type == SINGLE_TARGET_TYPE.TARGET: return ctx.target #TODO - fix
 	return []

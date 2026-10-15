@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://pw5kfta11s6u"]
 
 [ext_resource type="Texture2D" uid="uid://dbk8xw4wvf5tn" path="res://TouchControl/Assets/MobileControlsSprites/Style A/joystick_circle_pad_d.png" id="1_56p4e"]
+[ext_resource type="Script" uid="uid://ei18m2gq38fl" path="res://TouchControl/Scripts/screen_controls.gd" id="1_p4tbk"]
 [ext_resource type="Texture2D" uid="uid://crnmydydnacg6" path="res://TouchControl/Assets/MobileControlsSprites/Style G/joystick_circle_nub_b.png" id="2_5pvdg"]
 [ext_resource type="PackedScene" uid="uid://v3ex5tmqel71" path="res://TouchControl/Scenes/touch_button.tscn" id="2_56p4e"]
 [ext_resource type="Script" uid="uid://rtaofnp4niw3" path="res://TouchControl/Scripts/screen_buttons.gd" id="3_5pvdg"]
@@ -15,13 +16,15 @@ texture = ExtResource("1_56p4e")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7clil"]
 texture = ExtResource("2_5pvdg")
 
-[node name="ScreenControls" type="Control" unique_id=1833001595]
+[node name="ScreenControls" type="Control" unique_id=1833001595 node_paths=PackedStringArray("screen_buttons")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_p4tbk")
+screen_buttons = NodePath("RightSide/MarginContainer/VirtualJoystick2/ScreenButtons")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1572951616]
 layout_mode = 1
