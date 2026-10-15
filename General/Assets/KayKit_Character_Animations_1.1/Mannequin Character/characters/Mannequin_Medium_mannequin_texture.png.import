@@ -3,9 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cxbq7e8w845jg"
-path.s3tc="res://.godot/imported/Mannequin_Medium_mannequin_texture.png-56c2846035dc854e0e85e512b77db1f9.s3tc.ctex"
+path.etc2="res://.godot/imported/Mannequin_Medium_mannequin_texture.png-56c2846035dc854e0e85e512b77db1f9.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +15,7 @@ generator_parameters={
 [deps]
 
 source_file="res://General/Assets/KayKit_Character_Animations_1.1/Mannequin Character/characters/Mannequin_Medium_mannequin_texture.png"
-dest_files=["res://.godot/imported/Mannequin_Medium_mannequin_texture.png-56c2846035dc854e0e85e512b77db1f9.s3tc.ctex"]
+dest_files=["res://.godot/imported/Mannequin_Medium_mannequin_texture.png-56c2846035dc854e0e85e512b77db1f9.etc2.ctex"]
 
 [params]
 
