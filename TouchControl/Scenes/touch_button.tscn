@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://blcdsrnsp7mf2" path="res://TouchControl/Assets/MobileControlsSprites/Style H/button_circle.png" id="2_23auj"]
 [ext_resource type="Texture2D" uid="uid://btml611frmm1r" path="res://General/Assets/SpellIcons/healing_spell.png" id="4_23auj"]
 [ext_resource type="Texture2D" uid="uid://bnw3tfc4g4wdw" path="res://TouchControl/Assets/MobileControlsSprites/Style C/joystick_polygon_nub_a.png" id="5_ms3al"]
+[ext_resource type="Texture2D" uid="uid://b6psv15173dku" path="res://TouchControl/Assets/MobileControlsSprites/Highlights B/button_circle_highlight.png" id="6_uv7de"]
 
 [sub_resource type="Gradient" id="Gradient_ms3al"]
 interpolation_mode = 1
@@ -132,6 +133,20 @@ theme_override_styles/pressed_joystick = SubResource("StyleBoxEmpty_ms3al")
 theme_override_styles/pressed_tip = SubResource("StyleBoxTexture_23auj")
 tip_size = 100.0
 visibility_mode = 1
+
+[node name="CastProgress" type="TextureProgressBar" parent="." unique_id=43619691]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+value = 50.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = ExtResource("6_uv7de")
+tint_progress = Color(1, 1, 1, 0.5019608)
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_up"]

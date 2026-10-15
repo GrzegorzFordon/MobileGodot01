@@ -1,38 +1,90 @@
 [gd_resource type="Resource" script_class="SpellData" format=3 uid="uid://ccdcv6h8jteeu"]
 
 [ext_resource type="Script" uid="uid://cch3ytnb8hf4t" path="res://Spellcasting/_Resources/spell_effect.gd" id="1_cs7o5"]
+[ext_resource type="Script" uid="uid://ccdda8nr74lsc" path="res://Spellcasting/_Resources/spell_cost.gd" id="1_qcfq0"]
 [ext_resource type="Script" uid="uid://dqslsjug1j5ls" path="res://Spellcasting/Casts/simple_cast.gd" id="1_v2w4a"]
 [ext_resource type="Script" uid="uid://dufxqb81t0rt" path="res://Spellcasting/_Resources/spell_requirement.gd" id="2_1s43v"]
 [ext_resource type="Script" uid="uid://umpxsk78lmeq" path="res://Spellcasting/Effects/heal_effect.gd" id="2_ib3ao"]
+[ext_resource type="Script" uid="uid://cqka5e0spbcpc" path="res://Spellcasting/Costs/resource_cost.gd" id="2_v2w4a"]
 [ext_resource type="Script" uid="uid://dnumj8bnq8xde" path="res://Spellcasting/_Resources/spell_data.gd" id="3_cdckc"]
+[ext_resource type="Script" uid="uid://d0qavb8ybtt1u" path="res://Spellcasting/_Resources/spell_execution.gd" id="3_nfr3w"]
 [ext_resource type="Texture2D" uid="uid://btml611frmm1r" path="res://General/Assets/SpellIcons/healing_spell.png" id="3_qcfq0"]
-[ext_resource type="Script" uid="uid://dwqgnqnpetsr8" path="res://Spellcasting/Requirements/has_resource_requirement.gd" id="5_v2w4a"]
 [ext_resource type="Script" uid="uid://crchioj1xfgji" path="res://Spellcasting/Targets/single_target.gd" id="6_v2w4a"]
+[ext_resource type="Script" uid="uid://0l2cwk8cnjkp" path="res://Spellcasting/Effects/change_stance_effect.gd" id="7_07v6p"]
+[ext_resource type="Script" uid="uid://cbls2xlsl0gdv" path="res://Spellcasting/Requirements/has_weapon_type_equipped_requirement.gd" id="9_outjc"]
+[ext_resource type="Script" uid="uid://dd4c6nn1i0kbg" path="res://Spellcasting/Effects/conditional_effect.gd" id="10_u0l1n"]
+[ext_resource type="Script" uid="uid://ceg5xqncriqrs" path="res://Spellcasting/Casts/channel_cast.gd" id="12_d5r3j"]
+[ext_resource type="Script" uid="uid://bkktrbp3eyyef" path="res://Spellcasting/Effects/deal_damage_effect.gd" id="13_enf83"]
+[ext_resource type="Script" uid="uid://c1ajurmcbbpda" path="res://Spellcasting/Targets/within_area_target.gd" id="14_c88cd"]
 
-[sub_resource type="Resource" id="Resource_wkayq"]
+[sub_resource type="Resource" id="Resource_rcl35"]
+script = ExtResource("2_v2w4a")
+metadata/_custom_type_script = "uid://cqka5e0spbcpc"
+
+[sub_resource type="Resource" id="Resource_tdjc0"]
 script = ExtResource("1_v2w4a")
 metadata/_custom_type_script = "uid://dqslsjug1j5ls"
 
-[sub_resource type="Resource" id="Resource_qcfq0"]
+[sub_resource type="Resource" id="Resource_rwgvj"]
 script = ExtResource("2_ib3ao")
-amount = 20
+amount = 44
 metadata/_custom_type_script = "uid://umpxsk78lmeq"
 
-[sub_resource type="Resource" id="Resource_k01xu"]
-script = ExtResource("5_v2w4a")
-metadata/_custom_type_script = "uid://dwqgnqnpetsr8"
+[sub_resource type="Resource" id="Resource_ernum"]
+script = ExtResource("7_07v6p")
+metadata/_custom_type_script = "uid://0l2cwk8cnjkp"
 
-[sub_resource type="Resource" id="Resource_ib3ao"]
+[sub_resource type="Resource" id="Resource_3jiyx"]
+script = ExtResource("9_outjc")
+weapon_type = 1
+metadata/_custom_type_script = "uid://cbls2xlsl0gdv"
+
+[sub_resource type="Resource" id="Resource_2m45j"]
+script = ExtResource("10_u0l1n")
+requirements = Array[ExtResource("2_1s43v")]([SubResource("Resource_3jiyx")])
+effects = Array[ExtResource("1_cs7o5")]([SubResource("Resource_ernum")])
+metadata/_custom_type_script = "uid://dd4c6nn1i0kbg"
+
+[sub_resource type="Resource" id="Resource_ke6uy"]
 script = ExtResource("6_v2w4a")
 metadata/_custom_type_script = "uid://crchioj1xfgji"
+
+[sub_resource type="Resource" id="Resource_2wy46"]
+script = ExtResource("3_nfr3w")
+cast_data = SubResource("Resource_tdjc0")
+targets = SubResource("Resource_ke6uy")
+effects = Array[ExtResource("1_cs7o5")]([SubResource("Resource_rwgvj"), SubResource("Resource_2m45j")])
+metadata/_custom_type_script = "uid://d0qavb8ybtt1u"
+
+[sub_resource type="Resource" id="Resource_b7q20"]
+script = ExtResource("12_d5r3j")
+repeat_delta = 0.275
+metadata/_custom_type_script = "uid://ceg5xqncriqrs"
+
+[sub_resource type="Resource" id="Resource_p6vp5"]
+script = ExtResource("13_enf83")
+metadata/_custom_type_script = "uid://bkktrbp3eyyef"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_flh6w"]
+
+[sub_resource type="Resource" id="Resource_prssk"]
+script = ExtResource("14_c88cd")
+shape = SubResource("SphereShape3D_flh6w")
+metadata/_custom_type_script = "uid://c1ajurmcbbpda"
+
+[sub_resource type="Resource" id="Resource_qilwl"]
+script = ExtResource("3_nfr3w")
+cast_data = SubResource("Resource_b7q20")
+targets = SubResource("Resource_prssk")
+effects = Array[ExtResource("1_cs7o5")]([SubResource("Resource_p6vp5")])
+metadata/_custom_type_script = "uid://d0qavb8ybtt1u"
 
 [resource]
 script = ExtResource("3_cdckc")
 name = "Self Heal"
 icon = ExtResource("3_qcfq0")
 cooldown = 2.0
-cast_data = SubResource("Resource_wkayq")
-target_type = SubResource("Resource_ib3ao")
-requirements = Array[ExtResource("2_1s43v")]([SubResource("Resource_k01xu")])
-effects = Array[ExtResource("1_cs7o5")]([SubResource("Resource_qcfq0")])
+costs = Array[ExtResource("1_qcfq0")]([SubResource("Resource_rcl35")])
+requirements = Array[ExtResource("2_1s43v")]([null])
+effect_executions = Array[ExtResource("3_nfr3w")]([SubResource("Resource_2wy46"), SubResource("Resource_qilwl")])
 metadata/_custom_type_script = "uid://dnumj8bnq8xde"

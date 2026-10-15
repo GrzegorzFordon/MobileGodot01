@@ -1,49 +1,10 @@
 [gd_resource type="Resource" script_class="SpellData" format=3 uid="uid://8ecxc72sccgt"]
 
-[ext_resource type="Script" uid="uid://dqslsjug1j5ls" path="res://Spellcasting/Casts/simple_cast.gd" id="1_au6lw"]
 [ext_resource type="Script" uid="uid://ccdda8nr74lsc" path="res://Spellcasting/_Resources/spell_cost.gd" id="2_j7vam"]
-[ext_resource type="Script" uid="uid://cqka5e0spbcpc" path="res://Spellcasting/Costs/resource_cost.gd" id="3_f37dy"]
-[ext_resource type="Script" uid="uid://cch3ytnb8hf4t" path="res://Spellcasting/_Resources/spell_effect.gd" id="4_6lf1y"]
-[ext_resource type="Script" uid="uid://bkktrbp3eyyef" path="res://Spellcasting/Effects/deal_damage_effect.gd" id="5_0dqor"]
-[ext_resource type="Script" uid="uid://biklf7fpt4she" path="res://Spellcasting/Effects/apply_modifier_effect.gd" id="6_yxkas"]
+[ext_resource type="Script" uid="uid://d0qavb8ybtt1u" path="res://Spellcasting/_Resources/spell_execution.gd" id="3_kj0bp"]
 [ext_resource type="Script" uid="uid://dufxqb81t0rt" path="res://Spellcasting/_Resources/spell_requirement.gd" id="7_dgxjr"]
-[ext_resource type="Script" uid="uid://bhb1gtn20dp7c" path="res://Spellcasting/Requirements/has_modifier_requirement.gd" id="8_4onvr"]
-[ext_resource type="Script" uid="uid://dd4c6nn1i0kbg" path="res://Spellcasting/Effects/conditional_effect.gd" id="9_v888o"]
 [ext_resource type="Texture2D" uid="uid://brn8l4s66my64" path="res://General/Assets/SpellIcons/fire_spell_2.png" id="10_ay1sl"]
 [ext_resource type="Script" uid="uid://dnumj8bnq8xde" path="res://Spellcasting/_Resources/spell_data.gd" id="11_wa1at"]
-[ext_resource type="Script" uid="uid://covkgkqtrr55t" path="res://Spellcasting/Targets/nearest_target.gd" id="12_55b1a"]
-
-[sub_resource type="Resource" id="Resource_5rsm3"]
-script = ExtResource("1_au6lw")
-metadata/_custom_type_script = "uid://dqslsjug1j5ls"
-
-[sub_resource type="Resource" id="Resource_hq10v"]
-script = ExtResource("3_f37dy")
-metadata/_custom_type_script = "uid://cqka5e0spbcpc"
-
-[sub_resource type="Resource" id="Resource_u8col"]
-script = ExtResource("5_0dqor")
-metadata/_custom_type_script = "uid://bkktrbp3eyyef"
-
-[sub_resource type="Resource" id="Resource_tdjc0"]
-script = ExtResource("6_yxkas")
-metadata/_custom_type_script = "uid://biklf7fpt4she"
-
-[sub_resource type="Resource" id="Resource_2wy46"]
-script = ExtResource("8_4onvr")
-metadata/_custom_type_script = "uid://bhb1gtn20dp7c"
-
-[sub_resource type="Resource" id="Resource_o77k5"]
-script = ExtResource("9_v888o")
-requirements = Array[ExtResource("7_dgxjr")]([SubResource("Resource_2wy46")])
-effects = Array[ExtResource("4_6lf1y")]([SubResource("Resource_tdjc0")])
-metadata/_custom_type_script = "uid://dd4c6nn1i0kbg"
-
-[sub_resource type="Resource" id="Resource_ni48f"]
-script = ExtResource("12_55b1a")
-max_range = 5.0
-max_amount = 5
-metadata/_custom_type_script = "uid://covkgkqtrr55t"
 
 [resource]
 script = ExtResource("11_wa1at")
@@ -51,7 +12,3 @@ name = "Basic Spell"
 description = "This is a basic spell"
 icon = ExtResource("10_ay1sl")
 cooldown = 5.0
-cast_data = SubResource("Resource_5rsm3")
-targets = SubResource("Resource_ni48f")
-costs = Array[ExtResource("2_j7vam")]([SubResource("Resource_hq10v")])
-effects = Array[ExtResource("4_6lf1y")]([SubResource("Resource_u8col"), SubResource("Resource_o77k5")])

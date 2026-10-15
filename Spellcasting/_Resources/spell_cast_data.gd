@@ -2,11 +2,9 @@
 class_name SpellCastData
 extends Resource
 
-#enum CastType {PASSIVE,INSTANT,CAST,TOGGLE,CHANNEL}
+@abstract func start_cast(effects:Array[SpellEffect],ctx:SpellContext)
+@abstract func cancel_cast(effects:Array[SpellEffect])
 
-#@export var cast_type : CastType
-
-@abstract func start_cast(spell_data:SpellData)
-@abstract func cancel_cast(spell_data:SpellData)
-
-#@abstract func cast(spell_data:SpellData)
+func cast(effects:Array[SpellEffect],ctx:SpellContext):
+	for effect in effects:
+		effect.apply(ctx)

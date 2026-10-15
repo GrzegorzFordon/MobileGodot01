@@ -3,10 +3,15 @@ extends SpellCastData
 
 @export var casting_time : float
 
-func start_cast(spell_data:SpellData):
-	pass
+var timer : SceneTreeTimer
 
-func cancel_cast(spell_data:SpellData):
-	pass
+func start_cast(effects:Array[SpellEffect],ctx:SpellContext):
+	if casting_time:
+		timer = ctx.source.get_tree().create_timer(casting_time)
+		timer.timeout.connect(cast.bind(effects,ctx))
+	else:
+		cast(effects,ctx)
 
-#@abstract func cast(spell_data:SpellData):
+func cancel_cast(effects:Array[SpellEffect]):
+	if timer: timer.timeout.disconnect(cast)
+	timer = null

@@ -1,10 +1,10 @@
 class_name PassiveCast
 extends SpellCastData
 
-func start_cast(spell_data:SpellData):
+func start_cast(effects:Array[SpellEffect],ctx:SpellContext):
 	pass
 
-func cancel_cast(spell_data:SpellData):
+func cancel_cast(effects:Array[SpellEffect]):
 	pass
 
 #@abstract func cast(spell_data:SpellData):

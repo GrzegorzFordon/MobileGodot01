@@ -3,5 +3,5 @@ extends SpellEffect
 
 @export var amount : int
 
-func execute(ctx:SpellContext):
+func apply(ctx:SpellContext):
 	pass
