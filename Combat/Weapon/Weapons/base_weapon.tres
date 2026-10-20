@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://cdg4hb5oxgo5b"]
-
-[ext_resource type="Script" uid="uid://y6vj5xtcg2xo" path="res://Modifier/modifier.gd" id="1_d8avb"]
-[ext_resource type="Script" uid="uid://ceagq0cd6lec3" path="res://Combat/Weapon/weapon_data.gd" id="1_h5qdc"]
-[ext_resource type="Script" uid="uid://cch3ytnb8hf4t" path="res://Spellcasting/_Resources/spell_effect.gd" id="2_3fd4k"]
-
-[resource]
-script = ExtResource("1_h5qdc")
-metadata/_custom_type_script = "uid://ceagq0cd6lec3"

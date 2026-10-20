@@ -13,6 +13,7 @@ radius = 0.2
 height = 0.4
 
 [node name="Projectile" type="Node3D" unique_id=521092792]
+top_level = true
 script = ExtResource("1_08sw2")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1982999826]
@@ -22,3 +23,5 @@ shape = SubResource("SphereShape3D_wfum3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1054139460]
 mesh = SubResource("SphereMesh_wfum3")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

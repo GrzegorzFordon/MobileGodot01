@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ProjectileData" format=3 uid="uid://dyvbe3gqsmnmp"]
+
+[ext_resource type="Script" uid="uid://y6vj5xtcg2xo" path="res://Modifier/modifier.gd" id="1_6olve"]
+[ext_resource type="Script" uid="uid://cmaem1turfeel" path="res://Ability/_Resources/ability_effect.gd" id="2_6olve"]
+[ext_resource type="Script" uid="uid://bvvpa5j8yyqtn" path="res://Projectile/projectile_data.gd" id="3_pqiql"]
+
+[resource]
+script = ExtResource("3_pqiql")
+on_hit_effects = Array[ExtResource("2_6olve")]([null])
+metadata/_custom_type_script = "uid://bvvpa5j8yyqtn"

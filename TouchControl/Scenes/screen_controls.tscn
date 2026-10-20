@@ -5,10 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://crnmydydnacg6" path="res://TouchControl/Assets/MobileControlsSprites/Style G/joystick_circle_nub_b.png" id="2_5pvdg"]
 [ext_resource type="PackedScene" uid="uid://v3ex5tmqel71" path="res://TouchControl/Scenes/touch_button.tscn" id="2_56p4e"]
 [ext_resource type="Script" uid="uid://rtaofnp4niw3" path="res://TouchControl/Scripts/screen_buttons.gd" id="3_5pvdg"]
-[ext_resource type="Texture2D" uid="uid://dkyih2g8yy8xk" path="res://General/Assets/SpellIcons/blinding_light_spell.png" id="5_p4tbk"]
-[ext_resource type="Texture2D" uid="uid://rvfmddoboady" path="res://General/Assets/SpellIcons/fire_spell.png" id="6_hiwep"]
-[ext_resource type="Texture2D" uid="uid://dx5jkwch4njk3" path="res://General/Assets/SpellIcons/fortify_spell.png" id="7_343kg"]
-[ext_resource type="Texture2D" uid="uid://digc57bblqn0d" path="res://General/Assets/SpellIcons/lightning_spell.png" id="8_1juxa"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jn837"]
 texture = ExtResource("1_56p4e")
@@ -123,7 +119,6 @@ size_flags_vertical = 8
 mouse_filter = 1
 stretch_mode = 0
 input_action_name = "ACTION_A"
-debug_texture = ExtResource("5_p4tbk")
 
 [node name="TouchButton2" parent="RightSide/MarginContainer/VirtualJoystick2/ScreenButtons" unique_id=446381991 instance=ExtResource("2_56p4e")]
 layout_mode = 1
@@ -136,7 +131,6 @@ size_flags_vertical = 8
 mouse_filter = 1
 stretch_mode = 0
 input_action_name = "ACTION_B"
-debug_texture = ExtResource("6_hiwep")
 
 [node name="TouchButton3" parent="RightSide/MarginContainer/VirtualJoystick2/ScreenButtons" unique_id=1810014995 instance=ExtResource("2_56p4e")]
 layout_mode = 1
@@ -149,7 +143,6 @@ size_flags_vertical = 8
 mouse_filter = 1
 stretch_mode = 0
 input_action_name = "ACTION_C"
-debug_texture = ExtResource("7_343kg")
 
 [node name="TouchButton4" parent="RightSide/MarginContainer/VirtualJoystick2/ScreenButtons" unique_id=2017947889 instance=ExtResource("2_56p4e")]
 layout_mode = 1
@@ -162,4 +155,3 @@ size_flags_vertical = 8
 mouse_filter = 1
 stretch_mode = 0
 input_action_name = "ACTION_D"
-debug_texture = ExtResource("8_1juxa")

@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://c41q0iggw3s6t"]
+
+[ext_resource type="Script" uid="uid://w87w80x4t2vm" path="res://HUD/screen_hud.gd" id="1_cm4el"]
+
+[sub_resource type="Gradient" id="Gradient_hb3fk"]
+colors = PackedColorArray(0.25, 0.1275, 0.17854165, 1, 0.26, 0.156, 0.19933331, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wfum3"]
+gradient = SubResource("Gradient_hb3fk")
+width = 256
+height = 32
+
+[sub_resource type="Gradient" id="Gradient_ewics"]
+colors = PackedColorArray(0.68, 0.10880002, 0.28016013, 1, 1, 0.16000003, 0.41200018, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hpqt8"]
+gradient = SubResource("Gradient_ewics")
+width = 256
+height = 32
+
+[sub_resource type="Gradient" id="Gradient_5um4n"]
+offsets = PackedFloat32Array(0.0024589163, 1)
+colors = PackedColorArray(0.050731108, 0.107709594, 0.33448628, 1, 0.2757289, 0.33742312, 0.64437395, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b358n"]
+gradient = SubResource("Gradient_5um4n")
+width = 256
+height = 32
+
+[sub_resource type="Gradient" id="Gradient_klq34"]
+offsets = PackedFloat32Array(0, 0.9983606)
+colors = PackedColorArray(0.45573068, 0.47279042, 0.9690017, 1, 0.45573068, 0.47279042, 0.9690017, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gbggw"]
+gradient = SubResource("Gradient_klq34")
+width = 256
+height = 32
+
+[sub_resource type="Gradient" id="Gradient_cm4el"]
+offsets = PackedFloat32Array(0, 0.9983606)
+colors = PackedColorArray(0.9614317, 0.97, 0.45590004, 1, 0.97, 0.7814967, 0.45590004, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_elnbk"]
+gradient = SubResource("Gradient_cm4el")
+width = 256
+height = 32
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y18r7"]
+gradient = SubResource("Gradient_cm4el")
+width = 256
+height = 32
+
+[node name="ScreenHud" type="Control" unique_id=667782979 node_paths=PackedStringArray("resource_bars")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_cm4el")
+resource_bars = {
+0: NodePath("MarginContainer/VBoxContainer/HealthBar"),
+1: NodePath("MarginContainer/VBoxContainer/ManaBar"),
+2: NodePath("MarginContainer/VBoxContainer/EnergyBar")
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1581109066]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1609998914]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 2
+
+[node name="HealthBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer" unique_id=203168029]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+value = 95.0
+texture_under = SubResource("GradientTexture2D_wfum3")
+texture_progress = SubResource("GradientTexture2D_hpqt8")
+
+[node name="ManaBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer" unique_id=2002317313]
+z_index = -1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(10, 0)
+offset_transform_scale = Vector2(0.95, 0.95)
+value = 95.0
+texture_under = SubResource("GradientTexture2D_b358n")
+texture_progress = SubResource("GradientTexture2D_gbggw")
+
+[node name="EnergyBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer" unique_id=1062779484]
+visible = false
+z_index = -1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(10, 0)
+offset_transform_scale = Vector2(0.95, 0.95)
+value = 95.0
+texture_under = SubResource("GradientTexture2D_elnbk")
+texture_progress = SubResource("GradientTexture2D_y18r7")
+tint_under = Color(0.48007554, 0.48007554, 0.48007554, 1)

@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://cvtol6srhr24h" path="res://TouchControl/Scripts/touch_button.gd" id="1_hjo46"]
 [ext_resource type="Texture2D" uid="uid://dx1deqhn7ccct" path="res://TouchControl/Assets/MobileControlsSprites/Style A/button_circle.png" id="1_i3y6h"]
 [ext_resource type="Texture2D" uid="uid://blcdsrnsp7mf2" path="res://TouchControl/Assets/MobileControlsSprites/Style H/button_circle.png" id="2_23auj"]
-[ext_resource type="Texture2D" uid="uid://btml611frmm1r" path="res://General/Assets/SpellIcons/healing_spell.png" id="4_23auj"]
+[ext_resource type="Texture2D" uid="uid://mgoho7ilwmxu" path="res://TouchControl/Assets/MobileControlsSprites/Style E/button_circle.png" id="3_7fonb"]
+[ext_resource type="Texture2D" uid="uid://btml611frmm1r" path="res://_General/Assets/SpellIcons/healing_spell.png" id="4_23auj"]
 [ext_resource type="Texture2D" uid="uid://bnw3tfc4g4wdw" path="res://TouchControl/Assets/MobileControlsSprites/Style C/joystick_polygon_nub_a.png" id="5_ms3al"]
 [ext_resource type="Texture2D" uid="uid://b6psv15173dku" path="res://TouchControl/Assets/MobileControlsSprites/Highlights B/button_circle_highlight.png" id="6_uv7de"]
 
@@ -60,6 +61,7 @@ size_flags_vertical = 4
 keep_pressed_outside = true
 texture_normal = ExtResource("1_i3y6h")
 texture_pressed = ExtResource("2_23auj")
+texture_disabled = ExtResource("3_7fonb")
 script = ExtResource("1_hjo46")
 input_action_name = "TEST"
 texture_rect = NodePath("ClipTexture/SpellSpriteTextureRect")
@@ -99,13 +101,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+max_value = 10.0
+step = 0.01
 fill_mode = 4
 nine_patch_stretch = true
 texture_progress = SubResource("GradientTexture2D_5ex30")
 tint_progress = Color(1, 1, 1, 0.5019608)
 
 [node name="CooldownLabel" type="Label" parent="ClipTexture/CooldownProgress" unique_id=858006835]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -132,6 +135,11 @@ theme_override_styles/normal_tip = SubResource("StyleBoxEmpty_7fonb")
 theme_override_styles/pressed_joystick = SubResource("StyleBoxEmpty_ms3al")
 theme_override_styles/pressed_tip = SubResource("StyleBoxTexture_23auj")
 tip_size = 100.0
+deadzone_ratio = 0.2
+action_left = &"ABILITY_LEFT"
+action_right = &"ABILITY_RIGHT"
+action_up = &"ABILITY_UP"
+action_down = &"ABILITY_DOWN"
 visibility_mode = 1
 
 [node name="CastProgress" type="TextureProgressBar" parent="." unique_id=43619691]

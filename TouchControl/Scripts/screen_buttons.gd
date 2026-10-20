@@ -23,10 +23,9 @@ func set_button_positions():
 		btn.position = pos
 		btn = btn as TouchButton
 		btn.texture_rect.texture = btn.debug_texture
-		print(pos)
 	pass
 
-func set_button_spell(spell:SpellData,index:int):
+func set_button_spell(spell:Spell,index:int):
 	buttons[index].set_spell(spell)
 
 func set_button_cooldown(cooldown:float,index:int):

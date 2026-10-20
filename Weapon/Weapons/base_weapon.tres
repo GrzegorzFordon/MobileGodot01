@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://cdg4hb5oxgo5b"]
+
+[ext_resource type="Script" uid="uid://y6vj5xtcg2xo" path="res://Modifier/modifier.gd" id="1_tryy4"]
+[ext_resource type="Script" uid="uid://cmaem1turfeel" path="res://Ability/_Resources/ability_effect.gd" id="2_tryy4"]
+[ext_resource type="Script" uid="uid://ceagq0cd6lec3" path="res://Weapon/Resources/weapon.gd" id="3_s2ckg"]
+[ext_resource type="Script" uid="uid://d3fi2ggm6c2rk" path="res://Weapon/Resources/weapon_visuals.gd" id="4_duyop"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tqlyt"]
+
+[sub_resource type="Resource" id="Resource_6i2c6"]
+script = ExtResource("4_duyop")
+mesh = SubResource("CapsuleMesh_tqlyt")
+metadata/_custom_type_script = "uid://d3fi2ggm6c2rk"
+
+[resource]
+script = ExtResource("3_s2ckg")
+visuals = SubResource("Resource_6i2c6")
+metadata/_custom_type_script = "uid://ceagq0cd6lec3"
