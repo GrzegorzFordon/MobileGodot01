@@ -1,26 +1,19 @@
 class_name PlayerStateIdle
 extends PlayerState
 
-func enter(_data=null)->void:
-	super(_data)
-
-func exit()->void:
+func enter()->void:
 	super()
 
-func physics_tick(delta)->void:
-	_move_player(cached_input_data,Movement.MOVE_TYPE.NONE)
-	super(delta)
+func exit()->void:
+	pass
 
-func process_inputs(input_data:InputData)->void:
-	super(input_data)
+func physics_tick(delta)->void:
+	_move_player(cached_input_data)
 
 func _check_transitions(input_data:InputData)->void:
-	if player.velocity.y < 0:
-		transition.emit(STATE_STRINGS.INAIR)
 	if input_data.just_pressed_actions.has("JUMP"):
 		transition.emit(STATE_STRINGS.JUMP)
 	if input_data.just_pressed_actions.has("CROUCH"):
 		transition.emit(STATE_STRINGS.CROUCH)
 	if input_data.direction.length()>0.0:
 		transition.emit(STATE_STRINGS.RUN)
-	super(input_data)

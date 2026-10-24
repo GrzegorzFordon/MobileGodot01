@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://c41q0iggw3s6t"]
 
 [ext_resource type="Script" uid="uid://w87w80x4t2vm" path="res://HUD/screen_hud.gd" id="1_cm4el"]
+[ext_resource type="Texture2D" uid="uid://duhp6ks7eee1e" path="res://Weapon/Assets/Golden Sword.png" id="2_elnbk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2oqet"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
 
 [sub_resource type="Gradient" id="Gradient_hb3fk"]
 colors = PackedColorArray(0.25, 0.1275, 0.17854165, 1, 0.26, 0.156, 0.19933331, 1)
@@ -17,6 +26,15 @@ colors = PackedColorArray(0.68, 0.10880002, 0.28016013, 1, 1, 0.16000003, 0.4120
 gradient = SubResource("Gradient_ewics")
 width = 256
 height = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ex30"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 2
+shadow_offset = Vector2(1, 1)
 
 [sub_resource type="Gradient" id="Gradient_5um4n"]
 offsets = PackedFloat32Array(0.0024589163, 1)
@@ -50,6 +68,15 @@ gradient = SubResource("Gradient_cm4el")
 width = 256
 height = 32
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfum3"]
+bg_color = Color(0.13747498, 0.13747498, 0.13747492, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 3
+shadow_offset = Vector2(2, 2)
+
 [node name="ScreenHud" type="Control" unique_id=667782979 node_paths=PackedStringArray("resource_bars")]
 layout_mode = 3
 anchors_preset = 15
@@ -60,8 +87,8 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_cm4el")
 resource_bars = {
-0: NodePath("MarginContainer/VBoxContainer/HealthBar"),
-1: NodePath("MarginContainer/VBoxContainer/ManaBar"),
+0: NodePath("MarginContainer/VBoxContainer/Panel/HealthBar"),
+1: NodePath("MarginContainer/VBoxContainer/Panel2/ManaBar"),
 2: NodePath("MarginContainer/VBoxContainer/EnergyBar")
 }
 
@@ -81,27 +108,74 @@ theme_override_constants/margin_bottom = 50
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme_override_constants/separation = 2
+theme_override_constants/separation = -13
 
-[node name="HealthBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer" unique_id=203168029]
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=1715883619]
+clip_children = 1
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2oqet")
+
+[node name="HealthBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/Panel" unique_id=203168029]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 32.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 value = 95.0
 texture_under = SubResource("GradientTexture2D_wfum3")
 texture_progress = SubResource("GradientTexture2D_hpqt8")
 
-[node name="ManaBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer" unique_id=2002317313]
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Panel/HealthBar" unique_id=941505319]
+visible = false
 z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ex30")
+
+[node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=1990306524]
+clip_children = 1
+custom_minimum_size = Vector2(256, 32)
 layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.971, 0.635)
+theme_override_styles/panel = SubResource("StyleBoxFlat_2oqet")
+
+[node name="ManaBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/Panel2" unique_id=2002317313]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -16.0
+offset_right = 128.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-offset_transform_enabled = true
 offset_transform_position = Vector2(10, 0)
 offset_transform_scale = Vector2(0.95, 0.95)
 value = 95.0
 texture_under = SubResource("GradientTexture2D_b358n")
 texture_progress = SubResource("GradientTexture2D_gbggw")
+
+[node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer/Panel2/ManaBar" unique_id=721750238]
+visible = false
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ex30")
 
 [node name="EnergyBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer" unique_id=1062779484]
 visible = false
@@ -116,3 +190,51 @@ value = 95.0
 texture_under = SubResource("GradientTexture2D_elnbk")
 texture_progress = SubResource("GradientTexture2D_y18r7")
 tint_under = Color(0.48007554, 0.48007554, 0.48007554, 1)
+
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=1202013276]
+modulate = Color(1, 1, 1, 0.62352943)
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(24, -24)
+theme_override_styles/panel = SubResource("StyleBoxFlat_wfum3")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel" unique_id=1127667908]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_elnbk")
+
+[node name="Panel2" type="Panel" parent="MarginContainer" unique_id=957294327]
+modulate = Color(1, 1, 1, 0.62352943)
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wfum3")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel2" unique_id=411288055]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_elnbk")

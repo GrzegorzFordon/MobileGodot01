@@ -1,19 +1,18 @@
 class_name StateMachine
-extends Node
+extends Resource
 
-@export var initial_state: State
+@export var states : Array[State]
 
+var states_dict = {}
 var current_state: State
-var states = {}
 
-func _ready() -> void:
-	for child in get_children():
-		if child is State:
-			states[child.name.to_lower()] = child
-			child.transition.connect(transition)
-	if initial_state:
-		await owner.ready
-		transition(initial_state.name.to_lower())
+func init(actor):
+	for state in states:
+		states_dict[state.get_script().get_global_name().to_lower()] = state
+		state.transition.connect(transition)
+	transition(states[0].get_script().get_global_name().to_lower())
+	for state in states_dict.values():
+		state.actor = actor
 
 func process_inputs(input_data: InputData) -> void:
 	if current_state:
@@ -28,9 +27,7 @@ func physics_tick(delta):
 		current_state.physics_tick(delta)
 
 func transition(new_state_name: String):
-	if current_state == null:
-		await get_tree().process_frame
-	var new_state = states[new_state_name.to_lower()]
+	var new_state = states_dict[new_state_name.to_lower()]
 	if !new_state:
 		return
 	if current_state:

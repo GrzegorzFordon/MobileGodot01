@@ -2,10 +2,10 @@
 class_name SpellCast
 extends Resource
 
-@export var ability_resolvers : Array[AbilityResolver]
+@export var abilities : Array[Ability]
 
 @abstract func start_cast(ctx:AbilityContext)
 @abstract func cancel_cast()
 
 func cast(ctx:AbilityContext):
-	for resolver in ability_resolvers: resolver.resolve(ctx)
+	for ability in abilities: ability.resolve(ctx)

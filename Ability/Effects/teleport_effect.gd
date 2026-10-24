@@ -1,10 +1,11 @@
 class_name TeleportSpellEffect
-extends Effect
+extends AbilityEffect
 
 @export var is_instant : bool
+@export var distance : float
 
-func apply(ctx:EffectContext):
+func apply(ctx:AbilityContext):
 	finished.emit()
 
-func undo(ctx:EffectContext):
+func undo(ctx:AbilityContext):
 	pass

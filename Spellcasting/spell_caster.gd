@@ -1,8 +1,5 @@
 class_name SpellCaster
-extends Node
-
-#NOTE - needs to know about joystick inputs - get through input manager?
-#Actually also shouldn't know about inputs at all, TODO - move to player
+extends Resource
 
 signal spell_equipped(spell:Spell,spell_slot:int)
 signal cooldown_set(cooldown:float,spell_slot:int)
@@ -13,33 +10,18 @@ signal cooldown_set(cooldown:float,spell_slot:int)
 var entity : Entity
 var cooldowns : Array[float]
 var is_casting : bool
-
 var aim_direction : Vector2
 
-func _ready() -> void:
-	entity = owner
+func init(_entity:Entity):
+	entity = _entity
 	cooldowns.resize(4)
 	cooldowns.fill(0.0)
 	for i in spells.size():
 		var spell = spells[i]
 		equip_spell(spell,i)
 
-func _process(delta: float) -> void:
-	reduce_cooldowns(delta)
-	update_aim_direction()
-
-func _input(event: InputEvent) -> void:
-	#TODO - needs aim data (bind)
-	if event.is_action_pressed("ACTION_A"): cast_spell(0)
-	if event.is_action_pressed("ACTION_B"): cast_spell(1)
-	if event.is_action_pressed("ACTION_C"): cast_spell(2)
-	if event.is_action_pressed("ACTION_D"): cast_spell(3)
-	if event.is_action_released("ACTION_A"): finish_casting_spell(0)
-	if event.is_action_released("ACTION_B"): finish_casting_spell(1)
-	if event.is_action_released("ACTION_C"): finish_casting_spell(2)
-	if event.is_action_released("ACTION_D"): finish_casting_spell(3)
-
-func cast_spell(spell_slot:int, aim_direction:Vector2 = Vector2.ZERO):
+func cast_spell(spell_slot:int):
+	if spell_slot >= spells.size(): return
 	if is_casting: return
 	is_casting = true
 	var spell = spells[spell_slot]
@@ -78,6 +60,3 @@ func reduce_cooldowns(delta):
 
 func is_off_cooldown(spell_slot:int):
 	return cooldowns[spell_slot] == 0.0
-
-func update_aim_direction():
-	aim_direction = Input.get_vector("ABILITY_LEFT","ABILITY_RIGHT","ABILITY_UP","ABILITY_DOWN")

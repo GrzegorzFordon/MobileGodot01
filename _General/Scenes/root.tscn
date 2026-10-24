@@ -19,17 +19,22 @@ sky_material = SubResource("ProceduralSkyMaterial_pjob4")
 [sub_resource type="Environment" id="Environment_hb3fk"]
 background_mode = 2
 sky = SubResource("Sky_n0mc7")
+tonemap_mode = 3
 glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.98
+glow_strength = 1.04
+glow_bloom = 0.16
 fog_enabled = true
-fog_light_color = Color(0.3535713, 0.43447673, 0.18369865, 1)
-fog_density = 0.0
-fog_aerial_perspective = 0.244
+fog_light_color = Color(0.3759257, 0.2455664, 0.22796401, 1)
+fog_density = 0.0205
 fog_sky_affect = 0.0
-fog_height = 0.8
-fog_height_density = 1.4216
+fog_height = 0.58
+fog_height_density = 0.4936
 fog_depth_curve = 2.639017
 fog_depth_begin = -10.0
 fog_depth_end = 51.0
+adjustment_brightness = 0.39
 
 [sub_resource type="Resource" id="Resource_ewics"]
 script = ExtResource("5_hb3fk")
@@ -38,6 +43,7 @@ script = ExtResource("5_hb3fk")
 size = Vector3(100, 0.2, 100)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyc6d"]
+albedo_color = Color(0.319006, 0.319006, 0.31900597, 1)
 albedo_texture = ExtResource("2_m2hdu")
 uv1_triplanar = true
 
@@ -47,7 +53,7 @@ size = Vector2(200, 200)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ex30"]
 shading_mode = 0
-albedo_color = Color(1, 0.62133336, 0.29000002, 1)
+albedo_color = Color(1.353256, 0.84779674, 0.40551978, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_wfum3"]
 material = SubResource("StandardMaterial3D_5ex30")
@@ -63,11 +69,12 @@ buffer = PackedFloat32Array(-1.211233, -0.5237929, 0.34604764, -2.1381226, -0.62
 [node name="Env" type="Node" parent="." unique_id=208137531]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Env" unique_id=1670961129]
-transform = Transform3D(-0.64710045, -0.24798007, 0.7209487, 0.54243356, 0.51475024, 0.66392624, -0.535749, 0.8206937, -0.19858238, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+light_color = Color(0.8383292, 0.82676995, 0.7935498, 1)
 light_bake_mode = 1
 shadow_enabled = true
-shadow_opacity = 0.67
-shadow_blur = 4.375
+shadow_opacity = 0.3
+shadow_blur = 3.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Env" unique_id=1736467449]
 environment = SubResource("Environment_hb3fk")
@@ -77,8 +84,8 @@ environment = SubResource("Environment_hb3fk")
 [node name="ScreenHud" parent="HUDCanvasLayer" unique_id=667782979 node_paths=PackedStringArray("player", "resource_bars") instance=ExtResource("1_ewics")]
 player = NodePath("../../Player")
 resource_bars = {
-0: NodePath("MarginContainer/VBoxContainer/HealthBar"),
-1: NodePath("MarginContainer/VBoxContainer/ManaBar"),
+0: NodePath("MarginContainer/VBoxContainer/Panel/HealthBar"),
+1: NodePath("MarginContainer/VBoxContainer/Panel2/ManaBar"),
 2: NodePath("MarginContainer/VBoxContainer/EnergyBar")
 }
 
@@ -89,8 +96,9 @@ layer = 2
 player = NodePath("../../Player")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1761978396]
-physics_interpolation_mode = 1
+physics_interpolation_mode = 2
 transform = Transform3D(1, 0, 0, 0, 0.4226182, 0.9063078, 0, -0.9063078, 0.4226182, 0, 13.569173, 6.3392735)
+top_level = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=1111628867]
 process_priority = 300
@@ -103,10 +111,15 @@ script = ExtResource("4_n0mc7")
 follow_mode = 6
 follow_target = NodePath("../Player")
 tween_resource = SubResource("Resource_ewics")
+tween_on_load = false
 follow_damping = true
 follow_distance = 15.0
 vertical_rotation_offset = 1.1344640137963142
 spring_length = 15.0
+collision_mask = 0
+align_transform_with_view = Callable()
+align_position_with_view = Callable()
+align_rotation_with_view = Callable()
 
 [node name="World" type="Node3D" parent="." unique_id=234089635]
 
@@ -121,15 +134,8 @@ mesh = SubResource("PlaneMesh_g7b7a")
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="World" unique_id=1308694879]
 multimesh = SubResource("MultiMesh_n0mc7")
 
-[node name="Player" parent="." unique_id=1794475074 node_paths=PackedStringArray("resource_meters") instance=ExtResource("1_guc3m")]
+[node name="Player" parent="." unique_id=1794475074 instance=ExtResource("1_guc3m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025442839, 0)
-resource_meters = {
-0: NodePath("Components/Meters/HealthMeter"),
-1: NodePath("Components/Meters/ManaMeter")
-}
 
-[node name="Enemy" parent="." unique_id=986434962 node_paths=PackedStringArray("resource_meters") instance=ExtResource("7_hb3fk")]
-transform = Transform3D(2.95, 0, 0, 0, 2.95, 0, 0, 0, 2.95, 2.6283588, 1.9073486e-06, 0.053641796)
-resource_meters = {
-0: NodePath("Components/HealthMeter")
-}
+[node name="Enemy" parent="." unique_id=986434962 instance=ExtResource("7_hb3fk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6283588, 1.9073486e-06, 0.053641796)

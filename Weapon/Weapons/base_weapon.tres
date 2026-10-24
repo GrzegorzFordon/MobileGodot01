@@ -2,17 +2,33 @@
 
 [ext_resource type="Script" uid="uid://y6vj5xtcg2xo" path="res://Modifier/modifier.gd" id="1_tryy4"]
 [ext_resource type="Script" uid="uid://cmaem1turfeel" path="res://Ability/_Resources/ability_effect.gd" id="2_tryy4"]
-[ext_resource type="Script" uid="uid://ceagq0cd6lec3" path="res://Weapon/Resources/weapon.gd" id="3_s2ckg"]
+[ext_resource type="Script" uid="uid://ceagq0cd6lec3" path="res://Weapon/Resources/weapon_data.gd" id="3_s2ckg"]
 [ext_resource type="Script" uid="uid://d3fi2ggm6c2rk" path="res://Weapon/Resources/weapon_visuals.gd" id="4_duyop"]
+[ext_resource type="Script" uid="uid://ccdda8nr74lsc" path="res://Ability/_Resources/ability_cost.gd" id="4_n53m1"]
+[ext_resource type="Script" uid="uid://dbkm85evysm6o" path="res://Weapon/UseTypes/fire_weapon.gd" id="4_o7spp"]
+[ext_resource type="Script" uid="uid://cqka5e0spbcpc" path="res://Ability/Costs/resource_cost.gd" id="5_ualum"]
+[ext_resource type="Texture2D" uid="uid://duhp6ks7eee1e" path="res://Weapon/Assets/Golden Sword.png" id="8_7ejr1"]
+
+[sub_resource type="Resource" id="Resource_p4tbk"]
+script = ExtResource("5_ualum")
+metadata/_custom_type_script = "uid://cqka5e0spbcpc"
+
+[sub_resource type="Resource" id="Resource_h3tjr"]
+script = ExtResource("4_o7spp")
+costs = Array[ExtResource("4_n53m1")]([SubResource("Resource_p4tbk")])
+metadata/_custom_type_script = "uid://dbkm85evysm6o"
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tqlyt"]
 
 [sub_resource type="Resource" id="Resource_6i2c6"]
 script = ExtResource("4_duyop")
+icon = ExtResource("8_7ejr1")
 mesh = SubResource("CapsuleMesh_tqlyt")
 metadata/_custom_type_script = "uid://d3fi2ggm6c2rk"
 
 [resource]
 script = ExtResource("3_s2ckg")
+type = 4
+use_data = SubResource("Resource_h3tjr")
 visuals = SubResource("Resource_6i2c6")
 metadata/_custom_type_script = "uid://ceagq0cd6lec3"

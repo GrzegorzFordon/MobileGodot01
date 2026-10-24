@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://crnmydydnacg6" path="res://TouchControl/Assets/MobileControlsSprites/Style G/joystick_circle_nub_b.png" id="2_5pvdg"]
 [ext_resource type="PackedScene" uid="uid://v3ex5tmqel71" path="res://TouchControl/Scenes/touch_button.tscn" id="2_56p4e"]
 [ext_resource type="Script" uid="uid://rtaofnp4niw3" path="res://TouchControl/Scripts/screen_buttons.gd" id="3_5pvdg"]
+[ext_resource type="Texture2D" uid="uid://blcvhxvpx847x" path="res://TouchControl/Assets/MobileControlsSprites/Icons/icon_sword.png" id="6_qr072"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jn837"]
 texture = ExtResource("1_56p4e")
@@ -48,6 +49,7 @@ action_down = &"MOVE_DOWN"
 visibility_mode = 1
 
 [node name="Control - Spacer" type="Control" parent="HBoxContainer" unique_id=552574766]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -155,3 +157,23 @@ size_flags_vertical = 8
 mouse_filter = 1
 stretch_mode = 0
 input_action_name = "ACTION_D"
+
+[node name="TextureRect" type="TextureRect" parent="RightSide/MarginContainer/VirtualJoystick2" unique_id=564095740]
+visible = false
+modulate = Color(1, 1, 1, 0.5137255)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_qr072")
+stretch_mode = 2

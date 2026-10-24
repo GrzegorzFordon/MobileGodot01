@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="StatBlock" format=3 uid="uid://b3xag6rv50unw"]
+
+[ext_resource type="Script" uid="uid://c2xpbntw70gh0" path="res://Stat/stat_block.gd" id="1_ry83k"]
+[ext_resource type="Script" uid="uid://c2ok2oji3wxjq" path="res://Stat/stat.gd" id="2_qasui"]
+
+[sub_resource type="Resource" id="Resource_ls4wi"]
+script = ExtResource("2_qasui")
+metadata/_custom_type_script = "uid://c2ok2oji3wxjq"
+
+[sub_resource type="Resource" id="Resource_tmp5m"]
+script = ExtResource("2_qasui")
+type = 1
+base_val = 10.0
+metadata/_custom_type_script = "uid://c2ok2oji3wxjq"
+
+[sub_resource type="Resource" id="Resource_fytsr"]
+script = ExtResource("2_qasui")
+type = 2
+metadata/_custom_type_script = "uid://c2ok2oji3wxjq"
+
+[sub_resource type="Resource" id="Resource_44fvh"]
+script = ExtResource("2_qasui")
+type = 3
+metadata/_custom_type_script = "uid://c2ok2oji3wxjq"
+
+[resource]
+script = ExtResource("1_ry83k")
+stats = Dictionary[int, ExtResource("2_qasui")]({
+0: SubResource("Resource_ls4wi"),
+1: SubResource("Resource_tmp5m"),
+2: SubResource("Resource_fytsr"),
+3: SubResource("Resource_44fvh")
+})
+metadata/_custom_type_script = "uid://c2xpbntw70gh0"

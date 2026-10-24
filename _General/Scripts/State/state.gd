@@ -1,16 +1,12 @@
+@abstract
 class_name State
-extends Node
+extends Resource
 
 signal transition(state:State,data:Dictionary)
 
-func enter(_data=null)->void:
-	pass
+var actor : Entity
 
-func exit()->void:
-	pass
-
-func tick(_delta)->void:
-	pass
-
-func physics_tick(_delta)->void:
-	pass
+@abstract func enter()
+@abstract func exit()
+@abstract func tick(delta)
+@abstract func physics_tick(delta)

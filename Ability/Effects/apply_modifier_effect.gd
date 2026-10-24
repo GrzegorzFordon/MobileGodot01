@@ -1,8 +1,10 @@
 class_name ApplyModifierEffect
-extends Effect
+extends AbilityEffect
 
-func apply(ctx:EffectContext):
-	finished.emit()
+@export var modifier : Modifier
 
-func undo(ctx:EffectContext):
+func apply(ctx:AbilityContext):
+	pass
+
+func undo(ctx:AbilityContext):
 	pass

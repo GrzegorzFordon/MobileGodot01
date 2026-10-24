@@ -1,0 +1,2 @@
+class_name IndicatorDisplay
+extends Node

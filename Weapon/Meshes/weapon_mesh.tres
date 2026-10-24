@@ -1,0 +1,11 @@
+[gd_resource type="CylinderMesh" format=3 uid="uid://vlm6k7fwuiox"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53xo1"]
+shading_mode = 0
+
+[resource]
+material = SubResource("StandardMaterial3D_53xo1")
+top_radius = 0.2
+bottom_radius = 0.2
+radial_segments = 4
+rings = 2

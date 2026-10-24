@@ -13,7 +13,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	data.direction = _get_direction()[0]
-	data.direction_alt = _get_direction()[1]
+	data.look_direction = _get_direction()[1]
+	data.aim_direction = _get_direction()[2]
 	data.just_released_actions = _get_just_released()
 	input_updated.emit(data)
 	_reset_data()
@@ -34,7 +35,8 @@ func _input(event: InputEvent) -> void:
 func _get_direction():
 	var input_vec2_move = Input.get_vector("MOVE_LEFT","MOVE_RIGHT","MOVE_UP","MOVE_DOWN")
 	var input_vec2_look = Input.get_vector("LOOK_LEFT","LOOK_RIGHT","LOOK_UP","LOOK_DOWN")
-	return [input_vec2_move,input_vec2_look]
+	var input_vec2_aim = Input.get_vector("ABILITY_LEFT","ABILITY_RIGHT","ABILITY_UP","ABILITY_DOWN")
+	return [input_vec2_move,input_vec2_look,input_vec2_aim]
 
 func _get_just_released():
 	var just_released :Array[String] = []
@@ -46,6 +48,6 @@ func _get_just_released():
 func _reset_data():
 		prev_data_held_actions = data.held_actions.duplicate()
 		data.direction = Vector2.ZERO
-		data.direction_alt = Vector2.ZERO
+		data.look_direction = Vector2.ZERO
 		data.just_pressed_actions.clear()
 		data.just_released_actions.clear()

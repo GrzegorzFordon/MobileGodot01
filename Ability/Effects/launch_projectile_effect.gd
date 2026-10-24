@@ -2,8 +2,11 @@ class_name LaunchProjectileEffect
 extends AbilityEffect
 
 enum DIR_CHOICE {AIM,LOOK}
+
 @export var dir_choice : DIR_CHOICE
-@export var data : ProjectileData
+@export var launch_data : ProjectileLaunchData
+@export var projectile_data : ProjectileData
+@export var normalize_inputs : bool
 
 func apply(ctx:AbilityContext):
 	var launcher = ctx.source.projectile_launcher
@@ -12,7 +15,8 @@ func apply(ctx:AbilityContext):
 	match dir_choice:
 		DIR_CHOICE.AIM: dir = Vector3(ctx.source.spell_caster.aim_direction.x,0,ctx.source.spell_caster.aim_direction.y)
 		DIR_CHOICE.LOOK: dir = ctx.source.global_basis.z
-	launcher.launch_projectile(dir,data)
+	if normalize_inputs: dir = dir.normalized()
+	launch_data.launch(launcher,ctx.source,dir,projectile_data)
 
 func undo(ctx:AbilityContext):
 	pass

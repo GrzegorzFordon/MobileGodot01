@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Aura" format=3 uid="uid://bixwar34es85g"]
+
+[ext_resource type="Texture2D" uid="uid://dkyih2g8yy8xk" path="res://_General/Assets/SpellIcons/blinding_light_spell.png" id="1_7jpc6"]
+[ext_resource type="Script" uid="uid://4ltmxyos7d3n" path="res://Ability/_Resources/ability.gd" id="2_cn3wy"]
+[ext_resource type="Script" uid="uid://10e0gvqqd7ma" path="res://Aura/aura.gd" id="2_qntcj"]
+[ext_resource type="Script" uid="uid://cmaem1turfeel" path="res://Ability/_Resources/ability_effect.gd" id="3_esfos"]
+[ext_resource type="Script" uid="uid://dufxqb81t0rt" path="res://Ability/_Resources/ability_requirement.gd" id="4_a3eei"]
+[ext_resource type="Script" uid="uid://crchioj1xfgji" path="res://Ability/Targets/self_target.gd" id="4_cn3wy"]
+[ext_resource type="Script" uid="uid://glnnf8378ej5" path="res://Reaction/reaction.gd" id="6_qxkl1"]
+
+[sub_resource type="Resource" id="Resource_7jpc6"]
+script = ExtResource("4_cn3wy")
+metadata/_custom_type_script = "uid://crchioj1xfgji"
+
+[sub_resource type="Resource" id="Resource_gxeug"]
+script = ExtResource("2_cn3wy")
+target = SubResource("Resource_7jpc6")
+effects = Array[ExtResource("3_esfos")]([null])
+metadata/_custom_type_script = "uid://4ltmxyos7d3n"
+
+[resource]
+script = ExtResource("2_qntcj")
+name = "base aura"
+description = "this is base aura"
+icon = ExtResource("1_7jpc6")
+duration = null
+on_equip_abilities = Array[ExtResource("2_cn3wy")]([SubResource("Resource_gxeug")])
+metadata/_custom_type_script = "uid://10e0gvqqd7ma"

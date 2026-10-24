@@ -29,7 +29,7 @@ func _input(event: InputEvent) -> void:
 	if id == 16 or id == 32: id = -1
 
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		input_dict[-1].direction_alt += Vector2(event.relative.x,event.relative.y)
+		input_dict[-1].look_direction += Vector2(event.relative.x,event.relative.y)
 		return
 
 	var relevant_event_id = inputs.find_custom(func(val):return InputMap.event_is_action(event,val))
@@ -67,7 +67,7 @@ func _collect_inputs() -> void:
 				input_dict[id].just_released_actions.append(prev_held_input)
 		input_dict[id].direction = _get_direction(id,true)
 		if not id == -1:
-			input_dict[id].direction_alt = _get_direction(id,false)
+			input_dict[id].look_direction = _get_direction(id,false)
 
 func _send_inputs() -> void:
 	inputs_gathered.emit(input_dict)
@@ -76,7 +76,7 @@ func _reset_inputs() -> void:
 	for id in input_dict.keys():
 		prev_input_dict[id].held_actions = input_dict[id].held_actions.duplicate()
 		input_dict[id].direction = Vector2.ZERO
-		input_dict[id].direction_alt = Vector2.ZERO
+		input_dict[id].look_direction = Vector2.ZERO
 		input_dict[id].just_pressed_actions.clear()
 		input_dict[id].just_released_actions.clear()
 
