@@ -1,18 +1,18 @@
 class_name StatRequirement
 extends AbilityRequirement
 
-enum COMPARISON {EQUAL,GREATER,SMALLER,GREATEREQUAL,SMALLEREQUAL}
+enum COMPARISON {EQUAL,GREATER,SMALLER,GREATER_EQUAL,SMALLER_EQUAL}
 
 @export var stat : Stat.TYPE
 @export var comparison : COMPARISON
-@export var value : int
+@export var value : float
 
 var comparison_signs = {
-	COMPARISON.EQUAL:"=",
+	COMPARISON.EQUAL:"==",
 	COMPARISON.GREATER:">",
 	COMPARISON.SMALLER:"<",
-	COMPARISON.GREATEREQUAL:">=",
-	COMPARISON.SMALLEREQUAL:"<=",
+	COMPARISON.GREATER_EQUAL:">=",
+	COMPARISON.SMALLER_EQUAL:"<=",
 }
 
 func is_fulfilled(ctx:AbilityContext)->bool:

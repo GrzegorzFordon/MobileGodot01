@@ -39,7 +39,8 @@ func finish_casting_spell(spell_slot:int):
 	var spell = spells[spell_slot]
 	if not spell: return
 	set_cooldown(spell_slot)
-	spell.finish()
+	var ctx = AbilityContext.new().with_data(entity)
+	spell.finish(ctx)
 
 func equip_spell(spell:Spell, spell_slot:int):
 	#var old_spell = spells[spell_slot]

@@ -38,6 +38,8 @@ func process_inputs(input_data:InputData)->void:
 		if input_data.just_pressed_actions.has("ACTION_"+key):actor.spell_caster.cast_spell(action_dict[key])
 		if input_data.just_released_actions.has("ACTION_"+key):actor.spell_caster.finish_casting_spell(action_dict[key])
 	actor.spell_caster.aim_direction = input_data.aim_direction
+	if input_data.just_pressed_actions.has("USE_WEAPON"): actor.weapon_controller.use_weapon()
+	if input_data.just_released_actions.has("USE_WEAPON"): actor.weapon_controller.cancel_use_weapon()
 	_check_transitions(input_data)
 
 func _check_transitions(input_data:InputData)->void:
@@ -47,5 +49,5 @@ func _move_player(input_data:InputData):
 	var direction := Vector3(input_data.direction.x, 0, input_data.direction.y).normalized()
 	var direction_look := Vector3(input_data.look_direction.x, 0, input_data.look_direction.y).normalized()
 	actor.movement.move(actor,1.0/60,5,direction)
-	#if direction_look: actor.movement.rotate(actor,direction_look,1.0/60)
+	if direction_look: actor.movement.rotate(actor,direction_look,1.0/60)
 	if direction: actor.movement.rotate(actor,direction,1.0/60)

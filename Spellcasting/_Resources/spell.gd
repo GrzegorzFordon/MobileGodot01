@@ -12,7 +12,8 @@ extends Resource
 @export var costs : Array[AbilityCost]
 @export var requirements : Array[AbilityRequirement]
 
-@export var casts : Array[SpellCast]
+#@export var casts : Array[SpellCast]
+@export var abilities : Array[AbilityUse]
 
 #TODO - visuals, animation data
 #TODO - how to pass current aim-dir to spell
@@ -33,9 +34,9 @@ func pay(ctx:AbilityContext):
 		cost.pay(ctx)
 
 func start(ctx:AbilityContext):
-	for cast in casts:
-		cast.start_cast(ctx)
+	for ability in abilities:
+		ability.start_use(ctx)
 
-func finish():
-	for cast in casts:
-		cast.cancel_cast()
+func finish(ctx:AbilityContext):
+	for ability in abilities:
+		ability.end_use(ctx)

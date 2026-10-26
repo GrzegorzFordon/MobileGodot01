@@ -3,39 +3,42 @@
 [ext_resource type="PackedScene" uid="uid://bv4o06lm7x6a7" path="res://_General/Assets/KayKit_Character_Animations_1.1/Mannequin Character/characters/Mannequin_Medium.glb" id="1_twu2s"]
 [ext_resource type="Script" uid="uid://cdrwvxu7nbp04" path="res://Entity/Entities/player.gd" id="1_txpxy"]
 [ext_resource type="Script" uid="uid://by6obnjitjjaw" path="res://Movement/movement_data.gd" id="2_tmp5m"]
-[ext_resource type="Script" uid="uid://b7do5a5w45gc5" path="res://_General/Scripts/State/state.gd" id="3_44fvh"]
+[ext_resource type="Script" uid="uid://b7do5a5w45gc5" path="res://StateMachine/state.gd" id="3_44fvh"]
 [ext_resource type="Script" uid="uid://cpkmcomjus048" path="res://_General/Components/movement.gd" id="3_fytsr"]
 [ext_resource type="Resource" uid="uid://b3xag6rv50unw" path="res://Stat/StatBlocks/base_stat_block.tres" id="3_ls4wi"]
 [ext_resource type="AnimationNodeBlendTree" uid="uid://b4toco251ftir" path="res://_General/Misc/animation_node_blend_tree.tres" id="3_mvbtx"]
-[ext_resource type="Script" uid="uid://dw2uy35g3kska" path="res://_General/Scripts/State/state_machine.gd" id="4_pklov"]
-[ext_resource type="Script" uid="uid://ddpy3oonyqva0" path="res://_General/Scripts/State/PlayerStates/player_state_idle.gd" id="5_pklov"]
-[ext_resource type="Script" uid="uid://bcf0qwhuaw5v6" path="res://_General/Scripts/State/PlayerStates/player_state_run.gd" id="6_3q025"]
+[ext_resource type="Script" uid="uid://dw2uy35g3kska" path="res://StateMachine/state_machine.gd" id="4_pklov"]
+[ext_resource type="Script" uid="uid://ddpy3oonyqva0" path="res://StateMachine/States/Player/player_state_idle.gd" id="5_pklov"]
+[ext_resource type="Script" uid="uid://bcf0qwhuaw5v6" path="res://StateMachine/States/Player/player_state_run.gd" id="6_3q025"]
 [ext_resource type="Script" uid="uid://y6vj5xtcg2xo" path="res://Modifier/modifier.gd" id="9_gxpr3"]
 [ext_resource type="Script" uid="uid://bn7kp1plyetdh" path="res://Spellcasting/spell_caster.gd" id="9_u8col"]
 [ext_resource type="Script" uid="uid://cmaem1turfeel" path="res://Ability/_Resources/ability_effect.gd" id="10_ls4wi"]
 [ext_resource type="Script" uid="uid://dnumj8bnq8xde" path="res://Spellcasting/_Resources/spell.gd" id="11_k01xu"]
+[ext_resource type="Script" uid="uid://cwu3ba7geqjyw" path="res://Ability/_Resources/ability_use.gd" id="11_tgcak"]
 [ext_resource type="Script" uid="uid://cmv15r73ovc10" path="res://Weapon/weapon_controller.gd" id="12_fytsr"]
-[ext_resource type="Script" uid="uid://bes7nrnqf5owd" path="res://Spellcasting/_Resources/spell_cast.gd" id="13_tqlyt"]
+[ext_resource type="Script" uid="uid://cxgp3phluwfen" path="res://Projectile/LaunchTypes/cone_launcher.gd" id="14_h823o"]
 [ext_resource type="Script" uid="uid://pg8asuy4ybls" path="res://_General/Components/meter.gd" id="14_kr7yr"]
+[ext_resource type="Script" uid="uid://cctwxsdp34apm" path="res://Ability/Uses/repeated_use.gd" id="14_nn6bk"]
 [ext_resource type="Script" uid="uid://ceesb7iek5mb8" path="res://_General/Components/hurt_box.gd" id="15_4aw8j"]
+[ext_resource type="Script" uid="uid://j4xjkimfissa" path="res://Projectile/Movements/straight_projectile_movement.gd" id="16_7c3rb"]
 [ext_resource type="Script" uid="uid://4ltmxyos7d3n" path="res://Ability/_Resources/ability.gd" id="16_44fvh"]
+[ext_resource type="Script" uid="uid://cqka5e0spbcpc" path="res://Ability/Costs/resource_cost.gd" id="17_gqo0k"]
 [ext_resource type="Texture2D" uid="uid://digc57bblqn0d" path="res://_General/Assets/SpellIcons/lightning_spell.png" id="17_gxpr3"]
 [ext_resource type="Script" uid="uid://bkktrbp3eyyef" path="res://Ability/Effects/deal_damage_effect.gd" id="17_smwtc"]
 [ext_resource type="Script" uid="uid://bvvpa5j8yyqtn" path="res://Projectile/Resources/projectile_data.gd" id="17_tqlyt"]
-[ext_resource type="Script" uid="uid://dtfkt05xcricl" path="res://Ability/Effects/launch_projectile_effect.gd" id="18_tgcak"]
 [ext_resource type="Script" uid="uid://coabv3tpfgwfi" path="res://Ability/Targets/in_range_target.gd" id="19_nn6bk"]
-[ext_resource type="Script" uid="uid://crchioj1xfgji" path="res://Ability/Targets/self_target.gd" id="19_tqlyt"]
-[ext_resource type="Script" uid="uid://xsytm2evyu16" path="res://Projectile/LaunchTypes/spiral_launcher.gd" id="20_3nklw"]
+[ext_resource type="Script" uid="uid://dtfkt05xcricl" path="res://Ability/Effects/launch_projectile_effect.gd" id="20_ko52x"]
 [ext_resource type="Script" uid="uid://ccdda8nr74lsc" path="res://Ability/_Resources/ability_cost.gd" id="21_7c3rb"]
-[ext_resource type="Script" uid="uid://ceg5xqncriqrs" path="res://Spellcasting/Casts/channel_cast.gd" id="21_tgcak"]
-[ext_resource type="Script" uid="uid://cqka5e0spbcpc" path="res://Ability/Costs/resource_cost.gd" id="22_6i2c6"]
+[ext_resource type="Script" uid="uid://lg0lv0su51f1" path="res://Ability/Targets/no_target.gd" id="21_gn3v5"]
+[ext_resource type="Script" uid="uid://xsytm2evyu16" path="res://Projectile/LaunchTypes/spiral_launcher.gd" id="22_7c3rb"]
 [ext_resource type="Script" uid="uid://dufxqb81t0rt" path="res://Ability/_Resources/ability_requirement.gd" id="25_mj5oi"]
 [ext_resource type="Script" uid="uid://05jpqpqk0oep" path="res://Ability/Requirements/stat_requirement.gd" id="26_3nklw"]
 [ext_resource type="Script" uid="uid://cihu0omjbpha0" path="res://_General/Components/input_gatherer.gd" id="26_tmp5m"]
 [ext_resource type="Script" uid="uid://dsbsl0p0vu730" path="res://Stat/stats.gd" id="31_tgcak"]
 [ext_resource type="Script" uid="uid://ceagq0cd6lec3" path="res://Weapon/Resources/weapon_data.gd" id="33_nn6bk"]
-[ext_resource type="Script" uid="uid://bbse8uyx81qe3" path="res://Weapon/UseTypes/swing_weapon.gd" id="34_x7587"]
-[ext_resource type="Script" uid="uid://dbkm85evysm6o" path="res://Weapon/UseTypes/fire_weapon.gd" id="35_gqo0k"]
+[ext_resource type="Script" uid="uid://kdxanabn272t" path="res://Ability/Uses/pull_use.gd" id="37_h823o"]
+[ext_resource type="Script" uid="uid://crchioj1xfgji" path="res://Ability/Targets/self_target.gd" id="37_ko52x"]
+[ext_resource type="Script" uid="uid://d3fi2ggm6c2rk" path="res://Weapon/Resources/weapon_visuals.gd" id="38_gn3v5"]
 
 [sub_resource type="Resource" id="Resource_fytsr"]
 script = ExtResource("5_pklov")
@@ -53,7 +56,7 @@ metadata/_custom_type_script = "uid://dw2uy35g3kska"
 [sub_resource type="Resource" id="Resource_o2who"]
 script = ExtResource("2_tmp5m")
 break_speed = 30
-rotation_speed = 5
+rotation_speed = 10
 metadata/_custom_type_script = "uid://by6obnjitjjaw"
 
 [sub_resource type="Resource" id="Resource_cslod"]
@@ -79,67 +82,109 @@ metadata/_custom_type_script = "uid://pg8asuy4ybls"
 script = ExtResource("14_kr7yr")
 metadata/_custom_type_script = "uid://pg8asuy4ybls"
 
-[sub_resource type="Resource" id="Resource_d8pu5"]
-script = ExtResource("20_3nklw")
-rot_speed = 12.0
-amount = 3
-metadata/_custom_type_script = "uid://xsytm2evyu16"
+[sub_resource type="Resource" id="Resource_q2yg2"]
+script = ExtResource("14_h823o")
+arc_deg = 35
+amount = 5
+metadata/_custom_type_script = "uid://cxgp3phluwfen"
 
-[sub_resource type="Resource" id="Resource_h823o"]
+[sub_resource type="Resource" id="Resource_nx037"]
+script = ExtResource("16_7c3rb")
+metadata/_custom_type_script = "uid://j4xjkimfissa"
+
+[sub_resource type="Resource" id="Resource_i0q1r"]
 script = ExtResource("17_smwtc")
 metadata/_custom_type_script = "uid://bkktrbp3eyyef"
 
-[sub_resource type="Resource" id="Resource_gqo0k"]
+[sub_resource type="Resource" id="Resource_a4l20"]
 script = ExtResource("19_nn6bk")
 metadata/_custom_type_script = "uid://coabv3tpfgwfi"
 
-[sub_resource type="Resource" id="Resource_3nklw"]
+[sub_resource type="Resource" id="Resource_k2kra"]
 script = ExtResource("16_44fvh")
-target = SubResource("Resource_gqo0k")
-effects = Array[ExtResource("10_ls4wi")]([SubResource("Resource_h823o")])
+target = SubResource("Resource_a4l20")
+effects = Array[ExtResource("10_ls4wi")]([SubResource("Resource_i0q1r")])
 metadata/_custom_type_script = "uid://4ltmxyos7d3n"
 
-[sub_resource type="Resource" id="Resource_nn6bk"]
+[sub_resource type="Resource" id="Resource_gxxyv"]
 script = ExtResource("17_tqlyt")
-speed = 4
-duration = 10.0
-on_hit_effects = Array[ExtResource("16_44fvh")]([SubResource("Resource_3nklw")])
+speed = 5
+duration = 5.0
+movement = SubResource("Resource_nx037")
+on_hit_effects = Array[ExtResource("16_44fvh")]([SubResource("Resource_k2kra")])
 metadata/_custom_type_script = "uid://bvvpa5j8yyqtn"
 
-[sub_resource type="Resource" id="Resource_6i2c6"]
-script = ExtResource("18_tgcak")
-dir_choice = 1
-launch_data = SubResource("Resource_d8pu5")
-projectile_data = SubResource("Resource_nn6bk")
+[sub_resource type="Resource" id="Resource_fx7q3"]
+script = ExtResource("20_ko52x")
+launch_data = SubResource("Resource_q2yg2")
+projectile_data = SubResource("Resource_gxxyv")
 normalize_inputs = true
 metadata/_custom_type_script = "uid://dtfkt05xcricl"
 
-[sub_resource type="Resource" id="Resource_7c3rb"]
-script = ExtResource("19_tqlyt")
-metadata/_custom_type_script = "uid://crchioj1xfgji"
+[sub_resource type="Resource" id="Resource_bshll"]
+script = ExtResource("21_gn3v5")
+metadata/_custom_type_script = "uid://lg0lv0su51f1"
 
-[sub_resource type="Resource" id="Resource_ls4wi"]
+[sub_resource type="Resource" id="Resource_jnhpm"]
 script = ExtResource("16_44fvh")
-target = SubResource("Resource_7c3rb")
-effects = Array[ExtResource("10_ls4wi")]([SubResource("Resource_6i2c6")])
+target = SubResource("Resource_bshll")
+effects = Array[ExtResource("10_ls4wi")]([SubResource("Resource_fx7q3")])
 metadata/_custom_type_script = "uid://4ltmxyos7d3n"
 
-[sub_resource type="Resource" id="Resource_tgcak"]
-script = ExtResource("22_6i2c6")
+[sub_resource type="Resource" id="Resource_7mjil"]
+script = ExtResource("22_7c3rb")
+rot_speed = 5.0
+amount = 5
+metadata/_custom_type_script = "uid://xsytm2evyu16"
+
+[sub_resource type="Resource" id="Resource_0stqp"]
+script = ExtResource("16_7c3rb")
+metadata/_custom_type_script = "uid://j4xjkimfissa"
+
+[sub_resource type="Resource" id="Resource_s22ms"]
+script = ExtResource("17_tqlyt")
+speed = 2
+duration = 10.0
+movement = SubResource("Resource_0stqp")
+metadata/_custom_type_script = "uid://bvvpa5j8yyqtn"
+
+[sub_resource type="Resource" id="Resource_u7of6"]
+script = ExtResource("20_ko52x")
+dir_choice = 1
+launch_data = SubResource("Resource_7mjil")
+projectile_data = SubResource("Resource_s22ms")
+metadata/_custom_type_script = "uid://dtfkt05xcricl"
+
+[sub_resource type="Resource" id="Resource_ekus1"]
+script = ExtResource("21_gn3v5")
+metadata/_custom_type_script = "uid://lg0lv0su51f1"
+
+[sub_resource type="Resource" id="Resource_dvlc8"]
+script = ExtResource("16_44fvh")
+target = SubResource("Resource_ekus1")
+effects = Array[ExtResource("10_ls4wi")]([SubResource("Resource_u7of6")])
+metadata/_custom_type_script = "uid://4ltmxyos7d3n"
+
+[sub_resource type="Resource" id="Resource_ixeeq"]
+script = ExtResource("17_gqo0k")
 type = 1
 amount = 2
 metadata/_custom_type_script = "uid://cqka5e0spbcpc"
 
-[sub_resource type="Resource" id="Resource_gxpr3"]
-script = ExtResource("21_tgcak")
-repeat_delta = 0.1
-costs = Array[ExtResource("21_7c3rb")]([SubResource("Resource_tgcak")])
-abilities = Array[ExtResource("16_44fvh")]([SubResource("Resource_ls4wi")])
-metadata/_custom_type_script = "uid://ceg5xqncriqrs"
+[sub_resource type="Resource" id="Resource_h823o"]
+script = ExtResource("14_nn6bk")
+repeat_delta = 0.2
+costs = Array[ExtResource("21_7c3rb")]([SubResource("Resource_ixeeq")])
+abilities = Array[ExtResource("16_44fvh")]([SubResource("Resource_jnhpm"), SubResource("Resource_dvlc8")])
+metadata/_custom_type_script = "uid://cctwxsdp34apm"
 
-[sub_resource type="Resource" id="Resource_n53m1"]
+[sub_resource type="Resource" id="Resource_smwtc"]
+script = ExtResource("17_gqo0k")
+amount = 2
+metadata/_custom_type_script = "uid://cqka5e0spbcpc"
+
+[sub_resource type="Resource" id="Resource_urpku"]
 script = ExtResource("26_3nklw")
-value = 1
 metadata/_custom_type_script = "uid://05jpqpqk0oep"
 
 [sub_resource type="Resource" id="Resource_v5syq"]
@@ -147,8 +192,9 @@ script = ExtResource("11_k01xu")
 icon = ExtResource("17_gxpr3")
 cooldown = 1.0
 is_aimed = true
-requirements = Array[ExtResource("25_mj5oi")]([SubResource("Resource_n53m1")])
-casts = Array[ExtResource("13_tqlyt")]([SubResource("Resource_gxpr3")])
+costs = Array[ExtResource("21_7c3rb")]([SubResource("Resource_smwtc")])
+requirements = Array[ExtResource("25_mj5oi")]([SubResource("Resource_urpku")])
+abilities = Array[ExtResource("11_tgcak")]([SubResource("Resource_h823o")])
 metadata/_custom_type_script = "uid://dnumj8bnq8xde"
 
 [sub_resource type="Resource" id="Resource_ghsno"]
@@ -30811,45 +30857,64 @@ _data = {
 &"Working_C": SubResource("Animation_fp4ld")
 }
 
-[sub_resource type="Resource" id="Resource_x7587"]
-script = ExtResource("34_x7587")
-metadata/_custom_type_script = "uid://bbse8uyx81qe3"
+[sub_resource type="Resource" id="Resource_phk1p"]
+script = ExtResource("14_h823o")
+arc_deg = 30
+amount = 4
+metadata/_custom_type_script = "uid://cxgp3phluwfen"
 
-[sub_resource type="Resource" id="Resource_dvlc8"]
-script = ExtResource("33_nn6bk")
-use_data = SubResource("Resource_x7587")
-metadata/_custom_type_script = "uid://ceagq0cd6lec3"
+[sub_resource type="Resource" id="Resource_7c3rb"]
+script = ExtResource("16_7c3rb")
+metadata/_custom_type_script = "uid://j4xjkimfissa"
 
-[sub_resource type="Resource" id="Resource_ko52x"]
-script = ExtResource("17_smwtc")
-metadata/_custom_type_script = "uid://bkktrbp3eyyef"
-
-[sub_resource type="Resource" id="Resource_gn3v5"]
-script = ExtResource("19_nn6bk")
-metadata/_custom_type_script = "uid://coabv3tpfgwfi"
-
-[sub_resource type="Resource" id="Resource_t54ru"]
-script = ExtResource("16_44fvh")
-target = SubResource("Resource_gn3v5")
-effects = Array[ExtResource("10_ls4wi")]([SubResource("Resource_ko52x")])
-metadata/_custom_type_script = "uid://4ltmxyos7d3n"
-
-[sub_resource type="Resource" id="Resource_mj5oi"]
+[sub_resource type="Resource" id="Resource_nm2su"]
 script = ExtResource("17_tqlyt")
-speed = 21
-duration = 0.805
-on_hit_effects = Array[ExtResource("16_44fvh")]([SubResource("Resource_t54ru")])
+speed = 5
+duration = 1.0
+movement = SubResource("Resource_7c3rb")
 metadata/_custom_type_script = "uid://bvvpa5j8yyqtn"
 
-[sub_resource type="Resource" id="Resource_n62a8"]
-script = ExtResource("35_gqo0k")
-projectile_data = SubResource("Resource_mj5oi")
-metadata/_custom_type_script = "uid://dbkm85evysm6o"
+[sub_resource type="Resource" id="Resource_3lspj"]
+script = ExtResource("20_ko52x")
+dir_choice = 1
+launch_data = SubResource("Resource_phk1p")
+projectile_data = SubResource("Resource_nm2su")
+normalize_inputs = true
+metadata/_custom_type_script = "uid://dtfkt05xcricl"
 
-[sub_resource type="Resource" id="Resource_ekus1"]
+[sub_resource type="Resource" id="Resource_6xex7"]
+script = ExtResource("37_ko52x")
+metadata/_custom_type_script = "uid://crchioj1xfgji"
+
+[sub_resource type="Resource" id="Resource_n62a8"]
+script = ExtResource("16_44fvh")
+target = SubResource("Resource_6xex7")
+effects = Array[ExtResource("10_ls4wi")]([SubResource("Resource_3lspj")])
+metadata/_custom_type_script = "uid://4ltmxyos7d3n"
+
+[sub_resource type="Resource" id="Resource_gn3v5"]
+script = ExtResource("14_nn6bk")
+repeat_delta = 0.2
+abilities = Array[ExtResource("16_44fvh")]([SubResource("Resource_n62a8")])
+metadata/_custom_type_script = "uid://cctwxsdp34apm"
+
+[sub_resource type="Resource" id="Resource_vhba2"]
+script = ExtResource("38_gn3v5")
+metadata/_custom_type_script = "uid://d3fi2ggm6c2rk"
+
+[sub_resource type="Resource" id="Resource_ko52x"]
 script = ExtResource("33_nn6bk")
-type = 1
-use_data = SubResource("Resource_n62a8")
+use_data = SubResource("Resource_gn3v5")
+visuals = SubResource("Resource_vhba2")
+metadata/_custom_type_script = "uid://ceagq0cd6lec3"
+
+[sub_resource type="Resource" id="Resource_t54ru"]
+script = ExtResource("37_h823o")
+metadata/_custom_type_script = "uid://kdxanabn272t"
+
+[sub_resource type="Resource" id="Resource_mj5oi"]
+script = ExtResource("33_nn6bk")
+use_data = SubResource("Resource_t54ru")
 metadata/_custom_type_script = "uid://ceagq0cd6lec3"
 
 [node name="Player" type="CharacterBody3D" unique_id=1794475074 node_paths=PackedStringArray("input_gatherer", "hurt_box", "weapon_controller", "animation_tree")]
@@ -30886,50 +30951,50 @@ shape = SubResource("CapsuleShape3D_wfum3")
 
 [node name="Skeleton3D" parent="Visuals/Rig_Medium" parent_id_path=PackedInt32Array(1840453105, 969589941) index="0" unique_id=519717333]
 bones/0/rotation = Quaternion(-3.370489e-11, -0.0009793104, -5.837855e-11, 0.9999995)
-bones/1/position = Vector3(9.767544e-19, 0.3849995, 1.3692952e-18)
-bones/1/rotation = Quaternion(0.0044664233, 0.042956363, 0.0003230862, 0.99906695)
+bones/1/position = Vector3(1.4561445e-20, 0.39039478, -3.3228044e-18)
+bones/1/rotation = Quaternion(0.0015562974, 0.042956498, 0.00019742112, 0.9990758)
 bones/1/scale = Vector3(0.99999994, 1, 0.99999994)
-bones/2/position = Vector3(0.17094508, 0.1135872, 0.00020434991)
-bones/2/rotation = Quaternion(0.98960495, 0.057344124, 0.07090309, 0.11120555)
+bones/2/position = Vector3(0.17094508, 0.1135872, -0.00048271997)
+bones/2/rotation = Quaternion(0.9918426, 0.057555012, 0.07041717, 0.089314416)
 bones/2/scale = Vector3(0.9999999, 0.9999997, 1.0000008)
-bones/3/rotation = Quaternion(0.32533902, 6.318715e-08, -2.2452693e-07, 0.94559747)
+bones/3/rotation = Quaternion(0.28134632, 6.133401e-08, -1.919009e-07, 0.95960635)
 bones/3/scale = Vector3(1.0000004, 0.99999994, 1.0000001)
-bones/4/rotation = Quaternion(-0.5647137, -0.1118421, 0.047674026, 0.8162825)
+bones/4/rotation = Quaternion(-0.53885686, -0.11326802, 0.04318328, 0.83362997)
 bones/4/scale = Vector3(1.0000004, 1.0000007, 0.9999993)
-bones/5/rotation = Quaternion(-2.224898e-06, 0.9202303, -0.39137742, 1.2408012e-06)
+bones/5/rotation = Quaternion(5.7399793e-06, 0.92024606, -0.39134037, -1.2344871e-06)
 bones/5/scale = Vector3(1.0000001, 0.9999975, 1.0000027)
-bones/6/rotation = Quaternion(0.0115857115, 0.00012080177, 0.0008854821, 0.9999326)
+bones/6/rotation = Quaternion(0.0032247414, 0.0005529064, 0.00014321947, 0.9999947)
 bones/6/scale = Vector3(1.0000001, 1, 1.0000001)
-bones/7/rotation = Quaternion(-0.0048796753, 0.0002955462, -0.000554523, 0.99998796)
+bones/7/rotation = Quaternion(0.002400627, 0.0003047078, 0.00012350826, 0.99999714)
 bones/7/scale = Vector3(1, 0.9999999, 1)
-bones/8/position = Vector3(-0.21193494, 0.13404869, -0.00022379831)
-bones/8/rotation = Quaternion(-0.56619376, 0.03529532, 0.7278628, 0.38522026)
+bones/8/position = Vector3(-0.2119588, 0.13406064, -0.00023024112)
+bones/8/rotation = Quaternion(-0.563689, 0.0437005, 0.7331553, 0.37792638)
 bones/8/scale = Vector3(0.9999992, 0.9999988, 0.9999998)
-bones/9/rotation = Quaternion(4.1790282e-09, 6.5801586e-08, 0.39166772, 0.9201068)
+bones/9/rotation = Quaternion(6.52255e-09, 5.496699e-08, 0.38114864, 0.9245138)
 bones/9/scale = Vector3(1.0000004, 0.99999976, 1.0000001)
 bones/10/rotation = Quaternion(2.2411331e-10, 6.7923605e-09, -0.026658092, 0.99964464)
 bones/10/scale = Vector3(0.99999994, 0.99999994, 1)
-bones/11/rotation = Quaternion(-0.21024932, 0.38025263, -0.13167796, 0.8909905)
+bones/11/rotation = Quaternion(-0.21271074, 0.38271675, -0.13581842, 0.8887269)
 bones/11/scale = Vector3(0.9999995, 0.99999994, 1.0000005)
-bones/12/rotation = Quaternion(-0.011845171, -0.03106636, -0.0007323602, 0.9994469)
+bones/12/rotation = Quaternion(-0.005537024, -0.031464953, -0.0003847461, 0.9994894)
 bones/12/scale = Vector3(0.99999994, 1, 1)
-bones/13/position = Vector3(0.21195266, 0.13405743, -0.00022858167)
-bones/13/rotation = Quaternion(-0.54016876, -0.104211085, -0.76273507, 0.33998993)
+bones/13/position = Vector3(0.21192881, 0.1340455, -0.0002221389)
+bones/13/rotation = Quaternion(-0.5348133, -0.11491622, -0.76972646, 0.32907507)
 bones/13/scale = Vector3(0.9999993, 0.99999905, 0.9999998)
-bones/14/rotation = Quaternion(2.5862146e-08, -4.30321e-08, -0.3776655, 0.9259422)
+bones/14/rotation = Quaternion(3.936656e-08, -5.6203287e-08, -0.3639048, 0.9314362)
 bones/14/scale = Vector3(1.0000004, 0.9999998, 1)
 bones/15/rotation = Quaternion(1.5070803e-08, -7.3234667e-09, 0.0266581, 0.99964464)
 bones/15/scale = Vector3(1.0000001, 1, 1)
-bones/16/rotation = Quaternion(-0.22112566, -0.34322503, 0.17653348, 0.8956205)
+bones/16/rotation = Quaternion(-0.22138862, -0.34539002, 0.18177046, 0.8936736)
 bones/16/scale = Vector3(0.99999976, 1.0000001, 1.0000004)
-bones/17/position = Vector3(-0.17094508, 0.11358732, -0.00020431833)
-bones/17/rotation = Quaternion(0.9952835, -0.030828567, 0.030909847, 0.086632185)
+bones/17/position = Vector3(-0.17094508, 0.11358732, 0.00048275152)
+bones/17/rotation = Quaternion(0.9967002, -0.029726692, 0.031256482, 0.068761)
 bones/17/scale = Vector3(0.9999999, 0.99999976, 1.0000008)
-bones/18/rotation = Quaternion(0.33969212, -6.6511824e-08, 2.3784234e-07, 0.94053674)
+bones/18/rotation = Quaternion(0.2912023, -6.387244e-08, 2.0046451e-07, 0.9566615)
 bones/18/scale = Vector3(0.99999994, 0.99999976, 0.99999994)
-bones/19/rotation = Quaternion(-0.59357023, 0.113490425, -0.014083782, 0.79661536)
+bones/19/rotation = Quaternion(-0.56870997, 0.113801345, -0.010127459, 0.81456476)
 bones/19/scale = Vector3(0.99999976, 1.0000006, 0.9999992)
-bones/20/rotation = Quaternion(-8.901042e-05, 0.920222, -0.39139697, 2.021173e-05)
+bones/20/rotation = Quaternion(-8.901023e-05, 0.9202215, -0.39139804, 2.021297e-05)
 bones/20/scale = Vector3(1.0000002, 0.9999979, 1.0000024)
 
 [node name="Mannequin_Medium_ArmLeft" parent="Visuals/Rig_Medium/Skeleton3D" index="0" unique_id=1698157318]
@@ -30962,7 +31027,7 @@ material_override = SubResource("StandardMaterial3D_ulwie")
 cast_shadow = 0
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Visuals/Rig_Medium/Skeleton3D" index="6" unique_id=1042626805]
-transform = Transform3D(0.26365232, -0.0011620522, -0.964617, -0.005793333, -0.99998194, -0.00037759542, -0.9645995, 0.0056877285, -0.26365432, -0.4799847, 0.6271652, 0.06645732)
+transform = Transform3D(0.26439995, 0.0009239614, -0.9644127, -0.0057861507, -0.9999788, -0.002543211, -0.9643949, 0.006252244, -0.2643895, -0.48031974, 0.6311125, 0.06613197)
 bone_name = "hand.r"
 bone_idx = 11
 
@@ -30974,7 +31039,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 mesh = SubResource("CylinderMesh_wfum3")
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Visuals/Rig_Medium/Skeleton3D" index="7" unique_id=2045096223]
-transform = Transform3D(0.99640495, 0.00018364715, 0.08471851, 0.001712265, 0.9997496, -0.022305757, -0.08470141, 0.022370616, 0.99615526, -9.0203976e-05, 0.95176303, 0.01378756)
+transform = Transform3D(0.99633026, 0.00015562409, 0.085592255, 0.0010758783, 0.99989635, -0.014341695, -0.08558564, 0.01438115, 0.99622715, -5.4145057e-05, 0.9573421, 0.0041912883)
 visible = false
 bone_name = "chest"
 bone_idx = 7
@@ -31033,8 +31098,8 @@ metadata/_custom_type_script = "uid://cihu0omjbpha0"
 [node name="WeaponController" type="Node" parent="Components" unique_id=1650063934]
 script = ExtResource("12_fytsr")
 weapons = Dictionary[int, ExtResource("33_nn6bk")]({
-0: SubResource("Resource_dvlc8"),
-1: SubResource("Resource_ekus1")
+0: SubResource("Resource_ko52x"),
+1: SubResource("Resource_mj5oi")
 })
 swap_cooldown_duration = 2.0
 metadata/_custom_type_script = "uid://cmv15r73ovc10"

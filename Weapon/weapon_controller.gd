@@ -13,10 +13,12 @@ enum TYPE {ACTIVE,SECONDARY}
 var swap_cooldown_timer : SceneTreeTimer
 
 func use_weapon():
-	weapons[TYPE.ACTIVE].start_use()
+	var ctx = AbilityContext.new().with_data(owner as Entity)
+	weapons[TYPE.ACTIVE].start_use(ctx)
 
 func cancel_use_weapon():
-	weapons[TYPE.ACTIVE].end_use()
+	var ctx = AbilityContext.new()
+	weapons[TYPE.ACTIVE].end_use(ctx)
 
 func swap_weapons():
 	if swap_cooldown_timer and swap_cooldown_timer.time_left: return
