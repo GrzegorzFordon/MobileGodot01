@@ -9,7 +9,7 @@ var goal_val : float
 func _ready() -> void:
 	if not entity: entity = owner
 	entity.resource_meters[Entity.RESOURCE_TYPE.HEALTH].value_changed.connect(on_value_changed)
-	set_instance_shader_parameter("health",1.0)
+	set_instance_shader_parameter("health",0.0)
 
 func _process(delta: float) -> void:
 	var cur_val = get_instance_shader_parameter("health")
@@ -21,4 +21,3 @@ func _exit_tree() -> void:
 
 func on_value_changed(new_val:float,max_val:float):
 	goal_val = new_val/max_val
-	#set_instance_shader_parameter("health",new_val/max_val)

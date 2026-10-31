@@ -6,3 +6,6 @@ extends Resource
 #@export var icon : Texture2D
 
 var source
+
+@abstract func apply(ctx:AbilityContext)
+@abstract func remove(ctx:AbilityContext)

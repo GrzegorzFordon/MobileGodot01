@@ -1,15 +1,23 @@
 [gd_resource type="Resource" script_class="ProjectileData" format=3 uid="uid://dyvbe3gqsmnmp"]
 
-[ext_resource type="Script" uid="uid://y6vj5xtcg2xo" path="res://Modifier/modifier.gd" id="1_6olve"]
-[ext_resource type="Script" uid="uid://bvg0un5ja7vd2" path="res://Projectile/Movements/orbit_source_projectile_movement.gd" id="2_mqhmc"]
-[ext_resource type="Script" uid="uid://bvvpa5j8yyqtn" path="res://Projectile/Resources/projectile_data.gd" id="3_pqiql"]
-[ext_resource type="Script" uid="uid://4ltmxyos7d3n" path="res://Ability/_Resources/ability.gd" id="3_y3bfv"]
+[ext_resource type="Script" uid="uid://y6vj5xtcg2xo" path="res://Modifier/modifier.gd" id="1_pqiql"]
+[ext_resource type="Script" uid="uid://j4xjkimfissa" path="res://Projectile/Movements/straight_projectile_movement.gd" id="2_y3bfv"]
+[ext_resource type="Script" uid="uid://cmaem1turfeel" path="res://Ability/_Resources/ability_effect.gd" id="3_unrkl"]
+[ext_resource type="Script" uid="uid://bkktrbp3eyyef" path="res://Ability/Effects/deal_damage_effect.gd" id="4_0oxl0"]
+[ext_resource type="Script" uid="uid://bvvpa5j8yyqtn" path="res://Projectile/Resources/projectile_data.gd" id="5_y2s38"]
 
-[sub_resource type="Resource" id="Resource_3nklw"]
-script = ExtResource("2_mqhmc")
-metadata/_custom_type_script = "uid://bvg0un5ja7vd2"
+[sub_resource type="Resource" id="Resource_7c3rb"]
+script = ExtResource("2_y3bfv")
+metadata/_custom_type_script = "uid://j4xjkimfissa"
+
+[sub_resource type="Resource" id="Resource_ko52x"]
+script = ExtResource("4_0oxl0")
+metadata/_custom_type_script = "uid://bkktrbp3eyyef"
 
 [resource]
-script = ExtResource("3_pqiql")
-movement = SubResource("Resource_3nklw")
+script = ExtResource("5_y2s38")
+speed = 5
+duration = 5.0
+movement = SubResource("Resource_7c3rb")
+on_hit_effects = Array[ExtResource("3_unrkl")]([SubResource("Resource_ko52x")])
 metadata/_custom_type_script = "uid://bvvpa5j8yyqtn"

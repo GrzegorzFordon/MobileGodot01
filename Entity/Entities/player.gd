@@ -2,6 +2,8 @@ class_name Player
 extends Entity
 
 @export var input_gatherer : InputGatherer
+@export var inventory : Inventory
+@export var face_cam_pos: Marker3D
 
 func _ready() -> void:
 	input_gatherer.input_updated.connect(_on_inputs_received)
@@ -19,5 +21,5 @@ func _on_inputs_received(data:InputData):
 func update_animation():
 	var dir = velocity.normalized()
 	var result = Vector2(dir.x,dir.z).rotated(rotation.y)
-	var lerp_result = lerp(animation_tree.get("parameters/MoveBlendSpace/blend_position"),result,20.0*get_process_delta_time())
-	animation_tree.set("parameters/MoveBlendSpace/blend_position",lerp_result)
+	var lerp_result = lerp(animation_tree_controller.get("parameters/MoveBlendSpace/blend_position"),result,20.0*get_process_delta_time())
+	animation_tree_controller.set("parameters/MoveBlendSpace/blend_position",lerp_result)

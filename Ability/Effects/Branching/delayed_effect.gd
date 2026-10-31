@@ -1,8 +1,12 @@
 class_name DelayedEffect
-extends Effect
+extends AbilityEffect
 
-func apply(ctx:EffectContext):
+@export var duration : float
+@export var effects : Array[AbilityEffect]
+
+
+func apply(ctx:AbilityContext):
 	finished.emit()
 
-func undo(ctx:EffectContext):
+func undo(ctx:AbilityContext):
 	pass

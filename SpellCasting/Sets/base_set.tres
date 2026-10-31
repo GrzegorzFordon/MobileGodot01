@@ -1,0 +1,130 @@
+[gd_resource type="Resource" script_class="SpellSet" format=3 uid="uid://ba2hpo03rqgsb"]
+
+[ext_resource type="Script" uid="uid://dnrwqrkr8wluv" path="res://SpellCasting/_Resources/spell_set.gd" id="1_v3qqf"]
+[ext_resource type="Script" uid="uid://dnumj8bnq8xde" path="res://SpellCasting/_Resources/spell.gd" id="2_gown4"]
+[ext_resource type="Script" uid="uid://cwu3ba7geqjyw" path="res://Ability/_Resources/ability_use.gd" id="3_qjn73"]
+[ext_resource type="Script" uid="uid://ccdda8nr74lsc" path="res://Ability/_Resources/ability_cost.gd" id="4_2kat7"]
+[ext_resource type="Script" uid="uid://cmaem1turfeel" path="res://Ability/_Resources/ability_effect.gd" id="5_2ivp8"]
+[ext_resource type="Script" uid="uid://dufxqb81t0rt" path="res://Ability/_Resources/ability_requirement.gd" id="5_hdn30"]
+[ext_resource type="Texture2D" uid="uid://bsr0i8tcs1vxy" path="res://_General/Assets/SpellIcons/water_spell.png" id="5_tat3g"]
+[ext_resource type="Script" uid="uid://4ltmxyos7d3n" path="res://Ability/_Resources/ability.gd" id="6_ll8ie"]
+[ext_resource type="Script" uid="uid://cxgp3phluwfen" path="res://Projectile/LaunchTypes/cone_launcher.gd" id="6_wi6ok"]
+[ext_resource type="Script" uid="uid://y6vj5xtcg2xo" path="res://Modifier/modifier.gd" id="7_daycl"]
+[ext_resource type="Texture2D" uid="uid://btml611frmm1r" path="res://_General/Assets/SpellIcons/healing_spell.png" id="7_wv2vm"]
+[ext_resource type="Texture2D" uid="uid://digc57bblqn0d" path="res://_General/Assets/SpellIcons/lightning_spell.png" id="8_bfjtp"]
+[ext_resource type="Script" uid="uid://bvvpa5j8yyqtn" path="res://Projectile/Resources/projectile_data.gd" id="8_vv07q"]
+[ext_resource type="Texture2D" uid="uid://brn8l4s66my64" path="res://_General/Assets/SpellIcons/fire_spell_2.png" id="9_40ff6"]
+[ext_resource type="Script" uid="uid://bkktrbp3eyyef" path="res://Ability/Effects/deal_damage_effect.gd" id="9_daycl"]
+[ext_resource type="Script" uid="uid://dtfkt05xcricl" path="res://Ability/Effects/launch_projectile_effect.gd" id="9_e7e0x"]
+[ext_resource type="Script" uid="uid://lg0lv0su51f1" path="res://Ability/Targets/no_target.gd" id="10_cm4ne"]
+[ext_resource type="Script" uid="uid://cctwxsdp34apm" path="res://Ability/Uses/repeated_use.gd" id="12_k35bb"]
+[ext_resource type="Script" uid="uid://xsytm2evyu16" path="res://Projectile/LaunchTypes/spiral_launcher.gd" id="18_e7e0x"]
+[ext_resource type="Script" uid="uid://j4xjkimfissa" path="res://Projectile/Movements/straight_projectile_movement.gd" id="19_cm4ne"]
+[ext_resource type="Script" uid="uid://ca3dhvac505s4" path="res://Ability/Uses/single_use.gd" id="20_k35bb"]
+
+[sub_resource type="Resource" id="Resource_7c3rb"]
+script = ExtResource("18_e7e0x")
+amount = 4
+metadata/_custom_type_script = "uid://xsytm2evyu16"
+
+[sub_resource type="Resource" id="Resource_gn3v5"]
+script = ExtResource("19_cm4ne")
+metadata/_custom_type_script = "uid://j4xjkimfissa"
+
+[sub_resource type="Resource" id="Resource_ko52x"]
+script = ExtResource("8_vv07q")
+speed = 5
+duration = 5.0
+movement = SubResource("Resource_gn3v5")
+metadata/_custom_type_script = "uid://bvvpa5j8yyqtn"
+
+[sub_resource type="Resource" id="Resource_h823o"]
+script = ExtResource("9_e7e0x")
+dir_choice = 1
+launch_data = SubResource("Resource_7c3rb")
+projectile_data = SubResource("Resource_ko52x")
+normalize_inputs = true
+metadata/_custom_type_script = "uid://dtfkt05xcricl"
+
+[sub_resource type="Resource" id="Resource_672ee"]
+script = ExtResource("10_cm4ne")
+metadata/_custom_type_script = "uid://lg0lv0su51f1"
+
+[sub_resource type="Resource" id="Resource_3nklw"]
+script = ExtResource("6_ll8ie")
+target = SubResource("Resource_672ee")
+effects = Array[ExtResource("5_2ivp8")]([SubResource("Resource_h823o")])
+metadata/_custom_type_script = "uid://4ltmxyos7d3n"
+
+[sub_resource type="Resource" id="Resource_gqo0k"]
+script = ExtResource("20_k35bb")
+setup_time = 1.0
+abilities = Array[ExtResource("6_ll8ie")]([SubResource("Resource_3nklw")])
+metadata/_custom_type_script = "uid://ca3dhvac505s4"
+
+[sub_resource type="Resource" id="Resource_hdn30"]
+script = ExtResource("2_gown4")
+icon = ExtResource("9_40ff6")
+abilities = Array[ExtResource("3_qjn73")]([SubResource("Resource_gqo0k")])
+metadata/_custom_type_script = "uid://dnumj8bnq8xde"
+
+[sub_resource type="Resource" id="Resource_hvwg2"]
+script = ExtResource("6_wi6ok")
+arc_deg = 30
+amount = 5
+metadata/_custom_type_script = "uid://cxgp3phluwfen"
+
+[sub_resource type="Resource" id="Resource_wi6ok"]
+script = ExtResource("9_daycl")
+metadata/_custom_type_script = "uid://bkktrbp3eyyef"
+
+[sub_resource type="Resource" id="Resource_2ivp8"]
+script = ExtResource("8_vv07q")
+speed = 5
+duration = 5.0
+on_hit_effects = Array[ExtResource("5_2ivp8")]([SubResource("Resource_wi6ok")])
+metadata/_custom_type_script = "uid://bvvpa5j8yyqtn"
+
+[sub_resource type="Resource" id="Resource_ms28m"]
+script = ExtResource("9_e7e0x")
+launch_data = SubResource("Resource_hvwg2")
+projectile_data = SubResource("Resource_2ivp8")
+metadata/_custom_type_script = "uid://dtfkt05xcricl"
+
+[sub_resource type="Resource" id="Resource_m8c0t"]
+script = ExtResource("10_cm4ne")
+metadata/_custom_type_script = "uid://lg0lv0su51f1"
+
+[sub_resource type="Resource" id="Resource_nn6bk"]
+script = ExtResource("6_ll8ie")
+target = SubResource("Resource_m8c0t")
+effects = Array[ExtResource("5_2ivp8")]([SubResource("Resource_ms28m")])
+metadata/_custom_type_script = "uid://4ltmxyos7d3n"
+
+[sub_resource type="Resource" id="Resource_smwtc"]
+script = ExtResource("12_k35bb")
+repeat_delta = 0.1
+abilities = Array[ExtResource("6_ll8ie")]([SubResource("Resource_nn6bk")])
+metadata/_custom_type_script = "uid://cctwxsdp34apm"
+
+[sub_resource type="Resource" id="Resource_yh2h8"]
+script = ExtResource("2_gown4")
+icon = ExtResource("5_tat3g")
+is_aimed = true
+abilities = Array[ExtResource("3_qjn73")]([SubResource("Resource_smwtc")])
+metadata/_custom_type_script = "uid://dnumj8bnq8xde"
+
+[sub_resource type="Resource" id="Resource_qjn73"]
+script = ExtResource("2_gown4")
+icon = ExtResource("7_wv2vm")
+metadata/_custom_type_script = "uid://dnumj8bnq8xde"
+
+[sub_resource type="Resource" id="Resource_2kat7"]
+script = ExtResource("2_gown4")
+icon = ExtResource("8_bfjtp")
+metadata/_custom_type_script = "uid://dnumj8bnq8xde"
+
+[resource]
+script = ExtResource("1_v3qqf")
+spells = Array[ExtResource("2_gown4")]([SubResource("Resource_hdn30"), SubResource("Resource_yh2h8"), SubResource("Resource_qjn73"), SubResource("Resource_2kat7")])
+metadata/_custom_type_script = "uid://dnrwqrkr8wluv"

@@ -35,10 +35,11 @@ func reset():
 
 func refill(delta):
 	time_since_last_use += delta
-	if time_since_last_use >= auto_refill_delay_duration:
-		cur_value += auto_refill_speed * delta * max_value
-		cur_value = min(cur_value,max_value)
-		value_changed.emit(cur_value,max_value)
+	if time_since_last_use < auto_refill_delay_duration: return
+	if cur_value == max_value: return
+	cur_value += auto_refill_speed * delta * max_value
+	cur_value = min(cur_value,max_value)
+	value_changed.emit(cur_value,max_value)
 
 func is_empty()->bool:
 	return cur_value==0.0

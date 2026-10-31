@@ -8,16 +8,12 @@ extends Resource
 @export var cooldown : float
 @export var is_aimed : bool
 
-#Activation Costs and Requirements
 @export var costs : Array[AbilityCost]
 @export var requirements : Array[AbilityRequirement]
 
-#@export var casts : Array[SpellCast]
+@export var on_equip_abilities : Array[Ability]
 @export var abilities : Array[AbilityUse]
-
 #TODO - visuals, animation data
-#TODO - how to pass current aim-dir to spell
-#TODO - how to go on cooldown - spell has one global cooldown
 
 func can_cast(ctx:AbilityContext)->bool:
 	for req in requirements:
@@ -40,3 +36,11 @@ func start(ctx:AbilityContext):
 func finish(ctx:AbilityContext):
 	for ability in abilities:
 		ability.end_use(ctx)
+
+func on_equip(ctx:AbilityContext):
+	for ability in on_equip_abilities:
+		ability.resolve(ctx)
+
+func on_unequip(ctx:AbilityContext):
+	for ability in on_equip_abilities:
+		ability.undo(ctx)

@@ -12,4 +12,11 @@ func start_use(ctx:AbilityContext):
 	else:
 		use(ctx)
 
-func end_use(ctx:AbilityContext):pass
+func end_use(ctx:AbilityContext):
+	if timer and timer.time_left:
+		timer.timeout.disconnect(use.bind(ctx))
+		timer = null
+
+func use(ctx:AbilityContext):
+	super(ctx)
+	finished.emit()

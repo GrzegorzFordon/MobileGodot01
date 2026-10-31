@@ -2,14 +2,14 @@ class_name RepeatedUse
 extends AbilityUse
 
 @export_range(0.1,5.0,0.1) var repeat_delta : float
+@export var is_delayed : bool
 @export var costs : Array[AbilityCost]
 
 var timer : SceneTreeTimer
 
 func start_use(ctx:AbilityContext):
-	use(ctx)
-	if repeat_delta:
-		_set_timer(ctx)
+	if not is_delayed: use(ctx)
+	_set_timer(ctx)
 
 func end_use(ctx:AbilityContext):
 	if timer:
@@ -21,6 +21,8 @@ func use(ctx:AbilityContext):
 	var can_cast = costs.all(func(cost:AbilityCost): return cost.can_pay(ctx))
 	if not can_cast: return
 	for cost in costs: cost.pay(ctx)
+	ctx.context["PROJECTILE_DIR"] = ctx.source.basis.z
+	ctx.origin = ctx.source.global_position
 	super(ctx)
 
 func _set_timer(ctx:AbilityContext):

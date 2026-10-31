@@ -1,8 +1,6 @@
 class_name Ability
 extends Resource
 
-#@export var costs : Array[AbilityCost]
-#@export var requirements : Array[AbilityRequirement]
 @export var target : AbilityTarget
 @export var effects : Array[AbilityEffect]
 

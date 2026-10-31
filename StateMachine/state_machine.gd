@@ -8,11 +8,10 @@ var current_state: State
 
 func init(actor):
 	for state in states:
+		state.actor = actor
 		states_dict[state.get_script().get_global_name().to_lower()] = state
 		state.transition.connect(transition)
 	transition(states[0].get_script().get_global_name().to_lower())
-	for state in states_dict.values():
-		state.actor = actor
 
 func process_inputs(input_data: InputData) -> void:
 	if current_state:

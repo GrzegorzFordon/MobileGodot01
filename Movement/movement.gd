@@ -11,7 +11,6 @@ signal footstep_taken()
 
 func move(character:CharacterBody3D,delta:float,speed:float,direction:Vector3) -> void:
 	if not character: return
-	#var delta = get_process_delta_time()
 
 	if direction.length() > 1.0:
 		direction = direction.normalized()
